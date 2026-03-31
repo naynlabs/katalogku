@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Butik Clarissa - Koleksi Eksklusif</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4A0404", // Deep Maroon
+                        "on-primary": "#FFFFFF",
+                        "background": "#FDFCFB", // Ivory White
+                        "surface": "#FDFCFB",
+                        "surface-variant": "#F5F3F1",
+                        "outline": "#D1CFCD",
+                        "on-surface": "#1A1A1A",
+                        "on-surface-variant": "#4A4A4A", // Dark Grey
+                        "maroon-accent": "#5D0606",
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Plus Jakarta Sans", "sans-serif"],
+                        "label": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.75rem", "lg": "1.5rem", "xl": "2.5rem", "full": "9999px" },
+                    boxShadow: {
+                        'elegant': '0px 12px 30px rgba(0, 0, 0, 0.04)',
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FDFCFB; }
+        .glass-header { background: rgba(253, 252, 251, 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(74, 74, 74, 0.05); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<div class="relative flex min-h-screen w-full flex-col items-center overflow-x-hidden pb-24">
+<div class="w-full max-w-md flex-1 flex flex-col relative bg-white">
+<header class="glass-header sticky top-0 z-40 flex items-center justify-between px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="size-6 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H10V18V32H24V44H38V32V18H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-on-surface text-sm font-semibold tracking-[0.1em] uppercase font-headline">Clarissa</h2>
+</div>
+<div class="flex justify-end">
+<button class="text-on-surface-variant/70 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">more_horiz</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex flex-col w-full">
+<section class="flex flex-col items-center px-6 pt-10 pb-8 gap-6">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-28 w-28 shadow-elegant ring-4 ring-white" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAeWf0zrRMTwr4se-8_5-uhar9TYNOS-81IZR_V4Vsln_6KPswPlxaUh04lrCv9dklSvdHD5DLMBpsw87kwn1JTb14apDxxK6NXOB1s7d8RAxISsrMYjgA-Fhktlcz-9w0ILO763MsvPu6ISwSt00lUvOy09763GXofpG4XorguqnihwsLAlyMih2nqYsAScv9GT_DKtH_CAjvmzvWMVgjF9jejwzONWtm5QbXvQ1Po95kvxepMEGOrV6ZzS6aLJ6l0zM5au8mV4ej6');"></div>
+<div class="absolute -bottom-1 -right-1 bg-primary text-white rounded-full p-1.5 shadow-md flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center text-center gap-2">
+<h1 class="text-on-surface text-2xl font-light tracking-tight font-headline">Butik Clarissa</h1>
+<p class="text-on-surface-variant text-sm font-light leading-relaxed max-w-[280px] font-body">Kurasi busana wanita premium dengan fokus pada kualitas material dan siluet abadi.</p>
+</div>
+</section>
+<section class="px-8 py-2 flex flex-col gap-3">
+<button class="flex items-center justify-center rounded-full h-12 px-6 bg-white text-on-surface text-sm font-medium tracking-wide shadow-sm border border-gray-100 hover:bg-gray-50 transition-all w-full group">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant/60 group-hover:text-primary text-[20px]" style="font-variation-settings: 'wght' 300;">camera_alt</span>
+<span>Instagram Official</span>
+</button>
+<button class="flex items-center justify-center rounded-full h-12 px-6 bg-white text-on-surface text-sm font-medium tracking-wide shadow-sm border border-gray-100 hover:bg-gray-50 transition-all w-full group">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant/60 group-hover:text-primary text-[20px]" style="font-variation-settings: 'wght' 300;">storefront</span>
+<span>Kunjungi Shopee</span>
+</button>
+</section>
+<section class="px-6 pt-12 pb-8 flex flex-col gap-6">
+<div class="flex justify-between items-center">
+<h2 class="text-on-surface text-lg font-medium tracking-tight font-headline">Koleksi Terkini</h2>
+<button class="text-on-surface-variant text-[10px] font-semibold tracking-widest uppercase flex items-center gap-1.5 opacity-60">
+                        Filter
+                        <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'wght' 300;">tune</span>
+</button>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 -mx-6 px-6 no-scrollbar">
+<button class="bg-primary text-white rounded-full px-5 py-1.5 text-xs font-medium whitespace-nowrap">Semua</button>
+<button class="bg-surface-variant text-on-surface-variant rounded-full px-5 py-1.5 text-xs font-light whitespace-nowrap">Gaun</button>
+<button class="bg-surface-variant text-on-surface-variant rounded-full px-5 py-1.5 text-xs font-light whitespace-nowrap">Atasan</button>
+<button class="bg-surface-variant text-on-surface-variant rounded-full px-5 py-1.5 text-xs font-light whitespace-nowrap">Bawahan</button>
+</div>
+<div class="grid grid-cols-2 gap-x-4 gap-y-8">
+<div class="flex flex-col group transition-all">
+<div class="relative w-full aspect-[3/4] rounded-lg bg-surface-variant overflow-hidden shadow-sm">
+<img alt="Sutra Kuning" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD4dJ3EQsYiOe3od-nPHmIrKF7z4hhMv-FbT5yoKotenZMK8fCvvbCqdH8p8QmksoCZpjkkIi40zMtheVHYtl1tL9pX8fPGcs_jATLXBHuLNNE-9TcVBPIAtJDv_VrMOBm2-NwcQ2gaIirXiSXXCPHudio8AJcsMz0wf6cFL7-V8Xl40dgNN8TPpewdSsitnyHQ32TDX1eq3yI7qkROOwai4XdN7rtJJbGtSdNSeM9s8L7n0-vgHXHLBZaIF5E3YFCQJ5s8cxQR4H9"/>
+<div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-primary text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-sm shadow-sm">Best Seller</div>
+</div>
+<div class="pt-3 flex flex-col">
+<p class="text-on-surface text-[13px] font-medium leading-tight font-headline mb-0.5">Sutra Kuning Musim Panas</p>
+<p class="text-on-surface-variant/70 text-[11px] font-light font-body mb-3">Rp 245.000</p>
+<button class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest py-2.5 rounded-full hover:bg-maroon-accent transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'wght' 500;">add</span>
+<span>Tambah</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col group transition-all">
+<div class="relative w-full aspect-[3/4] rounded-lg bg-surface-variant overflow-hidden shadow-sm">
+<img alt="Denim Premium" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1t7g9XLvNjrsxQgYMRZJ2RaVqlQRRwQloAbMgeiwRS3l1ruRQnCYsfYHAJngSKdDWl-JukXIZc1Npaz76r6jz2k8qPbPvRdkBAK_4Q9cfYut7frjCZVGpX3KpiTqEb0Wb_qPuCOh0bMV85JHZ3NoxS7HqR34h3R8ALG6uZyilS9F0fin2Y9dUTBYgB0DI7_pkrjZmQIJAeSpeFdzJWCUNJ0WXjAOnItb6rbu7yYF-lzB556Qvhy6mqnzukqJ_nAWoMLfjU0yBNndm"/>
+</div>
+<div class="pt-3 flex flex-col">
+<p class="text-on-surface text-[13px] font-medium leading-tight font-headline mb-0.5">Jaket Denim Klasik</p>
+<p class="text-on-surface-variant/70 text-[11px] font-light font-body mb-3">Rp 350.000</p>
+<button class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest py-2.5 rounded-full hover:bg-maroon-accent transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'wght' 500;">add</span>
+<span>Tambah</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col group transition-all">
+<div class="relative w-full aspect-[3/4] rounded-lg bg-surface-variant overflow-hidden shadow-sm">
+<img alt="Blus Bordir" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaYj8AL9xmOB9oMRJScQ-lrwQSYp1zA2VRmm-DG3-7WsWSW_4o28SJg8nT5RhOBlQJhvKxWNqVRcSwOe8PNcOlY5DwkZPEvIKT7TqLlzlKAguSOFC9TykLE89VTk7xwxGRC9p0xDW9Z-2bddNE9ZyG6VnFVkoi94uiVfuKkl_HD_HoH7JsWirnfx_ZL6OJm5kJ2le4JMpQ0DeepNNQiyCM9mV6bmtptsEthXd1MMy1ALdy9fzF0ZEIUbfv3x4ILn7cw3oEkdFWN_o5"/>
+</div>
+<div class="pt-3 flex flex-col">
+<p class="text-on-surface text-[13px] font-medium leading-tight font-headline mb-0.5">Blus Bordir Floral</p>
+<p class="text-on-surface-variant/70 text-[11px] font-light font-body mb-3">Rp 190.000</p>
+<button class="bg-on-surface-variant text-white text-[10px] font-bold uppercase tracking-widest py-2.5 rounded-full flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'wght' 500;">check</span>
+<span>1 Dipilih</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col group transition-all">
+<div class="relative w-full aspect-[3/4] rounded-lg bg-surface-variant overflow-hidden shadow-sm">
+<img alt="Rok Beludru" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfTOP3MXRVz9I5GirVas71b_r4j3m_Rx8j8XYJ5uvhhZQuslE_MPSCAMio6oNRMxYYeQ_2pI2XtS_uPaVn13EBXIfGZ7B58-3ngWHNG1TvjG-bs2JRyD2GsFlaPfudUO61N4zQ3FjNbss0tXy_Zag-Nnph1boOWZLgLwXnnI7pbgUhqNLRh26rxdQaL536Eqy-9iTWsqcrUgB9AAgNcrXbJ-NK7uMQAuxexe3ASo9Ln13yBskcpVCI7qpBFQTwyPhXdneS8VVdn6lf"/>
+<div class="absolute top-3 left-3 bg-on-surface/80 backdrop-blur-sm text-white text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-sm shadow-sm">Terbatas</div>
+</div>
+<div class="pt-3 flex flex-col">
+<p class="text-on-surface text-[13px] font-medium leading-tight font-headline mb-0.5">Rok Beludru Maroon</p>
+<p class="text-on-surface-variant/70 text-[11px] font-light font-body mb-3">Rp 210.000</p>
+<div class="flex items-center justify-between bg-surface-variant rounded-full overflow-hidden border border-gray-200">
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'wght' 300;">remove</span>
+</button>
+<span class="text-xs font-semibold">2</span>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'wght' 300;">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-[400px] z-50">
+<button class="w-full bg-primary text-white rounded-full px-6 py-4 flex items-center justify-between shadow-xl hover:bg-maroon-accent transition-all active:scale-95">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'wght' 300;">shopping_bag</span>
+<div class="absolute -top-1.5 -right-1.5 bg-white text-primary text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-primary">3</div>
+</div>
+<div class="flex flex-col items-start">
+<span class="text-[10px] font-bold uppercase tracking-widest text-white/70">Subtotal</span>
+<span class="text-base font-semibold font-headline leading-none">Rp 610.000</span>
+</div>
+</div>
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">arrow_forward</span>
+</button>
+</div>
+<div class="fixed inset-0 z-[100] flex items-end justify-center bg-black/30 backdrop-blur-sm p-4 hidden">
+<div class="bg-white w-full max-w-md rounded-t-3xl rounded-b-2xl p-8 flex flex-col shadow-2xl">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-lg font-medium font-headline text-on-surface">Detail Pesanan</h3>
+<button class="text-on-surface-variant/40 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-6 mb-8">
+<div class="flex gap-4 items-center">
+<div class="w-14 h-14 rounded-lg bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7rB-qVtF6molH22CVtckBulOC2OAx0JLee8_97qVS34njqs5GrMxq160oQMJO8zLIDP-8irs9FFWV8BSaXH-9cKilx7do3b2vv65yz8rQqKEQFihhE3RblexyOL9ANkURtLOqYHHd3sCQfqRTvzoVpjlaI25_gFGTt4z9hYytj31VAqwuiQysWI6tgYwc02wlTHy1f8R0oU0TA00aNcyrX5KidDbrBz1EZhXV10ahBiYb3w1GLqiJGlJwEjOSd0aLqvTOCBz0dYMm"/>
+</div>
+<div class="flex-1">
+<p class="text-xs font-medium text-on-surface font-headline uppercase tracking-wide">Blus Bordir Floral</p>
+<p class="text-[10px] text-on-surface-variant font-light">1 x Rp 190.000</p>
+</div>
+<p class="text-xs font-semibold text-on-surface">Rp 190.000</p>
+</div>
+<div class="flex gap-4 items-center">
+<div class="w-14 h-14 rounded-lg bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtfYXEFgdY_gm4uJEQepzAdRYgtoB6cGLM_r5BkkHt-7Qo7-u20hOd_FJpis-JHkYnR48P4YpEeApqasT7UK6UtqvdSRNGB0yxvLTJV3cxMBULqFZkN5lt7iGyLEl-j9daeleCEC8s-FcYVOgxv0hhZJdXxP9rR5PVMNdN5JLghtFou78KB8Sh4M16SraNNHnPOZxAvAUfBgbZzALJOrEm-4yw-O-ZXbWPbzRxMckrsf7AtOgve8Yw7SIlyxftHtiilodIJkUX_rtR"/>
+</div>
+<div class="flex-1">
+<p class="text-xs font-medium text-on-surface font-headline uppercase tracking-wide">Rok Beludru Maroon</p>
+<p class="text-[10px] text-on-surface-variant font-light">2 x Rp 210.000</p>
+</div>
+<p class="text-xs font-semibold text-on-surface">Rp 420.000</p>
+</div>
+</div>
+<div class="border-t border-gray-100 pt-6 mb-8 flex justify-between items-center">
+<span class="text-xs font-medium text-on-surface-variant/70 uppercase tracking-widest">Total Pembayaran</span>
+<span class="text-xl font-semibold text-primary font-headline">Rp 610.000</span>
+</div>
+<button class="w-full bg-[#25D366] text-white rounded-full h-14 px-6 flex items-center justify-center gap-3 shadow-lg font-bold text-sm uppercase tracking-widest">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+</svg>
+                    Lanjut ke WhatsApp
+                </button>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

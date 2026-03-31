@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Griya Kriya - Katalogku</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4A3728","primary-container": "#6B5847",
+                        "on-primary": "#FDFBF7",
+                        "secondary": "#556B2F","secondary-container": "#DDE3D1",
+                        "on-secondary-container": "#2D361E",
+                        "background": "#FDFBF7","surface": "#F7F2E9","surface-container": "#EEE5D8",
+                        "surface-container-low": "#F3EDE2",
+                        "surface-container-lowest": "#FFFFFF",
+                        "on-surface": "#2D2926",
+                        "on-surface-variant": "#5C5753",
+                        "outline": "#C9C1B5",
+                        "outline-variant": "#E0D8CC",
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Plus Jakarta Sans", "sans-serif"],
+                        "label": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "1.5rem", "xl": "2rem", "full": "9999px" },
+                    boxShadow: {
+                        'ambient': '0px 12px 24px rgba(74, 55, 40, 0.08)',
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: theme('colors.background'); }
+        .bg-gradient-primary { background: linear-gradient(135deg, theme('colors.primary'), theme('colors.primary-container')); }
+        .glass-header { background: rgba(253, 251, 247, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid theme('colors.outline-variant'); }
+        .ghost-border { border: 1px solid theme('colors.outline-variant'); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-on-surface antialiased">
+<div class="relative flex min-h-screen w-full flex-col items-center overflow-x-hidden pb-32">
+<div class="w-full max-w-md flex-1 flex flex-col relative">
+<header class="glass-header sticky top-0 z-40 flex items-center justify-between whitespace-nowrap px-6 py-4">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-6">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 8L6 20V40H18V28H30V40H42V20L24 8Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-on-surface text-lg font-bold leading-tight tracking-tight font-headline">Katalogku</h2>
+</div>
+<div class="flex justify-end">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex flex-col w-full">
+<section class="flex flex-col items-center px-6 pt-10 pb-8 gap-6">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-32 w-32 shadow-ambient border-4 border-surface-container-lowest" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA-jDtDU3FWrWE2zk4dmNeuG8InxuKkKnuXGjwlZjG8KjqfWtDuPWwd28yWGTXe6nIw2jklVK4QQj1wJSv5T9l7T_IyULktQGAOyCodD0CdaWo3Sjb0UMIIwKPPIX4d1aid49pPI2PCoTi-LJmIRN_14aclwzs1izIFRGlzJFz9FUXoVCwz_kgXPamxYxv3oD3qzWvx-LyaSq-5xmXYxxkCoSAxXRnVbHeJCHMhtb865Ax55lIH6mAmRkVeYY8LBeCvjGr3KBMfIXXB');"></div>
+<div class="absolute -bottom-2 -right-2 bg-secondary text-white rounded-full px-3 py-1 shadow-sm flex items-center gap-1 border-2 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[14px]" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-[10px] font-bold font-label tracking-wider uppercase">Artisanal</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center text-center gap-3">
+<h1 class="text-primary text-3xl font-bold leading-tight tracking-tight font-headline">Griya Kriya</h1>
+<p class="text-on-surface-variant text-base font-normal leading-relaxed max-w-[320px] font-body">Koleksi kerajinan tangan yang merayakan tekstur alami dan kehangatan tradisi dalam setiap detailnya.</p>
+</div>
+</section>
+<section class="px-6 py-2 flex flex-col gap-3">
+<button class="flex items-center justify-center overflow-hidden rounded-full h-14 px-6 bg-surface-container-lowest text-on-surface text-base font-semibold shadow-sm hover:bg-surface transition-colors ghost-border w-full group">
+<span class="material-symbols-outlined mr-3 text-secondary" data-icon="photo_library">photo_library</span>
+<span class="truncate">Galeri Proses Produksi</span>
+</button>
+<button class="flex items-center justify-center overflow-hidden rounded-full h-14 px-6 bg-surface-container-lowest text-on-surface text-base font-semibold shadow-sm hover:bg-surface transition-colors ghost-border w-full group">
+<span class="material-symbols-outlined mr-3 text-secondary" data-icon="storefront">storefront</span>
+<span class="truncate">Etalase Shopee</span>
+</button>
+<button class="flex items-center justify-center overflow-hidden rounded-full h-14 px-6 bg-surface-container-lowest text-on-surface text-base font-semibold shadow-sm hover:bg-surface transition-colors ghost-border w-full group">
+<span class="material-symbols-outlined mr-3 text-secondary" data-icon="menu_book">menu_book</span>
+<span class="truncate">Kisah Balik Produk</span>
+</button>
+</section>
+<section class="px-6 pt-12 pb-12 flex flex-col gap-8 bg-surface-container-low mt-10 rounded-t-[2.5rem]">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-primary text-2xl font-bold leading-tight font-headline">Koleksi Terkurasi</h2>
+<p class="text-on-surface-variant text-sm font-medium mt-1">Dibuat perlahan dengan penuh cinta</p>
+</div>
+<button class="text-secondary text-sm font-bold bg-transparent px-2 py-1 flex items-center gap-1 font-label uppercase tracking-widest">
+                        Filter
+                        <span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 -mx-6 px-6 no-scrollbar">
+<button class="bg-secondary text-white rounded-full px-6 py-2.5 text-sm font-bold font-label whitespace-nowrap shadow-md">Semua</button>
+<button class="bg-white text-on-surface-variant border border-outline-variant rounded-full px-6 py-2.5 text-sm font-semibold font-label whitespace-nowrap">Anyaman</button>
+<button class="bg-white text-on-surface-variant border border-outline-variant rounded-full px-6 py-2.5 text-sm font-semibold font-label whitespace-nowrap">Keramik</button>
+<button class="bg-white text-on-surface-variant border border-outline-variant rounded-full px-6 py-2.5 text-sm font-semibold font-label whitespace-nowrap">Tekstil</button>
+</div>
+<div class="grid grid-cols-2 gap-5">
+<div class="flex flex-col bg-white rounded-xl shadow-ambient overflow-hidden group hover:scale-[1.01] transition-all pb-4">
+<div class="relative w-full aspect-[4/5] bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCjsynC6bnXhCGk3ZTmZEt7cHHMCBUaUyL6qbvJHGqhpFXsYHrz6gN-e9g_j5xcuHM6L0iH7d-2r0Y8OPQExg64dQDll_3Bxk_je2IMuFWQZI4IzHh-52_IbdFb0gpOMGiCFoIno3iAvzGRkJC5osUBRrJxjg2KuvVGqG5guKmirW7ZSUmljPbznZxAdkUwTx87WVbccKVlZyyulWN6iI5nLC5pAjzTLh1KuC_Oxuu32rh9klHS7gp1GXqdT3LINB-o0HLkFFXDjtXu');">
+<div class="absolute top-3 left-3 bg-secondary/90 text-white rounded-full px-2.5 py-1 text-[9px] font-bold uppercase tracking-widest font-label backdrop-blur-sm">Buatan Tangan</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<p class="text-primary text-sm font-bold leading-tight font-headline mb-1 line-clamp-2 italic">Tas Anyam Rattan Sore</p>
+<p class="text-on-surface-variant text-sm font-semibold font-body mb-4">Rp 385.000</p>
+<button class="mt-auto bg-surface-container hover:bg-outline-variant text-primary rounded-full py-2.5 flex items-center justify-center gap-2 transition-colors w-full">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+<span class="text-[10px] font-bold font-label uppercase tracking-widest">Pesan</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col bg-white rounded-xl shadow-ambient overflow-hidden group hover:scale-[1.01] transition-all pb-4">
+<div class="w-full aspect-[4/5] bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBR1bYNCVLk1WYzOfAMjW9g-PsMsktH-egUq5MSpI-OLIHEawZwuFek-u2QThN5gzv4TmeuOIJ9LbaJIQJhQlDxh2aiHhZom--DTrlpfTviGSZg7kKbUTmQWUieyisZVspbHjTesGPv-_vcfoJfbajtoyMBI16LQqVr-XF8DETMTeGSSLj6cBndhIpD28hI5FM_E6vZIhSu4SpgAIId3zpVfJCEsI60UkjCyZ3HJma0yrYtZ2A6VeTIkJpcu8zTcpt5kzJ6EQ4DZUVs');"></div>
+<div class="p-4 flex flex-col flex-1">
+<p class="text-primary text-sm font-bold leading-tight font-headline mb-1 line-clamp-2 italic">Vas Keramik Bumi</p>
+<p class="text-on-surface-variant text-sm font-semibold font-body mb-4">Rp 220.000</p>
+<button class="mt-auto bg-surface-container hover:bg-outline-variant text-primary rounded-full py-2.5 flex items-center justify-center gap-2 transition-colors w-full">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+<span class="text-[10px] font-bold font-label uppercase tracking-widest">Pesan</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col bg-white rounded-xl shadow-ambient overflow-hidden group hover:scale-[1.01] transition-all pb-4">
+<div class="w-full aspect-[4/5] bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCWcpDvaNqXZhNymS0dnrpib2Typpiy94ZzCl9unt49drXwsg9y4L4xvatCBmoVk9QKbZ3xTzqjMidC6vhH2CG0PueogAIm5YcILTxqB4Xpany_jzycasDJaGkHnBuyx9ULX4dcQUaqGJbWIj5itAv7fGveRtkct_ENRjILJONirPNwHqAbLVZ6x83dFIxVpm7JD61FRKJZfXLCesGYAeBoVxj10zKh_CR1IK4rcRfT4uApR4wURJEE_4JccFX56nzeG18RFd2_2BDQ');"></div>
+<div class="p-4 flex flex-col flex-1">
+<p class="text-primary text-sm font-bold leading-tight font-headline mb-1 line-clamp-2 italic">Linen Runner Alami</p>
+<p class="text-on-surface-variant text-sm font-semibold font-body mb-4">Rp 175.000</p>
+<button class="mt-auto bg-gradient-primary text-on-primary rounded-full py-2.5 flex items-center justify-center gap-2 transition-colors w-full shadow-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="done_all">done_all</span>
+<span class="text-[10px] font-bold font-label uppercase tracking-widest">1 Dipilih</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col bg-white rounded-xl shadow-ambient overflow-hidden group hover:scale-[1.01] transition-all pb-4">
+<div class="relative w-full aspect-[4/5] bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBYpJlWWEK7oDLuNp_-3scNW1iAYYtl3ZsrfSI9r84CimGklVvqtGkHs63xHVjLfhTDp0fGHq8iy14CgLV1K-AznW7A_shPgqcuVebFAWtFqRLSiq12hueYvajRahP5B58Y5YjXCL7GJ-sZsTBqyAdzTz034OIqF0NIR1c4-sNST7sBaf0WcvSU_8qO6Im23RrQviPwTPWKAbe5L6WHaC8VO4QDkFXMiRJdakxzJGAxGHpDcL9HEg2cDJd7X2ykX607sHquPrhK5t3B');">
+<div class="absolute top-3 right-3 bg-primary/20 backdrop-blur-sm text-primary rounded-full px-2 py-1 text-[9px] font-bold uppercase tracking-widest font-label border border-primary/20">Pre-Order</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<p class="text-primary text-sm font-bold leading-tight font-headline mb-1 line-clamp-2 italic">Lampu Meja Kayu Jati</p>
+<p class="text-on-surface-variant text-sm font-semibold font-body mb-4">Rp 540.000</p>
+<div class="mt-auto flex items-center justify-between bg-surface-container rounded-full overflow-hidden border border-outline-variant">
+<button class="w-10 h-10 flex items-center justify-center text-primary hover:bg-outline-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="remove">remove</span>
+</button>
+<span class="text-sm font-bold font-body text-primary">2</span>
+<button class="w-10 h-10 flex items-center justify-center text-primary hover:bg-outline-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-[400px] z-50">
+<button class="w-full bg-primary text-white rounded-full px-6 py-4 flex items-center justify-between shadow-2xl hover:scale-[1.02] transition-transform active:scale-95">
+<div class="flex items-center gap-4">
+<div class="bg-white/10 rounded-full w-12 h-12 flex items-center justify-center border border-white/20">
+<span class="material-symbols-outlined" data-icon="shopping_basket">shopping_basket</span>
+</div>
+<div class="flex flex-col items-start">
+<span class="text-[10px] font-bold font-label uppercase tracking-[0.2em] text-white/70">3 Barang</span>
+<span class="text-lg font-bold font-headline leading-none">Rp 1.255.000</span>
+</div>
+</div>
+<span class="material-symbols-outlined" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+</button>
+</div>
+<div class="fixed inset-0 z-[100] flex items-end justify-center bg-primary/40 backdrop-blur-md p-4 hidden">
+<div class="bg-white w-full max-w-md rounded-t-3xl rounded-b-2xl p-8 flex flex-col shadow-2xl">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="text-2xl font-bold font-headline text-primary">Detail Pesanan</h3>
+<p class="text-on-surface-variant text-sm font-medium">Satu langkah lagi menuju kehangatan rumah</p>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors rounded-full p-2 bg-surface">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-6 mb-8 max-h-[350px] overflow-y-auto no-scrollbar">
+<div class="flex gap-4 items-center">
+<div class="w-20 h-20 rounded-xl bg-cover bg-center border border-outline-variant" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAbVCE3ZxlWI7D6aOgVrgvv6OdtjxKva97zMj-ISSmWQiKQ70GwGfzwft13m2niaf5y2XzlWUqfSEB_EGT88AdWOJVBtB9ppzNnrLY9Jnc5Q9kEM9kW9ume-vJ0eeAZiqfwyiApZFWE8sdq0R4XHaKCL91rR66gWjZcH46ATRk-HEvYlRNFM7ssEm6thgBgQPnWIpY2jrcB5zIzputD_SbAJSJwsWBnzNnMcZSeEXo81AF3ECJpTc02kcidohnbVytwDZdTtj82WDQl');"></div>
+<div class="flex-1">
+<p class="text-sm font-bold text-primary font-headline">Linen Runner Alami</p>
+<p class="text-xs text-on-surface-variant font-body">1 x Rp 175.000</p>
+</div>
+<p class="text-sm font-bold text-primary font-body">Rp 175.000</p>
+</div>
+<div class="flex gap-4 items-center">
+<div class="w-20 h-20 rounded-xl bg-cover bg-center border border-outline-variant" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBwCExttiOaH5aFQJ17MK0zrLhPxurpwqMGY-lRIdViOYR39fYClBE91UPMfC62_OrZaaO2_8wpBRRNCeDsMKcXiIyw9PIuNFbg6i4-XcDa_nMJZzMDpHxl4DTHMC0bp9zuGLqiq7oHWO_j_FAGpyaxN9Q5_yDL3ph1XneUGdv7IUitmIxbBl-NuxzPmXWwQZ_KUxlr0Ck80BpxXamqCAdFv8ceyXfv1zzJs2U1ogDIcOC68zEK27bIrlSRSIGM4Mzf7A87fepFW_JR');"></div>
+<div class="flex-1">
+<p class="text-sm font-bold text-primary font-headline">Lampu Meja Kayu Jati</p>
+<p class="text-xs text-on-surface-variant font-body">2 x Rp 540.000</p>
+</div>
+<p class="text-sm font-bold text-primary font-body">Rp 1.080.000</p>
+</div>
+</div>
+<div class="border-t-2 border-dashed border-outline-variant pt-6 mb-8 flex justify-between items-center">
+<span class="text-base font-bold text-on-surface-variant font-body">Total Investasi Seni</span>
+<span class="text-2xl font-bold text-secondary font-headline">Rp 1.255.000</span>
+</div>
+<button class="w-full bg-[#25D366] text-white rounded-full h-16 px-6 flex items-center justify-center gap-3 shadow-lg hover:scale-[1.02] transition-transform font-bold text-base tracking-wide">
+<svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+</svg>
+                    Pesan via WhatsApp
+                </button>
+<button class="mt-6 text-on-surface-variant bg-transparent text-xs font-bold font-label uppercase tracking-widest py-2 hover:text-primary transition-colors">
+                    Lanjutkan Melihat Koleksi
+                </button>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

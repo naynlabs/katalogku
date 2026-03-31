@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#f8f9fb",
+              "on-error-container": "#93000a",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#e1e2e4",
+              "on-primary-container": "#dad7ff",
+              "secondary-fixed": "#a1f95e",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e1e2e4",
+              "on-primary-fixed-variant": "#3323cc",
+              "on-tertiary-container": "#dedbda",
+              "surface-tint": "#4d44e3",
+              "surface": "#f8f9fb",
+              "on-primary-fixed": "#0f0069",
+              "on-background": "#191c1e",
+              "background": "#f8f9fb",
+              "secondary-fixed-dim": "#86dc44",
+              "on-secondary-fixed-variant": "#265100",
+              "outline-variant": "#c7c4d8",
+              "on-primary": "#ffffff",
+              "tertiary": "#494848",
+              "surface-container": "#edeef0",
+              "surface-dim": "#d9dadc",
+              "error": "#ba1a1a",
+              "secondary-container": "#9ef65c",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#191c1e",
+              "tertiary-container": "#616060",
+              "inverse-on-surface": "#f0f1f3",
+              "error-container": "#ffdad6",
+              "surface-container-high": "#e7e8ea",
+              "surface-container-low": "#f3f4f6",
+              "primary-container": "#4f46e5",
+              "on-secondary-container": "#367000",
+              "inverse-primary": "#c3c0ff",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed": "#e5e2e1",
+              "on-secondary-fixed": "#0b2000",
+              "secondary": "#346b00",
+              "primary-fixed-dim": "#c3c0ff",
+              "on-surface-variant": "#464555",
+              "tertiary-fixed-dim": "#c8c6c5",
+              "outline": "#777587",
+              "primary": "#3525cd",
+              "inverse-surface": "#2e3132",
+              "primary-fixed": "#e2dfff",
+              "on-tertiary-fixed-variant": "#474746",
+              "on-tertiary-fixed": "#1c1b1b"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- Sidebar Navigation (Predicted Component: SideNavBar) -->
+<aside class="h-screen w-64 fixed left-0 top-0 hidden md:flex flex-col bg-[#f8f9fb] dark:bg-slate-950 p-4 space-y-2 z-30">
+<div class="px-4 py-6 mb-4">
+<h1 class="text-lg font-black text-[#3525cd] font-headline">Seller Studio</h1>
+<p class="text-xs text-on-surface-variant">Manage your boutique</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full transition-transform scale-102 font-medium text-sm" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center px-4 py-3 bg-[#4F46E5] text-white rounded-full shadow-lg transition-transform scale-102 font-medium text-sm" href="#">
+<span class="material-symbols-outlined mr-3">inventory_2</span>
+                Catalog
+            </a>
+<a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full transition-transform scale-102 font-medium text-sm" href="#">
+<span class="material-symbols-outlined mr-3">shopping_cart</span>
+                Orders
+            </a>
+<a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full transition-transform scale-102 font-medium text-sm" href="#">
+<span class="material-symbols-outlined mr-3">bar_chart</span>
+                Analytics
+            </a>
+<a class="flex items-center px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full transition-transform scale-102 font-medium text-sm" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto pt-4">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-full font-bold shadow-lg hover:scale-105 transition-all">
+                Add Product
+            </button>
+</div>
+</aside>
+<!-- Top Navigation for Mobile (Predicted Component: TopNavBar) -->
+<header class="fixed top-0 w-full z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0px_20px_40px_rgba(77,68,227,0.06)] md:hidden">
+<div class="flex justify-between items-center px-6 py-3 w-full">
+<div class="text-xl font-bold text-slate-900 dark:text-slate-50 font-headline tracking-tight">Katalogku</div>
+<div class="flex items-center space-x-4">
+<span class="material-symbols-outlined text-slate-500">notifications</span>
+<span class="material-symbols-outlined text-slate-500">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 min-h-screen pt-20 md:pt-10 pb-24 px-6 md:px-10 max-w-7xl mx-auto">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<h2 class="text-4xl font-extrabold text-on-surface font-headline tracking-tight mb-2">Katalog Produk</h2>
+<p class="text-on-surface-variant font-body">Kelola koleksi terbaik toko Anda hari ini.</p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
+<div class="relative w-full sm:w-80">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-lowest border-none rounded-full ring-1 ring-outline-variant/15 focus:ring-primary/40 focus:ring-2 shadow-sm transition-all text-sm outline-none" placeholder="Cari nama produk..." type="text"/>
+</div>
+<button class="w-full sm:w-auto px-8 py-3 bg-gradient-to-br from-primary to-primary-container text-white rounded-full font-bold shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Tambah Produk
+                </button>
+</div>
+</section>
+<!-- Category Quick Filter (Bento Style Sub-nav) -->
+<div class="flex flex-wrap gap-3 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+<button class="px-6 py-2 bg-secondary-fixed text-on-secondary-fixed rounded-full text-sm font-bold shadow-sm">Semua</button>
+<button class="px-6 py-2 bg-surface-container-high text-on-surface-variant rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Fashion</button>
+<button class="px-6 py-2 bg-surface-container-high text-on-surface-variant rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Elektronik</button>
+<button class="px-6 py-2 bg-surface-container-high text-on-surface-variant rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Kecantikan</button>
+<button class="px-6 py-2 bg-surface-container-high text-on-surface-variant rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Aksesoris</button>
+</div>
+<!-- Product Grid (Asymmetric feel via card content) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+<!-- Card 1 -->
+<div class="group bg-surface-container-lowest rounded-xl p-4 shadow-[0px_20px_40px_rgba(77,68,227,0.06)] hover:scale-[1.02] transition-transform duration-300 relative overflow-hidden">
+<div class="relative h-64 w-full rounded-lg overflow-hidden mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="high fashion model wearing bright yellow trendy streetwear against a minimalist pastel studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_La1m-DtV1j3n7BjgBTyujHOrd1OiUnsSW32X29NcXgsXV-CQTeU7ZcJCjnyKWPqTt356t3Cv8LCdoFjsfKEXp26VTUgsEtd2x1kQl2M1C6NJVvu2BXslDBtCg668rZuRHPV9b1QzizIhNuz3IMtpgkezz8a39HxjRxkGSGL3TUu3Vack1CMcZdwklLHtxrNicXQHF0TKVMdpsLSDbGJSFJdw6T_Ve_1TTaEA64aP9MukkHIhSq3IS-3ymz7bjXJLtVGSfca1udZP"/>
+<span class="absolute top-3 right-3 bg-primary-fixed text-on-primary-fixed-variant text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Fashion</span>
+</div>
+<h3 class="font-bold text-lg text-on-surface leading-tight mb-1">Summer Oversized Tee</h3>
+<p class="text-primary font-bold text-xl mb-4">Rp 189.000</p>
+<div class="flex items-center gap-2 pt-2 border-t border-outline-variant/10">
+<button class="flex-1 flex items-center justify-center gap-1 py-2 bg-surface-container-low text-on-surface-variant rounded-full text-xs font-bold hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                    </button>
+<button class="w-10 h-10 flex items-center justify-center bg-error-container/30 text-error rounded-full hover:bg-error-container transition-colors">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-lowest rounded-xl p-4 shadow-[0px_20px_40px_rgba(77,68,227,0.06)] hover:scale-[1.02] transition-transform duration-300 relative overflow-hidden">
+<div class="relative h-64 w-full rounded-lg overflow-hidden mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="professional high-fidelity wireless headphones in matte black on a sleek dark surface with blue accent lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7GPd1poEyA9pt8r8dwc4g1f6bUQY-OU9RRmZq_Jp09uSiOqcWnWSd7HOYjjnK8fYulOa7AhrRXxH0A3uAz2fzYAyXM_gka5lNW05kOaAUuDFN46aS0vN4CEMPgBCLn2f-Kzd_Q9SyJiRDd5m707SsLbrfMhl4XNImyfKpnkjq7LqhiLVRKAkyK0Y8ot1ah_YyAIaVdZNXHBYdlHGkFaeKYTj_EZwS8iYAPQkLu2GawPv6BghLmb_9T9D0AVnDvWhNBag8ub6P2jR7"/>
+<span class="absolute top-3 right-3 bg-primary-fixed text-on-primary-fixed-variant text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Elektronik</span>
+</div>
+<h3 class="font-bold text-lg text-on-surface leading-tight mb-1">SonicPro Wireless V2</h3>
+<p class="text-primary font-bold text-xl mb-4">Rp 2.450.000</p>
+<div class="flex items-center gap-2 pt-2 border-t border-outline-variant/10">
+<button class="flex-1 flex items-center justify-center gap-1 py-2 bg-surface-container-low text-on-surface-variant rounded-full text-xs font-bold hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                    </button>
+<button class="w-10 h-10 flex items-center justify-center bg-error-container/30 text-error rounded-full hover:bg-error-container transition-colors">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface-container-lowest rounded-xl p-4 shadow-[0px_20px_40px_rgba(77,68,227,0.06)] hover:scale-[1.02] transition-transform duration-300 relative overflow-hidden">
+<div class="relative h-64 w-full rounded-lg overflow-hidden mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="elegant minimalist white ceramic watch on a textured linen cloth with soft natural morning shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8sHK2guCoY7NG09la-S5cC6ZAOpXyGHKAnxH4-UabPsolL15GnJFTpFY0lNuTuh_zNHLqNq4j0SDBNtcYTzA1tR6C9a0cHgBZ4PPt77y7Eq3puJkOZA6xrHxab1WBaoaScFLuxjdncol14OsHESE3LpJLCNLJ9N_qq1E-gdoPKHW4x43jgJ9PSt1NJ_rLkDU39FoM6d_0OgkakKvIl765-gA5affJvlxYDZG78Nx2lkfHgNK8TCOHPIlpqNRMIQ0C0uit3tcMeKYE"/>
+<span class="absolute top-3 right-3 bg-primary-fixed text-on-primary-fixed-variant text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Aksesoris</span>
+</div>
+<h3 class="font-bold text-lg text-on-surface leading-tight mb-1">Nordic Minimalist Watch</h3>
+<p class="text-primary font-bold text-xl mb-4">Rp 725.000</p>
+<div class="flex items-center gap-2 pt-2 border-t border-outline-variant/10">
+<button class="flex-1 flex items-center justify-center gap-1 py-2 bg-surface-container-low text-on-surface-variant rounded-full text-xs font-bold hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                    </button>
+<button class="w-10 h-10 flex items-center justify-center bg-error-container/30 text-error rounded-full hover:bg-error-container transition-colors">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group bg-surface-container-lowest rounded-xl p-4 shadow-[0px_20px_40px_rgba(77,68,227,0.06)] hover:scale-[1.02] transition-transform duration-300 relative overflow-hidden">
+<div class="relative h-64 w-full rounded-lg overflow-hidden mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="aesthetic collection of skincare products in frosted glass bottles arranged on a white marble pedestal with eucalyptus leaves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIWyeXwKj3S2IAXd0kQlFDttcSBlrOh_jsSan22YwmWB4EQN72FsRQbk4UiywZMt9v__xjc90t7fxenEXbpXEQ9pXKI4_Lmbz9IJpYfNwSw4uni38XYKFmG8ZBkvRGnDJ6nHWnIJe73QSFYJ4S7_LnkIlxpnoGN8OGNSKsTRgcxu4CDDiI2Kmfye_vbjK4Zk6lu7xR52QW7VLs9drkEeE2xOs5KNueTVR31NyTeslOIAZE7Q6Nd3c_8kI2biyLro6xXm3_mYTEVXY_"/>
+<span class="absolute top-3 right-3 bg-primary-fixed text-on-primary-fixed-variant text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Kecantikan</span>
+</div>
+<h3 class="font-bold text-lg text-on-surface leading-tight mb-1">Glow Essentials Set</h3>
+<p class="text-primary font-bold text-xl mb-4">Rp 450.000</p>
+<div class="flex items-center gap-2 pt-2 border-t border-outline-variant/10">
+<button class="flex-1 flex items-center justify-center gap-1 py-2 bg-surface-container-low text-on-surface-variant rounded-full text-xs font-bold hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                    </button>
+<button class="w-10 h-10 flex items-center justify-center bg-error-container/30 text-error rounded-full hover:bg-error-container transition-colors">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="group bg-surface-container-lowest rounded-xl p-4 shadow-[0px_20px_40px_rgba(77,68,227,0.06)] hover:scale-[1.02] transition-transform duration-300 relative overflow-hidden">
+<div class="relative h-64 w-full rounded-lg overflow-hidden mb-4">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="vibrant red athletic running shoe suspended in mid-air with dynamic motion blur and high contrast lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVWZQAyNdIg7Enkq9g-ARNw3vREm_0_Zgc2ed-XUVBEkLxsNrWRFklqI1T7G6yNyaXLUZzdA323w2wFr1A4VMMqag02gbq01mQZR91_reqFYtvaqpTfZwhQoQTy28T_8fIs9fxDebE0M90c9Hx7PExqlN-tAu6k2TRE7fLp1DUokQngy5onp73nKKFSz1U30wybMPbFfzbm7-Ll_EdNoebKigxEzIm0o-AxMrh8GGMmz656CKrWpv0ILl-iuUA0xg8PeDhiK4RjtgC"/>
+<span class="absolute top-3 right-3 bg-primary-fixed text-on-primary-fixed-variant text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Fashion</span>
+</div>
+<h3 class="font-bold text-lg text-on-surface leading-tight mb-1">Air Speed Runner X</h3>
+<p class="text-primary font-bold text-xl mb-4">Rp 1.200.000</p>
+<div class="flex items-center gap-2 pt-2 border-t border-outline-variant/10">
+<button class="flex-1 flex items-center justify-center gap-1 py-2 bg-surface-container-low text-on-surface-variant rounded-full text-xs font-bold hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                    </button>
+<button class="w-10 h-10 flex items-center justify-center bg-error-container/30 text-error rounded-full hover:bg-error-container transition-colors">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</div>
+<!-- Empty State / Add Placeholder -->
+<div class="border-2 border-dashed border-outline-variant rounded-xl flex flex-col items-center justify-center p-8 text-center bg-surface-container-low/30 hover:bg-surface-container-low transition-colors cursor-pointer group h-[400px]">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">add_circle</span>
+</div>
+<h3 class="font-bold text-on-surface-variant mb-1">Produk Baru</h3>
+<p class="text-sm text-outline px-4">Mulai tambahkan produk unggulan Anda di sini</p>
+</div>
+</div>
+</main>
+<!-- Floating WhatsApp CTA (Specialized Storefront Component) -->
+<button class="fixed bottom-24 right-6 md:bottom-10 md:right-10 w-16 h-16 bg-secondary-container text-on-secondary-container rounded-full shadow-[0px_10px_30px_rgba(54,112,0,0.3)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</button>
+<!-- Bottom Navigation for Mobile (Predicted Component: BottomNavBar) -->
+<nav class="fixed bottom-0 w-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-t border-slate-100 dark:border-slate-800 shadow-[0_-10px_30px_rgba(0,0,0,0.05)] md:hidden z-50 rounded-t-xl">
+<div class="flex justify-around items-center px-4 pb-6 pt-3">
+<a class="flex flex-col items-center justify-center text-slate-400" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-label uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#4F46E5]/10 text-[#4F46E5] rounded-full px-6 py-2" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="text-[10px] font-label uppercase tracking-widest mt-1">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-label uppercase tracking-widest mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-label uppercase tracking-widest mt-1">Profile</span>
+</a>
+</div>
+</nav>
+</body></html>

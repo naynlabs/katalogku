@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Katalogku - Digital Curator for Small Business</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#edeef0",
+              "surface-dim": "#d9dadc",
+              "on-surface-variant": "#464555",
+              "inverse-surface": "#2e3132",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed": "#1c1b1b",
+              "on-error": "#ffffff",
+              "outline-variant": "#c7c4d8",
+              "secondary-fixed": "#a1f95e",
+              "on-tertiary-container": "#dedbda",
+              "on-primary-fixed-variant": "#3323cc",
+              "surface-container-low": "#f3f4f6",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#e5e2e1",
+              "primary-fixed-dim": "#c3c0ff",
+              "error-container": "#ffdad6",
+              "surface-tint": "#4d44e3",
+              "on-primary": "#ffffff",
+              "secondary-container": "#9ef65c",
+              "outline": "#777587",
+              "tertiary-fixed-dim": "#c8c6c5",
+              "on-error-container": "#93000a",
+              "background": "#f8f9fb",
+              "primary-container": "#4f46e5",
+              "on-surface": "#191c1e",
+              "on-secondary-container": "#367000",
+              "on-secondary-fixed": "#0b2000",
+              "secondary": "#346b00",
+              "tertiary": "#494848",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed": "#0f0069",
+              "surface-bright": "#f8f9fb",
+              "on-primary-container": "#dad7ff",
+              "on-tertiary-fixed-variant": "#474746",
+              "secondary-fixed-dim": "#86dc44",
+              "on-tertiary": "#ffffff",
+              "inverse-on-surface": "#f0f1f3",
+              "surface": "#f8f9fb",
+              "surface-container-high": "#e7e8ea",
+              "surface-container-highest": "#e1e2e4",
+              "primary-fixed": "#e2dfff",
+              "on-secondary-fixed-variant": "#265100",
+              "tertiary-container": "#616060",
+              "inverse-primary": "#c3c0ff",
+              "primary": "#4F46E5",
+              "on-background": "#191c1e",
+              "surface-variant": "#e1e2e4"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8f9fb; color: #191c1e; scroll-behavior: smooth; }
+      .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+      .bg-primary-gradient { background: linear-gradient(135deg, #4F46E5 0%, #6366f1 100%); }
+      .elevation-tonal { box-shadow: 0px 20px 40px rgba(79, 70, 229, 0.08); }
+      .ghost-border { border: 1px solid rgba(199, 196, 216, 0.2); }
+      .hide-scrollbar::-webkit-scrollbar { display: none; }
+      .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      
+      @keyframes fade-up {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-up { animation: fade-up 0.6s ease-out forwards; }
+      
+      @keyframes scale-in {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      .animate-scale-in { animation: scale-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+      
+      @keyframes pulse-custom {
+        0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+        70% { box-shadow: 0 0 0 15px rgba(79, 70, 229, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+      }
+      .pulse-effect { animation: pulse-custom 2s infinite; }
+
+      .stagger-1 { animation-delay: 150ms; }
+      .stagger-2 { animation-delay: 300ms; }
+      .stagger-3 { animation-delay: 450ms; }
+      .stagger-4 { animation-delay: 600ms; }
+      
+      .feature-card:hover { transform: translateY(-5px); }
+      .feature-card:hover .icon-rotate { transform: rotate(5deg); }
+    </style>
+</head>
+<body class="selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
+<!-- 1. TOPBAR -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-outline-variant/10">
+<nav class="flex justify-between items-center max-w-7xl mx-auto px-6 h-20">
+<div class="text-2xl font-bold tracking-tighter text-[#191c1e]">Katalogku</div>
+<div class="hidden md:flex gap-8 items-center font-medium tracking-tight text-sm">
+<a class="text-[#4F46E5] font-semibold" href="#">Fitur</a>
+<a class="text-slate-600 hover:text-[#4F46E5] transition-colors" href="#">Cara Kerja</a>
+<a class="text-slate-600 hover:text-[#4F46E5] transition-colors" href="#">Testimoni</a>
+<a class="text-slate-600 hover:text-[#4F46E5] transition-colors" href="#">Harga</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary-gradient text-white px-6 py-2.5 rounded-full font-bold text-sm hover:scale-105 transition-transform duration-200 shadow-lg shadow-primary/20">Mulai Gratis</button>
+</div>
+</nav>
+</header>
+<main class="pt-20">
+<!-- 2. HERO SECTION -->
+<section class="relative overflow-hidden bg-background pt-16 pb-24 md:pt-28 md:pb-32">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="z-10 text-center lg:text-left">
+<span class="inline-block py-1.5 px-4 rounded-full bg-primary/10 text-primary text-xs font-extrabold tracking-widest uppercase mb-6">Mulai Jualan Pro</span>
+<h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6 max-w-[15ch] mx-auto lg:mx-0">
+                    Mulai Jualan Lebih Rapi &amp; Profesional Hari Ini
+                </h1>
+<p class="text-lg md:text-xl text-on-surface-variant mb-10 leading-relaxed max-w-lg mx-auto lg:mx-0">
+                    Tanpa setup ribet. Tanpa skill teknis. Langsung bisa dipakai. Ubah link bio kalian jadi mesin uang otomatis.
+                </p>
+<div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mb-4">
+<button class="bg-primary-gradient text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl shadow-primary/25 hover:scale-105 transition-transform active:scale-95">
+                        Mulai Gratis Sekarang
+                    </button>
+<button class="bg-surface-container-lowest text-on-surface px-8 py-4 rounded-full font-bold text-lg ghost-border hover:bg-surface-container-low transition-colors">
+                        👉 Lihat Contoh Toko
+                    </button>
+</div>
+<p class="text-sm font-medium text-on-surface-variant/70 italic">Tanpa biaya • Langsung aktif</p>
+</div>
+<div class="relative flex justify-center items-center lg:justify-end animate-scale-in">
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-[100px] transform scale-125"></div>
+<div class="relative bg-surface-container-lowest p-3 rounded-[3rem] shadow-2xl w-full max-w-[300px] ghost-border border-4 border-white/50">
+<img class="rounded-[2.5rem] w-full aspect-[9/19] object-cover" data-alt="smartphone screen showing a clean mobile-first online store with vibrant product images and a whatsapp checkout button" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1dZANfSOokT0zn7nro-7XaSRzWdCwxoYfS1aT6-snM_1ShABnpMTrYuBXep_7vfKvsPoFclLusalplGntZW3u01DxdMhsZsO_O4q49ehjBfSbxTcuER5AYt6vomEEBPRrZe-G3ojtsl9qqLlKo3Y7yz2Pj94sGz79SQpJ0dVWBZmh1XcHHFW794d5TIQRJfYBsxz68vWUIKgjfC_yc5lzrAt1BDBlmKAkmWN4AfVPerciQKki8kS-RuEo_LYd-af59ZpGmYx1GCyx"/>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. PROBLEM SECTION -->
+<section class="py-24 bg-surface-container-low/50">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Masih Jualan Manual di Chat &amp; DM?</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">Hentikan kebiasaan lama yang menghambat pertumbuhan bisnis kalian.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] ghost-border flex flex-col items-center text-center opacity-0 animate-fade-up stagger-1">
+<div class="w-12 h-12 rounded-full bg-error/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-error">close</span>
+</div>
+<p class="font-bold text-on-surface">Capek balas satu-satu</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] ghost-border flex flex-col items-center text-center opacity-0 animate-fade-up stagger-2">
+<div class="w-12 h-12 rounded-full bg-error/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-error">close</span>
+</div>
+<p class="font-bold text-on-surface">Order sering ketumpuk &amp; kelewat</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] ghost-border flex flex-col items-center text-center opacity-0 animate-fade-up stagger-3">
+<div class="w-12 h-12 rounded-full bg-error/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-error">close</span>
+</div>
+<p class="font-bold text-on-surface">Customer kabur sebelum beli</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] ghost-border flex flex-col items-center text-center opacity-0 animate-fade-up stagger-4">
+<div class="w-12 h-12 rounded-full bg-error/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-error">close</span>
+</div>
+<p class="font-bold text-on-surface">Terlihat kurang profesional</p>
+</div>
+</div>
+<div class="mt-16 text-center">
+<p class="text-lg font-bold text-error px-8 py-4 bg-error-container/30 rounded-full inline-block">
+                    👉 Setiap chat yang tidak terbalas = peluang penjualan yang hilang
+                </p>
+</div>
+</div>
+</section>
+<!-- 4. SOLUTION SECTION -->
+<section class="py-24 bg-background relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1 flex justify-center animate-scale-in">
+<div class="relative">
+<div class="absolute -inset-4 bg-primary-gradient opacity-10 rounded-[2rem] blur-xl"></div>
+<img class="rounded-[2rem] shadow-2xl relative z-10 max-w-full h-auto" data-alt="cheerful woman entrepreneur using a tablet in a bright modern home office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuc9U7H0AxkAaEUbdJRHVngnBTVp5KwfGzc9CGEqq9tOdu790Dcmd8kzL5YMaaty5KIokR1oPk1g28uE4qUJvyfisksvN0K9CPP1TAc22R75_qnkm2EQMd39YYWPWzw7g9lNYq5JyV7t7A8XczoQUgs_Z3MW9UqqHirIex3mbK7VlhbJeUZuj3Lu3vDwY_iXBuhTuG66SSRnArUTIoD_XaYhdsFGEAjzI8In43_yh-9bvohC1OCF-9KO_46xF3NnzUjHwxCktIMzfT"/>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<h2 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">Sekarang, Semua Bisa Otomatis dalam 1 Link</h2>
+<p class="text-xl text-on-surface-variant mb-8">Semua dalam 1 link sederhana di bio kalian.</p>
+<ul class="space-y-6">
+<li class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">check_circle</span>
+</div>
+<span class="text-lg font-bold text-on-surface">Etalase jualan profesional</span>
+</li>
+<li class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">check_circle</span>
+</div>
+<span class="text-lg font-bold text-on-surface">Checkout instan ke WhatsApp</span>
+</li>
+<li class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">check_circle</span>
+</div>
+<span class="text-lg font-bold text-on-surface">Tampilan seperti toko online</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. CARA KERJA (3 STEPS) -->
+<section class="py-24 bg-surface-container-low overflow-hidden">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-16 text-center">Jualan Lancar dalam 3 Langkah</h2>
+<div class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto pb-8 snap-x hide-scrollbar scroll-smooth">
+<div class="min-w-[280px] flex-shrink-0 snap-center bg-surface-container-lowest p-10 rounded-[2.5rem] elevation-tonal relative overflow-hidden group">
+<div class="text-6xl font-black text-primary/5 absolute -top-2 -left-2 select-none">01</div>
+<div class="relative z-10">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-8 text-primary">
+<span class="material-symbols-outlined text-4xl">storefront</span>
+</div>
+<h3 class="text-2xl font-bold mb-4">1. Buat toko</h3>
+<p class="text-on-surface-variant">Daftar akun gratis dan sesuaikan identitas toko kalian sendiri.</p>
+</div>
+</div>
+<div class="min-w-[280px] flex-shrink-0 snap-center bg-surface-container-lowest p-10 rounded-[2.5rem] elevation-tonal relative overflow-hidden group">
+<div class="text-6xl font-black text-primary/5 absolute -top-2 -left-2 select-none">02</div>
+<div class="relative z-10">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-8 text-primary">
+<span class="material-symbols-outlined text-4xl">add_shopping_cart</span>
+</div>
+<h3 class="text-2xl font-bold mb-4">2. Tambah produk</h3>
+<p class="text-on-surface-variant">Upload foto, tulis deskripsi, dan tentukan harga jualan kalian.</p>
+</div>
+</div>
+<div class="min-w-[280px] flex-shrink-0 snap-center bg-surface-container-lowest p-10 rounded-[2.5rem] elevation-tonal relative overflow-hidden group">
+<div class="text-6xl font-black text-primary/5 absolute -top-2 -left-2 select-none">03</div>
+<div class="relative z-10">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-8 text-primary">
+<span class="material-symbols-outlined text-4xl">share</span>
+</div>
+<h3 class="text-2xl font-bold mb-4">3. Share link</h3>
+<p class="text-on-surface-variant">Pasang link di bio Instagram/TikTok dan mulai terima pesanan!</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. FEATURES SECTION -->
+<section class="py-24 bg-background">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-16 text-center">Semua yang Kalian Butuhkan untuk Mulai Jualan</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="feature-card bg-surface-container-lowest p-8 rounded-[2rem] ghost-border transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
+<div class="w-14 h-14 rounded-[1.2rem] bg-primary/10 flex items-center justify-center mb-6 text-primary icon-rotate transition-transform">
+<span class="material-symbols-outlined text-3xl">shopping_cart_checkout</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Checkout Instan</h3>
+<p class="text-on-surface-variant text-sm">Pesanan kilat langsung terkirim ke WhatsApp kalian dengan rapi.</p>
+</div>
+<!-- Card 2 -->
+<div class="feature-card bg-surface-container-lowest p-8 rounded-[2rem] ghost-border transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
+<div class="w-14 h-14 rounded-[1.2rem] bg-primary/10 flex items-center justify-center mb-6 text-primary icon-rotate transition-transform">
+<span class="material-symbols-outlined text-3xl">bolt</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Toko Siap 3 Menit</h3>
+<p class="text-on-surface-variant text-sm">Tanpa setup membingungkan. Daftar, upload, langsung bisa jualan.</p>
+</div>
+<!-- Card 3 -->
+<div class="feature-card bg-surface-container-lowest p-8 rounded-[2rem] ghost-border transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
+<div class="w-14 h-14 rounded-[1.2rem] bg-primary/10 flex items-center justify-center mb-6 text-primary icon-rotate transition-transform">
+<span class="material-symbols-outlined text-3xl">money_off</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Tanpa Potongan Admin</h3>
+<p class="text-on-surface-variant text-sm">Keuntungan 100% milik kalian. Kami tidak mengambil komisi per transaksi.</p>
+</div>
+<!-- Card 4 -->
+<div class="feature-card bg-surface-container-lowest p-8 rounded-[2rem] ghost-border transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
+<div class="w-14 h-14 rounded-[1.2rem] bg-primary/10 flex items-center justify-center mb-6 text-primary icon-rotate transition-transform">
+<span class="material-symbols-outlined text-3xl">link</span>
+</div>
+<h3 class="text-xl font-bold mb-3">1 Link untuk Semua</h3>
+<p class="text-on-surface-variant text-sm">Satu link sakti untuk seluruh katalog produk yang kalian tawarkan.</p>
+</div>
+<!-- Card 5 -->
+<div class="feature-card bg-surface-container-lowest p-8 rounded-[2rem] ghost-border transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
+<div class="w-14 h-14 rounded-[1.2rem] bg-primary/10 flex items-center justify-center mb-6 text-primary icon-rotate transition-transform">
+<span class="material-symbols-outlined text-3xl">smartphone</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Mobile-First</h3>
+<p class="text-on-surface-variant text-sm">Tampilan yang dioptimalkan sempurna untuk layar smartphone pembeli.</p>
+</div>
+<!-- Card 6 -->
+<div class="feature-card bg-surface-container-lowest p-8 rounded-[2rem] ghost-border transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
+<div class="w-14 h-14 rounded-[1.2rem] bg-primary/10 flex items-center justify-center mb-6 text-primary icon-rotate transition-transform">
+<span class="material-symbols-outlined text-3xl">inventory</span>
+</div>
+<h3 class="text-xl font-bold mb-3">Kelola Mudah</h3>
+<p class="text-on-surface-variant text-sm">Update stok, harga, dan koleksi dalam satu dashboard yang sangat simpel.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. PRICING SECTION -->
+<section class="py-24 bg-surface-container-low/30">
+<div class="max-w-7xl mx-auto px-6 text-center">
+<h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Mulai Gratis, Upgrade Saat Penjualan Kalian Bertumbuh</h2>
+<p class="text-on-surface-variant mb-16">Investasi terbaik untuk bisnis yang lebih profesional.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-end">
+<!-- FREE -->
+<div class="bg-surface-container-lowest p-8 rounded-[2.5rem] ghost-border flex flex-col items-center transition-all duration-300 hover:scale-[1.02]">
+<h3 class="font-bold text-xl mb-2">FREE</h3>
+<div class="mb-6">
+<span class="text-3xl font-extrabold">Rp 0</span>
+</div>
+<ul class="text-sm text-on-surface-variant space-y-4 mb-8 text-left w-full">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs text-primary">check</span> Maks 10 produk</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs text-primary">check</span> Link bio toko</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs text-primary">check</span> Checkout WA</li>
+</ul>
+<button class="w-full py-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary/5 transition-colors">Mulai Gratis</button>
+</div>
+<!-- STARTER -->
+<div class="bg-surface-container-lowest p-8 rounded-[2.5rem] ghost-border flex flex-col items-center transition-all duration-300 hover:scale-[1.02]">
+<h3 class="font-bold text-xl mb-2">STARTER</h3>
+<div class="mb-6">
+<span class="text-3xl font-extrabold">Rp 29rb</span><span class="text-sm">/bln</span>
+</div>
+<ul class="text-sm text-on-surface-variant space-y-4 mb-8 text-left w-full">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs text-primary">check</span> Maks 50 produk</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs text-primary">check</span> Tanpa watermark</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs text-primary">check</span> Statistik dasar</li>
+</ul>
+<button class="w-full py-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary/5 transition-colors">Pilih Starter</button>
+</div>
+<!-- GROWTH (Highlighted) -->
+<div class="bg-surface-container-lowest p-10 rounded-[2.5rem] border-4 border-primary relative flex flex-col items-center shadow-2xl shadow-primary/20 scale-105 z-10">
+<div class="absolute -top-5 bg-primary text-white px-6 py-2 rounded-full text-xs font-black tracking-widest uppercase shadow-lg shadow-primary/30">🔥 PALING POPULER</div>
+<h3 class="font-bold text-xl mb-2">GROWTH</h3>
+<div class="mb-6">
+<span class="text-4xl font-black text-primary">Rp 59rb</span><span class="text-sm font-bold text-on-surface-variant">/bln</span>
+</div>
+<ul class="text-sm text-on-surface-variant space-y-4 mb-10 text-left w-full">
+<li class="flex items-center gap-3 font-bold text-on-surface"><span class="material-symbols-outlined text-sm text-primary">check_circle</span> Produk unlimited</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm text-primary">check_circle</span> Custom domain</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm text-primary">check_circle</span> Integrasi Social Media</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-sm text-primary">check_circle</span> Analytics lengkap</li>
+</ul>
+<button class="w-full py-4 rounded-full bg-primary-gradient text-white font-extrabold shadow-lg shadow-primary/30 hover:scale-105 transition-transform active:scale-95">Gunakan Paket Growth</button>
+</div>
+<!-- PRO -->
+<div class="bg-surface-container-lowest p-8 rounded-[2.5rem] ghost-border flex flex-col items-center transition-all duration-300 hover:scale-[1.02]">
+<h3 class="font-bold text-xl mb-2">PRO</h3>
+<div class="mb-6">
+<span class="text-3xl font-extrabold">Rp 99rb</span><span class="text-sm">/bln</span>
+</div>
+<ul class="text-sm text-on-surface-variant space-y-4 mb-8 text-left w-full">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs text-primary">check</span> Semua fitur Growth</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs text-primary">check</span> Multi admin</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs text-primary">check</span> Prioritas support</li>
+</ul>
+<button class="w-full py-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary/5 transition-colors">Upgrade ke Pro</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. FAQ SECTION -->
+<section class="py-24 bg-background">
+<div class="max-w-3xl mx-auto px-6">
+<h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-12 text-center">Masih Ragu? Ini Jawabannya</h2>
+<div class="space-y-4">
+<details class="group bg-surface-container-lowest rounded-2xl ghost-border overflow-hidden transition-all duration-300">
+<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-lg list-none marker:content-none">
+                        Apakah benar-benar gratis?
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform text-primary">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                        Tentu saja! Kalian bisa mulai dengan paket Free selamanya untuk maksimal 10 produk. Upgrade hanya jika kalian butuh fitur lebih lanjut.
+                    </div>
+</details>
+<details class="group bg-surface-container-lowest rounded-2xl ghost-border overflow-hidden transition-all duration-300">
+<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-lg list-none marker:content-none">
+                        Apakah sulit digunakan?
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform text-primary">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                        Sangat mudah! Kami mendesain Katalogku agar bisa dioperasikan oleh siapa saja, bahkan bagi pemula sekalipun.
+                    </div>
+</details>
+<details class="group bg-surface-container-lowest rounded-2xl ghost-border overflow-hidden transition-all duration-300">
+<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-lg list-none marker:content-none">
+                        Apakah perlu skill teknis?
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform text-primary">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                        Sama sekali tidak. Tidak ada coding atau setup server yang membosankan. Semua sudah otomatis kami siapkan.
+                    </div>
+</details>
+<details class="group bg-surface-container-lowest rounded-2xl ghost-border overflow-hidden transition-all duration-300">
+<summary class="flex justify-between items-center p-6 cursor-pointer font-bold text-lg list-none marker:content-none">
+                        Bisa dipakai dari HP?
+                        <span class="material-symbols-outlined group-open:rotate-180 transition-transform text-primary">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed">
+                        Sangat bisa! Katalogku dioptimalkan untuk penggunaan mobile, sehingga kalian bisa mengelola toko langsung dari genggaman.
+                    </div>
+</details>
+</div>
+</div>
+</section>
+<!-- 9. FINAL CTA SECTION -->
+<section class="py-24 bg-background">
+<div class="max-w-7xl mx-auto px-6">
+<div class="bg-primary-gradient rounded-[4rem] p-12 md:p-24 text-center text-white relative overflow-hidden shadow-[0_40px_80px_-20px_rgba(79,70,229,0.4)]">
+<div class="absolute top-0 left-0 w-80 h-80 bg-white/10 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2"></div>
+<div class="relative z-10">
+<h2 class="text-3xl md:text-5xl font-black tracking-tight mb-8 leading-tight">Berhenti Jualan Manual.<br/>Mulai Jualan Lebih Profesional.</h2>
+<p class="text-xl text-on-primary-container mb-12 max-w-xl mx-auto opacity-90">Jangan biarkan calon pembeli kalian hilang karena proses yang ribet. Aktifkan toko kalian sekarang!</p>
+<button class="bg-white text-primary px-12 py-5 rounded-full font-black text-xl shadow-2xl hover:scale-105 transition-transform pulse-effect">
+                        Buat Toko Online Gratis Sekarang
+                    </button>
+<div class="mt-10 flex flex-wrap justify-center gap-6 text-sm font-bold opacity-80">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-base">verified</span> Tanpa Kartu Kredit</div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-base">rocket_launch</span> Langsung Aktif</div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-base">celebration</span> Gratis Selamanya</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low pt-24 pb-12 rounded-t-[4rem]">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="col-span-1 lg:col-span-1">
+<div class="text-2xl font-black mb-6 tracking-tighter">Katalogku</div>
+<p class="text-on-surface-variant leading-relaxed font-medium">Digital Curator for Small Business. Membantu ribuan UMKM Indonesia go digital dengan cara paling simpel dan profesional.</p>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-on-surface">Produk</h4>
+<ul class="space-y-4 text-on-surface-variant font-medium">
+<li><a class="hover:text-primary transition-colors" href="#">Fitur Utama</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Katalog Online</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-on-surface">Perusahaan</h4>
+<ul class="space-y-4 text-on-surface-variant font-medium">
+<li><a class="hover:text-primary transition-colors" href="#">Tentang Kami</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Blog Jualan</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Karir</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6 text-on-surface">Bantuan</h4>
+<ul class="space-y-4 text-on-surface-variant font-medium">
+<li><a class="hover:text-primary transition-colors" href="#">Pusat Bantuan</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Kebijakan Privasi</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Syarat Penggunaan</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-on-surface-variant font-bold">
+<p>© 2024 Katalogku. Kreasi Bangsa.</p>
+<div class="flex gap-8">
+<a class="hover:text-primary transition-colors" href="#">Instagram</a>
+<a class="hover:text-primary transition-colors" href="#">TikTok</a>
+<a class="hover:text-primary transition-colors" href="#">Twitter</a>
+</div>
+</div>
+</footer>
+<!-- 10. MOBILE STICKY CTA -->
+<div class="md:hidden fixed bottom-0 left-0 w-full p-4 bg-white/90 backdrop-blur-lg border-t border-outline-variant/10 z-[60] shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
+<button class="w-full bg-primary-gradient text-white py-4 rounded-full font-black text-lg shadow-xl shadow-primary/25 active:scale-95 transition-transform">
+        Mulai Gratis
+    </button>
+</div>
+</body></html>

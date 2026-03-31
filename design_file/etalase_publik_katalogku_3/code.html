@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Butik Clarissa - Katalogku</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF007F","secondary": "#00E5FF","surface": "#F0FFF4","background": "#FFFDE7","on-surface": "#1A1A1A",
+                        "on-surface-variant": "#4A5568",
+                        "surface-container": "#E6FFFA","surface-container-low": "#FEFCBF","surface-container-lowest": "#FFFFFF",
+                        "primary-container": "#FF007F",
+                        "on-primary": "#FFFFFF",
+                        "secondary-container": "#00E5FF",
+                        "on-secondary-container": "#00363D"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans", "sans-serif"],
+                        "body": ["Plus Jakarta Sans", "sans-serif"],
+                        "label": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                    boxShadow: {
+                        'ambient': '0px 10px 25px rgba(255, 0, 127, 0.08)',
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .bg-gradient-primary { background: linear-gradient(135deg, #FF007F, #FF4DA6); }
+        .bg-gradient-secondary { background: linear-gradient(135deg, #00E5FF, #00B8D4); }
+        .glass-header { background: rgba(255, 253, 231, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 0, 127, 0.1); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<div class="relative flex min-h-screen w-full flex-col items-center overflow-x-hidden pb-32">
+<div class="w-full max-w-md flex-1 flex flex-col relative">
+<header class="glass-header sticky top-0 z-40 flex items-center justify-between whitespace-nowrap px-6 py-5">
+<div class="flex items-center gap-3 text-on-surface">
+<div class="size-6 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-on-surface text-xl font-extrabold leading-tight tracking-[-0.02em] font-headline">Katalogku</h2>
+</div>
+<div class="flex justify-end">
+<button class="text-primary hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex flex-col w-full">
+<section class="flex flex-col items-center px-6 pt-10 pb-8 gap-6 bg-gradient-to-b from-transparent to-surface/50">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-36 w-36 shadow-xl border-4 border-white" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCW0mIZUyWGjAUVPjUiIxdfkV5JHeGGxqrwirqFYVrcDJgOdSwVA6yQ3GQZbH5eNszzGnzWjDrhOR1Ox5nmA8Vt9Yk0kZ25bkVYqHIhjUF6dtWPbqXQ6_L40oQny7lNf8CZ7jBi13uPpMMT3BrK6jxk99-HcyQFrn7932h-lK3Vyfxqow7WGiNDbmazTA-S3Z3q7DZz9d2O7CJR1DYBPQhf-TGKVNN2QtLRcnVrhJpTvboppd8_2UUXIzhdwJCDxg0VYg_AMRV9KZo2');"></div>
+<div class="absolute -bottom-1 -right-1 bg-secondary text-white rounded-full px-4 py-1.5 shadow-lg flex items-center gap-1 border-2 border-white">
+<span class="material-symbols-outlined text-[16px] font-bold" data-icon="verified">verified</span>
+<span class="text-[10px] font-extrabold font-label tracking-widest uppercase">TERVERIFIKASI</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center text-center gap-3">
+<h1 class="text-on-surface text-3xl font-extrabold leading-tight tracking-tight font-headline">Butik Clarissa ✨</h1>
+<p class="text-on-surface-variant text-base font-medium leading-relaxed max-w-[320px] font-body">Cari outfit kece yang bikin harimu makin ceria? Yuk intip koleksi fashion premium kita yang hits banget! 💖</p>
+</div>
+</section>
+<section class="px-6 py-4 flex flex-col gap-5">
+<button class="flex items-center justify-center rounded-full h-16 px-6 bg-white text-primary text-lg font-extrabold tracking-wide shadow-ambient hover:bg-primary hover:text-white transition-all border-2 border-primary/10 w-full group">
+<span class="material-symbols-outlined mr-3 text-primary group-hover:text-white" data-icon="photo_camera">photo_camera</span>
+<span class="truncate">OOTD Kita di Instagram</span>
+</button>
+<button class="flex items-center justify-center rounded-full h-16 px-6 bg-white text-secondary text-lg font-extrabold tracking-wide shadow-ambient hover:bg-secondary hover:text-white transition-all border-2 border-secondary/10 w-full group">
+<span class="material-symbols-outlined mr-3 text-secondary group-hover:text-white" data-icon="shopping_bag">shopping_bag</span>
+<span class="truncate">Cek Shopee (Free Ongkir!)</span>
+</button>
+<button class="flex items-center justify-center rounded-full h-16 px-6 bg-white text-on-surface text-lg font-extrabold tracking-wide shadow-ambient hover:border-on-surface transition-all border-2 border-gray-100 w-full group">
+<span class="material-symbols-outlined mr-3 text-gray-400 group-hover:text-on-surface" data-icon="language">language</span>
+<span class="truncate">Website Portofolio</span>
+</button>
+</section>
+<section class="px-6 pt-12 pb-12 flex flex-col gap-6 bg-surface mt-10 rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.02)]">
+<div class="flex justify-between items-center">
+<h2 class="text-on-surface text-2xl font-extrabold leading-tight tracking-tight font-headline">Koleksi Terbaru 😍</h2>
+<button class="text-primary text-xs font-black bg-white rounded-full px-4 py-2 flex items-center gap-2 font-label uppercase tracking-widest shadow-sm border border-primary/5">
+                        Filter
+                        <span class="material-symbols-outlined text-[18px]" data-icon="tune">tune</span>
+</button>
+</div>
+<div class="flex gap-3 overflow-x-auto pb-4 -mx-6 px-6 no-scrollbar">
+<button class="bg-primary text-white rounded-full px-6 py-2.5 text-sm font-black font-label whitespace-nowrap shadow-md">✨ Semua</button>
+<button class="bg-white text-on-surface-variant rounded-full px-6 py-2.5 text-sm font-bold font-label whitespace-nowrap border border-gray-100">👗 Dress</button>
+<button class="bg-white text-on-surface-variant rounded-full px-6 py-2.5 text-sm font-bold font-label whitespace-nowrap border border-gray-100">👚 Atasan</button>
+<button class="bg-white text-on-surface-variant rounded-full px-6 py-2.5 text-sm font-bold font-label whitespace-nowrap border border-gray-100">👖 Bawahan</button>
+</div>
+<div class="grid grid-cols-2 gap-5">
+<div class="flex flex-col bg-white rounded-[1.5rem] shadow-ambient overflow-hidden group hover:scale-[1.03] transition-all pb-4">
+<div class="relative w-full aspect-[4/5] bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDwS-Ytsbx0lg4e3RcsHYlufDbR7O3cHKz_ViDeE9ecC-COi4wZovVBHeYx983h63g4W_flvH1sIzfO4Jn1yKESoeevpV7poR6BQjxWSsg_34C3-OI4Gja2wYDk64TbI_sFrbIUXs8fzBGOvi3lAS6ye9eYhT37DVkCx0Pi5ywkcFWCvPuGwwY3vSUihpeTYktmSraRT59gcdb0oBxg90eYKK9qiXImaw0YtHDKFb4J7xkgbGWz952KTrys7bMcd-0M59QbjHlqUMTG');">
+<div class="absolute top-3 left-3 bg-secondary text-white rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-widest font-label shadow-lg">FAVORIT!</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<p class="text-on-surface text-base font-extrabold leading-tight font-headline mb-1 line-clamp-2">Sunshine Summer Dress</p>
+<p class="text-primary text-sm font-bold font-body mb-4">Rp 245.000</p>
+<button class="mt-auto bg-surface-container-low hover:bg-primary hover:text-white text-on-surface-variant rounded-full py-3 flex items-center justify-center gap-2 transition-all w-full border border-yellow-100">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+<span class="text-[11px] font-black font-label uppercase tracking-wider">Mau Ini</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col bg-white rounded-[1.5rem] shadow-ambient overflow-hidden group hover:scale-[1.03] transition-all pb-4">
+<div class="w-full aspect-[4/5] bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCnqbu9ps5fCryZVCYvjAkR5g0XGQ6Itn1XhO7nRrmFljdMHSC5Kb78jcpyYK8um8Vpx7PW4mrwEAcjcgSKzUMmFP76IuXz2S4LHhysOm57PfyiTzRM1GNB3gl76UWPThg3gievD0M0_4J8wzUj08ugK0dVf49G6yVOeLdQnsM8jmh4GrWrlpT8hR-qrQ3V5KQMEu12e1lejwQhwvSUIlyt84SwmwN5Va-xZ4RODJ1sZVj1T80URg0bhWQpZR6AgQkPhiQONn9KtwxF');"></div>
+<div class="p-4 flex flex-col flex-1">
+<p class="text-on-surface text-base font-extrabold leading-tight font-headline mb-1 line-clamp-2">Cool Denim Vibes</p>
+<p class="text-primary text-sm font-bold font-body mb-4">Rp 350.000</p>
+<button class="mt-auto bg-surface-container-low hover:bg-primary hover:text-white text-on-surface-variant rounded-full py-3 flex items-center justify-center gap-2 transition-all w-full border border-yellow-100">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+<span class="text-[11px] font-black font-label uppercase tracking-wider">Mau Ini</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col bg-white rounded-[1.5rem] shadow-ambient overflow-hidden group hover:scale-[1.03] transition-all pb-4 border-2 border-primary/10">
+<div class="w-full aspect-[4/5] bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCyowPnE4XSN0N71zfzl-s7LbuHY0vuEcqC4A1stqZH7cY8nJrVBL8w2xG8TgMQGRMQHKiJ39KDxaCVsAaCTjTjNj573jnbooXjf0Yhn4xJabf9-aG4iOZ0G9mlOijpoP0_4oQ2aMJAoMTahkONXd1Z3X7fXBKsbMbsjPRGNJTCAKdvOAXCTQP9p_wNCLIrVzWo1I7-KV_F5L0np66KdTL1RMBSDABjNna_OluY4r4kVa7qBLzWxJDdWXu-n78wjulj7296oPwPST0W');"></div>
+<div class="p-4 flex flex-col flex-1">
+<p class="text-on-surface text-base font-extrabold leading-tight font-headline mb-1 line-clamp-2">Daisy Floral Blouse</p>
+<p class="text-primary text-sm font-bold font-body mb-4">Rp 190.000</p>
+<button class="mt-auto bg-gradient-primary text-white rounded-full py-3 flex items-center justify-center gap-2 transition-all w-full shadow-lg">
+<span class="material-symbols-outlined text-[20px]" data-icon="check">check</span>
+<span class="text-[11px] font-black font-label uppercase tracking-wider">1 Item</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col bg-white rounded-[1.5rem] shadow-ambient overflow-hidden group hover:scale-[1.03] transition-all pb-4">
+<div class="relative w-full aspect-[4/5] bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDtWpkSZRr4M6tRh9EF13CZ2kAu7gxxbV22mmldT1swRgK8Tv9-XlND5b2-bJ6NwvwP7nIzalt82kIY7-erisSmh2oLLciy4QeZDUUx7TAifLqRQE0HmJphuJwSNu31gsRvMALVy1akaw5IEpgZlEvCFbZLIeZ5ernVTqGPLn-OfXBBitggf85WoguB4A3qi0Y8LYuQtU6NRRnUYr1M_nbcuOY0R0iseZltCkI37gV4IohXAAowx8gkshKrfHBvM3dh2ANeKO0bhaI1');">
+<div class="absolute top-3 right-3 bg-red-500 text-white rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-widest font-label shadow-lg">LIMIT!</div>
+</div>
+<div class="p-4 flex flex-col flex-1">
+<p class="text-on-surface text-base font-extrabold leading-tight font-headline mb-1 line-clamp-2">Retro Velvet Skirt</p>
+<p class="text-primary text-sm font-bold font-body mb-4">Rp 210.000</p>
+<div class="mt-auto flex items-center justify-between bg-surface-container-low rounded-full overflow-hidden border border-yellow-100">
+<button class="w-10 h-10 flex items-center justify-center text-primary hover:bg-yellow-200 transition-colors">
+<span class="material-symbols-outlined text-[20px] font-bold" data-icon="remove">remove</span>
+</button>
+<span class="text-sm font-black font-body text-on-surface">2</span>
+<button class="w-10 h-10 flex items-center justify-center text-primary hover:bg-yellow-200 transition-colors">
+<span class="material-symbols-outlined text-[20px] font-bold" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 w-[calc(100%-2.5rem)] max-w-[400px] z-50">
+<button class="w-full bg-gradient-secondary text-white rounded-full px-6 py-5 flex items-center justify-between shadow-[0_15px_30px_rgba(0,229,255,0.3)] hover:scale-[1.03] transition-transform active:scale-95">
+<div class="flex items-center gap-4">
+<div class="bg-white/20 rounded-full w-12 h-12 flex items-center justify-center backdrop-blur-md">
+<span class="material-symbols-outlined text-[28px]" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<div class="flex flex-col items-start">
+<span class="text-[10px] font-black font-label uppercase tracking-[0.15em] text-white/80">3 Item Terpilih</span>
+<span class="text-xl font-extrabold font-headline leading-none">Rp 610.000</span>
+</div>
+</div>
+<div class="bg-white/20 p-2 rounded-full">
+<span class="material-symbols-outlined text-[24px]" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</button>
+</div>
+<div class="fixed inset-0 z-[100] flex items-end justify-center bg-black/50 backdrop-blur-sm p-4 hidden">
+<div class="bg-white w-full max-w-md rounded-t-[2rem] rounded-b-[1.5rem] p-8 flex flex-col shadow-2xl translate-y-0 transition-transform border-t-4 border-primary">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-2xl font-extrabold font-headline text-on-surface">Cek Pesananmu 🛍️</h3>
+<button class="text-on-surface-variant hover:text-primary transition-colors rounded-full p-2 bg-surface">
+<span class="material-symbols-outlined font-bold" data-icon="close">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-6 mb-8 max-h-[350px] overflow-y-auto no-scrollbar">
+<div class="flex gap-4 items-center">
+<div class="w-20 h-20 rounded-2xl bg-cover bg-center border border-gray-100 shadow-sm" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDEUFW1KG3Q5Zjy1wDhFd7WLE21RdmGfCTBtgYTSyPemCF1K1c3FdkEpVaO8tpg_8tA-bfZb352WZnV5wY0WuBF3yGXB687Mn5WWlJInc9zPl9y4e81iOPcqdwETvHrAouIrcdzHe77neKYpYtxf47RIik3G86OEpdtekl5qPLNeXZ7FUshLTDJIZ4DRRii5b55i-uJkqd0cjQ-4n_aIlI10mx4F4OpDoJSPxiiuJ78AULNloJwY0iQUtKNTMbXbZeTr71uwrkUnSFo');"></div>
+<div class="flex-1">
+<p class="text-base font-extrabold text-on-surface font-headline leading-tight">Daisy Floral Blouse</p>
+<p class="text-xs font-bold text-on-surface-variant font-body mt-1">1 x Rp 190.000</p>
+</div>
+<p class="text-base font-extrabold text-primary font-body">Rp 190rb</p>
+</div>
+<div class="flex gap-4 items-center">
+<div class="w-20 h-20 rounded-2xl bg-cover bg-center border border-gray-100 shadow-sm" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD6lvcgDmrsnVnVsdpiV-k6bzGF2iPJjlAZwpuQ5Yzj1CvfL9PAM6I1T40lsccoeF4QYNxZXmaOyt7mNPtVaCNlWR0rHw2q_2LvTYg6g5RfCaBMQ-fEWPnugjOuppFcb_Tk5vJCdjvLjgeck9uPEfsqpHnlgNn_Eq2WTqDAA_bNBwfkpvbJTtWi-PjTnP-Qr0R2_D7yFRn5AgGA6nDzjdZlgzrJKR7frcT7LMqgNT7RBm07KnEgdRBf5K6I9UzuYNfu7DufFXLNBZ0F');"></div>
+<div class="flex-1">
+<p class="text-base font-extrabold text-on-surface font-headline leading-tight">Retro Velvet Skirt</p>
+<p class="text-xs font-bold text-on-surface-variant font-body mt-1">2 x Rp 210.000</p>
+</div>
+<p class="text-base font-extrabold text-primary font-body">Rp 420rb</p>
+</div>
+</div>
+<div class="border-t-2 border-dashed border-gray-100 pt-6 mb-8 flex justify-between items-center">
+<span class="text-lg font-bold text-on-surface-variant font-body">Total Semua</span>
+<span class="text-2xl font-black text-primary font-headline">Rp 610.000</span>
+</div>
+<button class="w-full bg-[#25D366] text-white rounded-full h-16 px-6 flex items-center justify-center gap-3 shadow-[0_10px_20px_rgba(37,211,102,0.3)] hover:scale-[1.02] active:scale-95 transition-all font-black text-lg tracking-wide">
+<svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+</svg>
+                    Kirim Order ke WhatsApp
+                </button>
+<button class="mt-6 text-on-surface-variant bg-transparent text-[11px] font-black font-label uppercase tracking-[0.2em] py-2">
+                    Lanjut Pilih-pilih Lagi
+                </button>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

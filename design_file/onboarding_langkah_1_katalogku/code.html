@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding - Katalogku</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-on-surface": "#f0f1f3",
+                        "primary-container": "#4f46e5",
+                        "primary-fixed": "#e2dfff",
+                        "surface-dim": "#d9dadc",
+                        "surface-container-high": "#e7e8ea",
+                        "secondary-fixed-dim": "#86dc44",
+                        "surface-container": "#edeef0",
+                        "outline-variant": "#c7c4d8",
+                        "inverse-surface": "#2e3132",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed-variant": "#265100",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#9ef65c",
+                        "surface-container-highest": "#e1e2e4",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-surface-variant": "#464555",
+                        "on-secondary-fixed": "#0b2000",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-secondary-container": "#367000",
+                        "on-tertiary-container": "#dedbda",
+                        "on-primary-fixed": "#0f0069",
+                        "tertiary-fixed": "#e5e2e1",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#4d44e3",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "surface-variant": "#e1e2e4",
+                        "surface-bright": "#f8f9fb",
+                        "secondary-fixed": "#a1f95e",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "on-error-container": "#93000a",
+                        "surface": "#f8f9fb",
+                        "inverse-primary": "#c3c0ff",
+                        "outline": "#777587",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-primary-container": "#dad7ff",
+                        "surface-container-low": "#f3f4f6",
+                        "primary": "#3525cd",
+                        "tertiary": "#494848",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9fb",
+                        "tertiary-container": "#616060",
+                        "on-error": "#ffffff",
+                        "secondary": "#346b00"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-primary-gradient {
+            background: linear-gradient(135deg, #3525cd 0%, #4f46e5 100%);
+        }
+        .ghost-border {
+            border: 1px solid rgba(199, 196, 216, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col antialiased">
+<!-- Top Navigation (Shell Invisible for Transactional Flow as per Filter Rules) -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<span class="text-xl font-bold tracking-tight text-on-surface">Katalogku</span>
+<div class="flex items-center gap-2 text-primary font-medium">
+<span class="material-symbols-outlined text-xl">help_outline</span>
+<span class="text-sm">Bantuan</span>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center px-4 pt-24 pb-12">
+<div class="w-full max-w-xl">
+<!-- Header Section -->
+<div class="text-center mb-10">
+<h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-on-surface mb-3">
+                    Mari mulai membangun etalase digital kalian.
+                </h1>
+<p class="text-on-surface-variant body-md max-w-md mx-auto">
+                    Lengkapi profil anda agar pembeli dapat mengenal brand dan diri anda lebih dekat.
+                </p>
+</div>
+<!-- Progress Stepper -->
+<div class="flex items-center justify-between mb-12 px-2">
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-sm shadow-lg shadow-primary/20">1</div>
+<span class="text-[11px] font-bold uppercase tracking-wider text-primary">Profil</span>
+</div>
+<div class="h-[2px] bg-surface-container-high flex-grow mx-2 mb-6"></div>
+<div class="flex flex-col items-center gap-2 flex-1 opacity-40">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold text-sm">2</div>
+<span class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant">Toko</span>
+</div>
+<div class="h-[2px] bg-surface-container-high flex-grow mx-2 mb-6"></div>
+<div class="flex flex-col items-center gap-2 flex-1 opacity-40">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold text-sm">3</div>
+<span class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant">Selesai</span>
+</div>
+</div>
+<!-- Onboarding Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 md:p-12 shadow-[0px_20px_40px_rgba(77,68,227,0.06)] ghost-border relative overflow-hidden">
+<!-- Profile Upload Section -->
+<div class="flex flex-col items-center mb-10">
+<div class="relative group cursor-pointer">
+<div class="w-32 h-32 rounded-full overflow-hidden bg-surface-container-low border-4 border-white shadow-inner flex items-center justify-center">
+<img alt="Avatar Placeholder" class="w-full h-full object-cover opacity-60 mix-blend-multiply" data-alt="placeholder silhouette of a person on a neutral grey background with soft studio lighting for a profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCGHlEA3pBdSoFYRmpJaF_xqSu4RDGdLuoqQXSmatf5GJwPYqIlolm8-GJRo5dQq2LmaG2qiCwVODmUnW3n5psj5zDCstAThn64IcJI3TsjUrHqgY-LbScek1ZfssWBdfq9al44eDWhzUrLhlcwyoSxw2tkNOcX3Bv_1wXhKRB_TjwGIfCylkfhda4Uox7jg8AQUUjesscp-q_RqqEMfs-YyGe9tsoLTqKTIb1hATlp6ePySvKJeRnVAgLIZMRneBVy7no5fMcJGp4"/>
+<span class="material-symbols-outlined text-4xl text-outline absolute">person</span>
+</div>
+<div class="absolute bottom-0 right-0 bg-primary-gradient p-2.5 rounded-full text-on-primary shadow-lg border-2 border-white transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-sm block">edit</span>
+</div>
+</div>
+<span class="mt-4 text-sm font-semibold text-primary">Unggah Foto Profil</span>
+</div>
+<!-- Form Fields -->
+<form class="space-y-6">
+<div class="relative">
+<label class="absolute -top-2.5 left-4 bg-white px-1 text-[11px] font-bold uppercase tracking-widest text-primary z-10" for="nama_lengkap">
+                            Nama Lengkap
+                        </label>
+<input class="w-full px-5 py-4 bg-white border border-outline-variant/30 rounded-lg text-on-surface placeholder:text-on-surface-variant/40 focus:ring-4 focus:ring-primary/5 focus:border-primary outline-none transition-all" id="nama_lengkap" placeholder="Masukkan nama anda" type="text"/>
+</div>
+<div class="relative">
+<label class="absolute -top-2.5 left-4 bg-white px-1 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/60 z-10" for="peran_bisnis">
+                            Peran Bisnis (Opsional)
+                        </label>
+<input class="w-full px-5 py-4 bg-white border border-outline-variant/30 rounded-lg text-on-surface placeholder:text-on-surface-variant/40 focus:ring-4 focus:ring-primary/5 focus:border-primary outline-none transition-all" id="peran_bisnis" placeholder="Contoh: Pemilik Usaha, Manajer Operasional" type="text"/>
+</div>
+<div class="pt-4 flex flex-col gap-4">
+<button class="w-full py-4 px-6 bg-primary-gradient text-on-primary rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all" type="submit">
+                            Lanjut ke Langkah 2
+                        </button>
+<button class="w-full py-2 text-on-surface-variant font-medium hover:text-primary transition-colors text-sm" type="button">
+                            Nanti Saja
+                        </button>
+</div>
+</form>
+</div>
+<!-- Footer Support -->
+<footer class="mt-12 text-center">
+<p class="text-on-surface-variant text-sm flex items-center justify-center gap-1">
+                    Butuh bantuan? 
+                    <a class="text-primary font-bold hover:underline decoration-2 underline-offset-4" href="#">Hubungi Support</a>
+</p>
+</footer>
+</div>
+</main>
+<!-- Contextual FAB Suppression as per "Shell Visibility & Relevance" rule: suppression on Onboarding -->
+</body></html>

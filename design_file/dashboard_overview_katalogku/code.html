@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Katalogku - Dashboard Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#edeef0",
+              "tertiary-fixed-dim": "#c8c6c5",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#367000",
+              "on-primary-fixed": "#0f0069",
+              "inverse-on-surface": "#f0f1f3",
+              "surface-container-highest": "#e1e2e4",
+              "on-secondary-fixed": "#0b2000",
+              "surface-variant": "#e1e2e4",
+              "primary-container": "#4f46e5",
+              "error-container": "#ffdad6",
+              "on-surface": "#191c1e",
+              "on-primary": "#ffffff",
+              "tertiary": "#494848",
+              "surface-container-low": "#f3f4f6",
+              "surface": "#f8f9fb",
+              "on-tertiary-container": "#dedbda",
+              "background": "#f8f9fb",
+              "on-tertiary-fixed": "#1c1b1b",
+              "tertiary-fixed": "#e5e2e1",
+              "surface-container-high": "#e7e8ea",
+              "tertiary-container": "#616060",
+              "secondary-fixed": "#a1f95e",
+              "on-secondary": "#ffffff",
+              "surface-tint": "#4d44e3",
+              "secondary-container": "#9ef65c",
+              "outline-variant": "#c7c4d8",
+              "surface-dim": "#d9dadc",
+              "outline": "#777587",
+              "error": "#ba1a1a",
+              "primary-fixed": "#e2dfff",
+              "on-surface-variant": "#464555",
+              "on-primary-container": "#dad7ff",
+              "on-tertiary-fixed-variant": "#474746",
+              "secondary-fixed-dim": "#86dc44",
+              "on-secondary-fixed-variant": "#265100",
+              "secondary": "#346b00",
+              "on-background": "#191c1e",
+              "on-error": "#ffffff",
+              "on-primary-fixed-variant": "#3323cc",
+              "surface-container-lowest": "#ffffff",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#c3c0ff",
+              "surface-bright": "#f8f9fb",
+              "inverse-surface": "#2e3132",
+              "primary": "#3525cd"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body { font-family: 'Plus Jakarta Sans', sans-serif; }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .tonal-depth { box-shadow: 0px 20px 40px rgba(77, 68, 227, 0.04); }
+      .glass-effect { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-x-hidden">
+<!-- SideNavBar (Desktop Shell) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-screen py-8 px-4 bg-slate-50 dark:bg-slate-900 h-full w-64 border-r border-transparent font-['Plus_Jakarta_Sans'] antialiased z-50">
+<div class="mb-10 px-4">
+<h1 class="text-2xl font-bold tracking-tight text-indigo-700 dark:text-indigo-300">Katalogku</h1>
+<p class="text-xs text-slate-500 font-medium">Digital Curator</p>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Overview - Active -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-indigo-700 dark:text-indigo-300 font-semibold border-r-4 border-indigo-600 bg-white/50 dark:bg-slate-900/50 scale-102 active:scale-98 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 dark:text-slate-400 hover:text-indigo-600 hover:bg-white/80 dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span>Catalog</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 dark:text-slate-400 hover:text-indigo-600 hover:bg-white/80 dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="link">link</span>
+<span>Links</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 dark:text-slate-400 hover:text-indigo-600 hover:bg-white/80 dark:hover:bg-slate-800 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4">
+<a class="flex items-center gap-3 py-3 text-slate-500 hover:text-error transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-6 py-4 z-40 md:pl-72 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 shadow-sm dark:shadow-none font-['Plus_Jakarta_Sans'] text-sm font-medium">
+<div class="flex items-center gap-4">
+<span class="text-xl font-black text-slate-900 dark:text-white md:hidden">Katalogku</span>
+<div class="hidden md:flex flex-col">
+<span class="text-on-surface-variant text-xs">Selamat Datang,</span>
+<span class="font-bold text-lg text-on-surface">Butik Clarissa</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/15">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm ml-2 w-48" placeholder="Cari pesanan..." type="text"/>
+</div>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container/20">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of professional young woman with friendly expression in studio setting with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkkp_-TBrtck1TDulmbMIkLfOV6eLKRnWdfkhJDK4_U8jsZVbo-A5GW1wAqsIBiQ_wlCs5fV-ZmydFcbPNWC2sJNDxw8x4gztt1m3QFuM3umYNI9Lkj3MFMNoCOb1x9DPpxLctwWfPODsqn96hkJvNI7-W_mwguXmT7o9w36XQdyKW6NpFKPXn5-c4_DRKx9hREtwQos7zmazqTA_aW8zxMZLFMoAZWXyiYV2zeCMaq3HWcDhrESRouBFgjoPM1JYY3f8dVnztmV0U"/>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="md:pl-72 pt-4 pb-24 px-6 max-w-7xl mx-auto">
+<!-- Welcome Hero Section (Organic Asymmetry) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8 mt-4">
+<div class="lg:col-span-8 bg-gradient-to-br from-primary to-primary-container rounded-xl p-8 text-on-primary relative overflow-hidden flex flex-col justify-center min-h-[220px]">
+<div class="relative z-10">
+<span class="inline-block bg-white/20 backdrop-blur-md px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">Etalase Aktif</span>
+<h2 class="text-3xl md:text-4xl font-extrabold mb-2 tracking-tight">Performa tokomu naik 12% minggu ini!</h2>
+<p class="text-on-primary-container/90 max-w-md">Terus tingkatkan promosi link etalasemu ke pelanggan setia.</p>
+</div>
+<!-- Decorative element -->
+<div class="absolute -right-12 -bottom-12 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute top-0 right-0 p-8 hidden md:block">
+<span class="material-symbols-outlined text-white/20 text-9xl" data-icon="trending_up">trending_up</span>
+</div>
+</div>
+<div class="lg:col-span-4 bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10 tonal-depth flex flex-col justify-between">
+<div>
+<h3 class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-4">Link Etalase</h3>
+<div class="flex flex-col gap-3">
+<div class="bg-surface-container-low p-4 rounded-lg flex items-center justify-between group transition-all">
+<span class="font-medium text-primary truncate text-sm">katalogku.id/butik-clarissa</span>
+<button class="text-primary hover:bg-primary/10 p-2 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+<button class="w-full py-3 bg-secondary-container text-on-secondary-fixed-variant font-bold rounded-full text-sm hover:scale-102 active:scale-98 transition-transform">
+                            Bagikan Link
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Grid (Bento Style) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+<!-- Stat 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 tonal-depth group hover:border-primary/20 transition-all">
+<div class="flex items-start justify-between mb-4">
+<div class="w-12 h-12 bg-primary-fixed flex items-center justify-center rounded-full text-on-primary-fixed-variant">
+<span class="material-symbols-outlined" data-icon="ads_click">ads_click</span>
+</div>
+<span class="text-on-secondary-container bg-secondary-container/30 px-2 py-1 rounded-full text-[10px] font-bold">+24%</span>
+</div>
+<h4 class="text-on-surface-variant text-sm font-medium">Klik Katalog</h4>
+<p class="text-3xl font-black text-on-surface mt-1">1,284</p>
+<div class="mt-4 h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-[70%]"></div>
+</div>
+</div>
+<!-- Stat 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 tonal-depth group hover:border-secondary/20 transition-all">
+<div class="flex items-start justify-between mb-4">
+<div class="w-12 h-12 bg-secondary-fixed flex items-center justify-center rounded-full text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<span class="text-on-secondary-container bg-secondary-container/30 px-2 py-1 rounded-full text-[10px] font-bold">+8%</span>
+</div>
+<h4 class="text-on-surface-variant text-sm font-medium">Total Pesanan</h4>
+<p class="text-3xl font-black text-on-surface mt-1">356</p>
+<div class="mt-4 h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full w-[45%]"></div>
+</div>
+</div>
+<!-- Stat 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 tonal-depth group hover:border-tertiary/20 transition-all">
+<div class="flex items-start justify-between mb-4">
+<div class="w-12 h-12 bg-tertiary-fixed flex items-center justify-center rounded-full text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+</div>
+<span class="text-on-error-container bg-error-container/30 px-2 py-1 rounded-full text-[10px] font-bold">-2%</span>
+</div>
+<h4 class="text-on-surface-variant text-sm font-medium">Klik WhatsApp</h4>
+<p class="text-3xl font-black text-on-surface mt-1">89</p>
+<div class="mt-4 h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full w-[30%]"></div>
+</div>
+</div>
+</section>
+<!-- Secondary Section: Recent Activity & Quick Actions -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="lg:col-span-7">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold text-on-surface">Pesanan Terbaru</h3>
+<button class="text-primary font-bold text-sm hover:underline">Lihat Semua</button>
+</div>
+<div class="space-y-4">
+<!-- Order Card 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-lg flex items-center justify-between border border-outline-variant/5 hover:scale-[1.01] transition-transform cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="minimalist fashion flat lay with yellow dress and accessories on soft beige background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkD3qhZ8lTMFVTmh6Jf-RWlcwySqgWz4dVbRorpjkN7i-zxLDe2Lo0JhSyrIsbieIUICfAt9iodm1VzjdIklouR-PUbWm0q6ImqIGvxVuBDrCdej0M_UPFRK-9PVfoM5hmXYdSElu1CLeD6EAGdMHsB2jrG06ju1j0v76ifH2YNX6gwzaP7qCoixCIvLrzWZrbn58ni05QKKwvisGpYDfQBRYdeUcikM7m3D46lPSoGL89FwnKKMeh7kttkEyBzUNUpDWIcltpw1Hh"/>
+</div>
+<div>
+<h5 class="font-bold text-sm text-on-surface">Yellow Summer Dress</h5>
+<p class="text-xs text-on-surface-variant">Oleh: Sarah Wijaya</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-sm text-on-surface">Rp 245.000</p>
+<span class="text-[10px] uppercase tracking-wider text-on-secondary-container bg-secondary-container/20 px-2 py-0.5 rounded-full font-bold">Lunas</span>
+</div>
+</div>
+<!-- Order Card 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-lg flex items-center justify-between border border-outline-variant/5 hover:scale-[1.01] transition-transform cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="modern minimalist office wear collection on a wooden rack with clean shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-uqcphFdiMAa6zvAhAcTcUYSNqG8_bYsWkDOOHbXDc56jqO-nlcWU520c26DXUZfaGyNYXFMQDo0LTrWJiVoL7ZRe4fUK-TFKAspfvosnlLAgJ9bp0aKabnUanm4m_pFkwLmze_I6bSC7jpFp9uqW_drGwvPjKzaSgwpHWMMTKhXQMNq8yckdI4W7G6Cdoe-pNgARFCwE5VFXeVVwP819q7RqpEUXgvl4JWlj0Ct1SRWOx_cvV4M2WQJUmYr2t378u_rtdam3kNvs"/>
+</div>
+<div>
+<h5 class="font-bold text-sm text-on-surface">Beige Blazer Pro</h5>
+<p class="text-xs text-on-surface-variant">Oleh: Ahmad Dani</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-sm text-on-surface">Rp 512.000</p>
+<span class="text-[10px] uppercase tracking-wider text-on-primary-container bg-primary-container/20 px-2 py-0.5 rounded-full font-bold">Proses</span>
+</div>
+</div>
+<!-- Order Card 3 -->
+<div class="bg-surface-container-lowest p-4 rounded-lg flex items-center justify-between border border-outline-variant/5 hover:scale-[1.01] transition-transform cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="assorted premium cosmetic products on a marble shelf with soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ6GhcyJF5Y8O3f5Wnk45DOe-_IPYPTkqY1WQSxR89CanhsRbDDWT5QZ27DpvpqZC6P5EscHiZCyr4rTY-gROAty_K5KZi9bNndxGzb42iIdwLMvibdLpmjqDkFvzNACdQ7U8LOi0sWUkhZlKpYdUiH1ghVaAtaEcIwipVtOjFEcuSIB1spbdvH62MMgGA-pZZ8AbzAIoAseu8GYkm6gz1H3w8Ri7cDBTlhT_pwFxDHkm5MXWaOGw7yKdUvVHJmT_DpRVONepYfJTn"/>
+</div>
+<div>
+<h5 class="font-bold text-sm text-on-surface">Skincare Set Radiant</h5>
+<p class="text-xs text-on-surface-variant">Oleh: Lina Marlina</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-sm text-on-surface">Rp 890.000</p>
+<span class="text-[10px] uppercase tracking-wider text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full font-bold">Menunggu</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5">
+<h3 class="text-xl font-bold text-on-surface mb-6">Analitik Mingguan</h3>
+<div class="bg-surface-container-low rounded-xl p-6 h-[280px] flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Simulating a Chart with Shapes -->
+<div class="absolute bottom-0 left-0 w-full h-1/2 flex items-end px-4 gap-2">
+<div class="flex-1 bg-primary/20 rounded-t-lg h-[40%]"></div>
+<div class="flex-1 bg-primary/40 rounded-t-lg h-[60%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-lg h-[30%]"></div>
+<div class="flex-1 bg-primary/60 rounded-t-lg h-[80%]"></div>
+<div class="flex-1 bg-primary/30 rounded-t-lg h-[50%]"></div>
+<div class="flex-1 bg-primary/80 rounded-t-lg h-[95%]"></div>
+<div class="flex-1 bg-primary/40 rounded-t-lg h-[65%]"></div>
+</div>
+<div class="z-10 text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-2" data-icon="bar_chart">bar_chart</span>
+<p class="text-on-surface-variant text-sm font-medium">Grafik pengunjung meningkat pesat pada hari Jumat &amp; Sabtu.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Shell) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 md:hidden bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg rounded-t-[3rem] shadow-[0px_-10px_30px_rgba(79,70,229,0.08)]">
+<a class="flex flex-col items-center justify-center bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full px-6 py-2 scale-110 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-6 py-2 active:bg-slate-100 dark:active:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] uppercase tracking-widest mt-1">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-6 py-2 active:bg-slate-100 dark:active:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="link">link</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] uppercase tracking-widest mt-1">Links</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-6 py-2 active:bg-slate-100 dark:active:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] uppercase tracking-widest mt-1">Settings</span>
+</a>
+</nav>
+<!-- Contextual FAB (Only on Dashboard) -->
+<button class="fixed right-6 bottom-24 md:bottom-8 w-16 h-16 bg-secondary-container text-on-secondary-fixed-variant rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-3xl" data-icon="chat" style="font-variation-settings: 'FILL' 1;">chat</span>
+</button>
+</body></html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Butik Clarissa - Katalogku</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface": "#191c1e",
+                        "secondary": "#346b00",
+                        "on-primary-container": "#dad7ff",
+                        "surface-container-high": "#e7e8ea",
+                        "surface": "#f8f9fb",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#9ef65c",
+                        "background": "#f8f9fb",
+                        "surface-bright": "#f8f9fb",
+                        "on-secondary-fixed-variant": "#265100",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "secondary-fixed": "#a1f95e",
+                        "outline": "#777587",
+                        "surface-container": "#edeef0",
+                        "surface-variant": "#e1e2e4",
+                        "on-background": "#191c1e",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "inverse-primary": "#c3c0ff",
+                        "on-tertiary-container": "#dedbda",
+                        "surface-container-highest": "#e1e2e4",
+                        "surface-dim": "#d9dadc",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#4d44e3",
+                        "primary": "#3525cd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "inverse-on-surface": "#f0f1f3",
+                        "on-primary-fixed": "#0f0069",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "tertiary-fixed": "#e5e2e1",
+                        "primary-fixed": "#e2dfff",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#464555",
+                        "tertiary": "#494848",
+                        "inverse-surface": "#2e3132",
+                        "primary-container": "#4f46e5",
+                        "outline-variant": "#c7c4d8",
+                        "on-secondary-container": "#367000",
+                        "secondary-fixed-dim": "#86dc44",
+                        "surface-container-low": "#f3f4f6",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#0b2000",
+                        "tertiary-container": "#616060"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                    boxShadow: {
+                        'ambient': '0px 20px 40px rgba(77, 68, 227, 0.06)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .bg-gradient-primary { background: linear-gradient(135deg, theme('colors.primary'), theme('colors.primary-container')); }
+        .glass-header { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
+        .ghost-border { border: 1px solid rgba(199, 196, 216, 0.15); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<div class="relative flex min-h-screen w-full flex-col items-center overflow-x-hidden pb-24">
+<div class="w-full max-w-md flex-1 flex flex-col relative">
+<!-- Shared TopNavBar Inclusion Logic: Display Mode (Browsing) - INCLUDED -->
+<header class="glass-header sticky top-0 z-40 flex items-center justify-between whitespace-nowrap px-6 py-4">
+<div class="flex items-center gap-3 text-on-surface">
+<div class="size-5 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-on-surface text-lg font-bold leading-tight tracking-[-0.015em] font-headline">Katalogku</h2>
+</div>
+<div class="flex justify-end">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Profile Section -->
+<main class="flex-1 flex flex-col w-full">
+<section class="flex flex-col items-center px-6 pt-8 pb-6 gap-6">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-32 w-32 shadow-ambient border-4 border-surface-container-lowest" data-alt="close up of a chic fashion boutique display rack with premium women's clothing in soft natural light" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHQsQ2opYw_g2ypgUClTb-rR43bTCvT1YPxagaN4WDWR12K8odUghv9tJlDAhPjAFlTgm0Okx2jfc5DnE68dSlgteWg7Fk90ggXDYb4AeJDjZ5-K6_cIGGqyU55CXnTrlOlMEteUd6RCF1WRbT5vSeaOFraCVSP8hfCkN462Uasbn0DEwtn3yS1XVDTZ2ssORSM0xsM8XUca51RpCj7VXbBE14daTc_2DqWyfaAj_gc1oGa8IzLpi1y0l456pRk1wp7Urnw-RXkO20');"></div>
+<div class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container rounded-full px-3 py-1 shadow-sm flex items-center gap-1 border-2 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified">verified</span>
+<span class="text-xs font-bold font-label tracking-wide uppercase">Trusted</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center text-center gap-2">
+<h1 class="text-on-surface text-[28px] font-bold leading-tight tracking-[-0.02em] font-headline">Butik Clarissa</h1>
+<p class="text-on-surface-variant text-base font-normal leading-relaxed max-w-[320px] font-body">Menyediakan koleksi fashion wanita premium dengan sentuhan elegan.</p>
+</div>
+</section>
+<!-- Custom Links -->
+<section class="px-6 py-2 flex flex-col gap-4">
+<button class="flex items-center justify-center overflow-hidden rounded-full h-14 px-6 bg-surface-container-lowest text-on-surface text-base font-bold leading-normal tracking-wide shadow-ambient hover:scale-[1.02] transition-transform ghost-border w-full group">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-primary transition-colors" data-icon="photo_camera">photo_camera</span>
+<span class="truncate">Instagram Official</span>
+</button>
+<button class="flex items-center justify-center overflow-hidden rounded-full h-14 px-6 bg-surface-container-lowest text-on-surface text-base font-bold leading-normal tracking-wide shadow-ambient hover:scale-[1.02] transition-transform ghost-border w-full group">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-primary transition-colors" data-icon="shopping_bag">shopping_bag</span>
+<span class="truncate">Kunjungi Shopee</span>
+</button>
+<button class="flex items-center justify-center overflow-hidden rounded-full h-14 px-6 bg-surface-container-lowest text-on-surface text-base font-bold leading-normal tracking-wide shadow-ambient hover:scale-[1.02] transition-transform ghost-border w-full group">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant group-hover:text-primary transition-colors" data-icon="language">language</span>
+<span class="truncate">Portofolio Website</span>
+</button>
+</section>
+<!-- Product Catalog -->
+<section class="px-6 pt-10 pb-8 flex flex-col gap-6 bg-surface-container-low mt-8 rounded-t-xl">
+<div class="flex justify-between items-end">
+<h2 class="text-on-surface text-2xl font-bold leading-tight tracking-[-0.015em] font-headline">Katalog Produk</h2>
+<button class="text-primary text-sm font-bold bg-transparent border-none px-2 py-1 flex items-center gap-1 font-label uppercase tracking-widest">
+                            Filter
+                            <span class="material-symbols-outlined text-[18px]" data-icon="tune">tune</span>
+</button>
+</div>
+<!-- Category Chips -->
+<div class="flex gap-3 overflow-x-auto pb-2 -mx-6 px-6 no-scrollbar">
+<button class="bg-secondary-fixed text-on-secondary-fixed rounded-full px-5 py-2 text-sm font-bold font-label whitespace-nowrap shadow-sm">Semua</button>
+<button class="bg-surface-container-high text-on-surface-variant rounded-full px-5 py-2 text-sm font-medium font-label whitespace-nowrap">Dress</button>
+<button class="bg-surface-container-high text-on-surface-variant rounded-full px-5 py-2 text-sm font-medium font-label whitespace-nowrap">Atasan</button>
+<button class="bg-surface-container-high text-on-surface-variant rounded-full px-5 py-2 text-sm font-medium font-label whitespace-nowrap">Bawahan</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Product Card 1 -->
+<div class="flex flex-col bg-surface-container-lowest rounded-lg shadow-ambient overflow-hidden group hover:scale-[1.02] transition-transform pb-3">
+<div class="relative w-full aspect-square bg-cover bg-center" data-alt="bright yellow summer dress hanging on a wooden hanger against a clean white textured background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCgy72LQCf9p8q8k0sIGI8FQV59I0rTilAzZfYP9huoI-xZv4o6mLnQx-9kWqRSGU1y8u4kvj1sb1BSIbDEfgHe3YKdOluTIJfgOdFZdkOURsGkQObzOZKfg4qp9dt31224HwKxtiN3wffJ6NXpNpFG6j5WufWvGf1fgeo_ifUEBa6aBYD1_sm8dN-CqyR6KSI9VsavXiJwa-zIeUw2DZTMe4pnAsdc0AfhLwLlmVsdki_uj-xmnCw-if0APtDwVqRBb9TIUWYAiFEx');">
+<div class="absolute top-2 right-2 bg-primary-fixed text-on-primary-fixed-variant rounded-full px-2 py-1 text-[10px] font-bold uppercase tracking-wider font-label shadow-sm">Best Seller</div>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<p class="text-on-surface text-sm font-bold leading-tight font-headline mb-1 line-clamp-2">Yellow Summer Dress</p>
+<p class="text-on-surface-variant text-sm font-medium font-body mb-3">Rp 245.000</p>
+<button class="mt-auto bg-surface-container-high hover:bg-surface-variant text-on-surface-variant rounded-full py-2 flex items-center justify-center gap-1 transition-colors w-full border border-surface-dim">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+<span class="text-xs font-bold font-label uppercase">Tambah</span>
+</button>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="flex flex-col bg-surface-container-lowest rounded-lg shadow-ambient overflow-hidden group hover:scale-[1.02] transition-transform pb-3">
+<div class="w-full aspect-square bg-cover bg-center" data-alt="classic blue denim jacket displayed flat on a light grey marble surface with soft natural lighting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCPYIt8uCL0IoTvluYAKRQjOtS6o4w_SQJVUfR-sI_TUEYBkzGIsG99zMrDxWeuCkN9rYKHowAgQWv4IAQpCaCHksfn_YRgsOCp5nOxVx1wR8bgTnipFIbks6fS23sp8p2dqWpemk_ppkajWRgeZ-cVemC-Ar83WX9UU3WGll2mFuJrw6B4nZPGZP2hS9RLFdY36gRS97kN4615LnWRQqyOmGvt-FyDdoQ8LLhY00vKQu_6aysCgah2ACOcHR7u6B4DU-i29jz9iiSH');"></div>
+<div class="p-3 flex flex-col flex-1">
+<p class="text-on-surface text-sm font-bold leading-tight font-headline mb-1 line-clamp-2">Blue Denim Jacket</p>
+<p class="text-on-surface-variant text-sm font-medium font-body mb-3">Rp 350.000</p>
+<button class="mt-auto bg-surface-container-high hover:bg-surface-variant text-on-surface-variant rounded-full py-2 flex items-center justify-center gap-1 transition-colors w-full border border-surface-dim">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+<span class="text-xs font-bold font-label uppercase">Tambah</span>
+</button>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="flex flex-col bg-surface-container-lowest rounded-lg shadow-ambient overflow-hidden group hover:scale-[1.02] transition-transform pb-3">
+<div class="w-full aspect-square bg-cover bg-center" data-alt="elegant white floral blouse with delicate embroidery hanging on a brass rack in a boutique setting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGyyrdUOs1UXnNVFc1uKGfRd_uMMB3WZBbzQKdPg-Hq4KNmD4Gr0F1M81jYbo328dTABmD7dcWPu0sPGA9cIqtiiTmkincNsVniIg06qoUjcyv7LH7sBtK_RDb4a5VMhFo8SnbJpEqKLVHxwp1R78n_98g4KsO5Dw5aEWH2W6vNhtJxj8hVBuWxphGZeBBimGDVGMUbe0uAK3Sjb0mmRJJeHUXCWsFmO0cHinlNK-aaAL7R_HA0eQhYjJgTsX9FkVTMPXYl96fbZjE');"></div>
+<div class="p-3 flex flex-col flex-1">
+<p class="text-on-surface text-sm font-bold leading-tight font-headline mb-1 line-clamp-2">White Floral Blouse</p>
+<p class="text-on-surface-variant text-sm font-medium font-body mb-3">Rp 190.000</p>
+<button class="mt-auto bg-gradient-primary text-on-primary rounded-full py-2 flex items-center justify-center gap-1 transition-colors w-full shadow-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="check">check</span>
+<span class="text-xs font-bold font-label uppercase">1 Item</span>
+</button>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="flex flex-col bg-surface-container-lowest rounded-lg shadow-ambient overflow-hidden group hover:scale-[1.02] transition-transform pb-3">
+<div class="relative w-full aspect-square bg-cover bg-center" data-alt="rich red velvet skirt gracefully draped on a mannequin against a warm subtly lit studio background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC3XEqQykU5nyGGFpOzfNYtXf-n0oib-4D0gOVtTAIueoMGFgIx7CN3HfnsUAOMrXw3m25nSN8C8tP95913AjvaL_fidjmtKsR5pwlz-HQAmCZwBPmYYsROe5t1tz4_tOsp8SCDXUk98cRdJb2d7H_n0vDSP5eLAEOm63p9I_-X4z9IWL4Ohun6MIV2Dn4uwYiOejGYcfgbW-S4pP9g10clchcKL5uMztjKx0eK5g1PXeusZkkBYanq4_0i7smHVJlr380SkSwTHqFE');">
+<div class="absolute top-2 right-2 bg-error-container text-on-error-container rounded-full px-2 py-1 text-[10px] font-bold uppercase tracking-wider font-label shadow-sm">Stok Terbatas</div>
+</div>
+<div class="p-3 flex flex-col flex-1">
+<p class="text-on-surface text-sm font-bold leading-tight font-headline mb-1 line-clamp-2">Red Velvet Skirt</p>
+<p class="text-on-surface-variant text-sm font-medium font-body mb-3">Rp 210.000</p>
+<div class="mt-auto flex items-center justify-between bg-surface-container-high rounded-full overflow-hidden border border-surface-dim">
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="remove">remove</span>
+</button>
+<span class="text-sm font-bold font-body">2</span>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Cart (Sticky Bottom) -->
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-[400px] z-50">
+<button class="w-full bg-gradient-primary text-on-primary rounded-full px-6 py-4 flex items-center justify-between shadow-ambient hover:scale-[1.02] transition-transform">
+<div class="flex items-center gap-3">
+<div class="bg-surface-container-lowest/20 rounded-full w-10 h-10 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</div>
+<div class="flex flex-col items-start">
+<span class="text-sm font-bold font-label uppercase tracking-widest text-on-primary-container">3 Item</span>
+<span class="text-lg font-bold font-headline leading-none">Rp 610.000</span>
+</div>
+</div>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Modal Checkout WhatsApp (Hidden by default, shown here for design demonstration) -->
+<div class="fixed inset-0 z-[100] flex items-end justify-center bg-inverse-surface/40 backdrop-blur-sm p-4 hidden">
+<div class="bg-surface-container-lowest w-full max-w-md rounded-t-xl rounded-b-lg p-6 flex flex-col shadow-[0_-20px_40px_rgba(0,0,0,0.1)] translate-y-0 transition-transform">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold font-headline text-on-surface">Ringkasan Pesanan</h3>
+<button class="text-on-surface-variant hover:text-error transition-colors rounded-full p-1 bg-surface-container-high">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-4 mb-6 max-h-[409px] overflow-y-auto no-scrollbar">
+<!-- Order Item -->
+<div class="flex gap-4 items-center">
+<div class="w-16 h-16 rounded-lg bg-cover bg-center ghost-border" data-alt="elegant white floral blouse thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCqRmcYDSQBQvCz69qhKT2tZ-B4ZVw1ZSMTdfeAHKoy79N9FyTwKTW0CYFrUsaG_owQHK_fNZzOCMHBkZikDHfyqSgliek8fChvUbCLGVkZ-muHe3LFMR3h7d-eIgnhb95bhdFKS3NaP4EfXXUdQPSodBJHp0-dMmkz2qdyO6IYcvKFzJpiinuWRijdwKJExRAIyBc-tF9_6zWlIC038HRa3p6sRXaKZR06lyKcMQYG6f8gE1Z9N4yiPwnPiXf7uBUUTPgo_74nnbdw');"></div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface font-headline">White Floral Blouse</p>
+<p class="text-xs text-on-surface-variant font-body">1 x Rp 190.000</p>
+</div>
+<p class="text-sm font-bold text-on-surface font-body">Rp 190.000</p>
+</div>
+<!-- Order Item -->
+<div class="flex gap-4 items-center">
+<div class="w-16 h-16 rounded-lg bg-cover bg-center ghost-border" data-alt="rich red velvet skirt thumbnail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD0y9pP1MbyZAh4Gq3bf9HfaCmaAPXww9rFbwZdcp50jWXJslAk3jpjfcCLTcXhjP1xrJ1UEGhVV9cMFlAS12vM6pGUsbUMpxO09Eo-wAgd1ZEZ1DgQI_dtGXs05W8BxCttPlU2aqRYUdfzKJQVViX5kOweNbQTCek6L5QvRuf-6DQX7kBvoOvQ24z-WqIqxptMWLtpmUUm9BGC9beBW4mZw__TOI1A5-MFJ-jaGz_dCA11mQvhedopBsMxdU-Vh-eYGg-RrOa6YG62');"></div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface font-headline">Red Velvet Skirt</p>
+<p class="text-xs text-on-surface-variant font-body">2 x Rp 210.000</p>
+</div>
+<p class="text-sm font-bold text-on-surface font-body">Rp 420.000</p>
+</div>
+</div>
+<div class="border-t border-surface-variant pt-4 mb-6 flex justify-between items-center">
+<span class="text-base font-bold text-on-surface-variant font-body">Total Tagihan</span>
+<span class="text-xl font-bold text-primary font-headline">Rp 610.000</span>
+</div>
+<button class="w-full bg-[#25D366] text-white rounded-full h-14 px-6 flex items-center justify-center gap-2 shadow-ambient hover:scale-[1.02] transition-transform font-bold text-base tracking-wide">
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+</svg>
+                        Lanjut ke WhatsApp
+                    </button>
+<button class="mt-4 text-primary bg-transparent text-sm font-bold font-label uppercase tracking-wider py-2">
+                        Kembali Berbelanja
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>
