@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lupa Kata Sandi - Katalogku</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed": "#a1f95e",
+              "on-tertiary-fixed-variant": "#474746",
+              "on-background": "#191c1e",
+              "inverse-surface": "#2e3132",
+              "tertiary-fixed-dim": "#c8c6c5",
+              "surface-container-highest": "#e1e2e4",
+              "surface": "#f8f9fb",
+              "on-primary-fixed": "#0f0069",
+              "error": "#ba1a1a",
+              "surface-dim": "#d9dadc",
+              "secondary": "#346b00",
+              "on-error-container": "#93000a",
+              "outline": "#777587",
+              "primary-fixed-dim": "#c3c0ff",
+              "inverse-on-surface": "#f0f1f3",
+              "on-tertiary-fixed": "#1c1b1b",
+              "on-tertiary-container": "#dedbda",
+              "on-surface": "#191c1e",
+              "tertiary-container": "#616060",
+              "on-secondary-fixed": "#0b2000",
+              "surface-variant": "#e1e2e4",
+              "on-surface-variant": "#464555",
+              "on-secondary-fixed-variant": "#265100",
+              "error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#3323cc",
+              "surface-tint": "#4d44e3",
+              "outline-variant": "#c7c4d8",
+              "primary-fixed": "#e2dfff",
+              "primary-container": "#4f46e5",
+              "primary": "#3525cd",
+              "tertiary": "#494848",
+              "on-primary": "#ffffff",
+              "surface-container": "#edeef0",
+              "inverse-primary": "#c3c0ff",
+              "surface-container-low": "#f3f4f6",
+              "on-primary-container": "#dad7ff",
+              "on-secondary-container": "#367000",
+              "on-error": "#ffffff",
+              "on-secondary": "#ffffff",
+              "background": "#f8f9fb",
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#9ef65c",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed": "#e5e2e1",
+              "surface-bright": "#f8f9fb",
+              "secondary-fixed-dim": "#86dc44",
+              "surface-container-high": "#e7e8ea"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bubble-bg {
+            background: radial-gradient(circle at 20% 20%, rgba(77, 68, 227, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 80%, rgba(158, 246, 92, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.05) 0%, transparent 60%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex items-center justify-center p-6 relative overflow-hidden bubble-bg">
+<!-- Abstract Blurred Elements (The "Digital Curator" Texture) -->
+<div class="absolute top-[-10%] left-[-5%] w-[40rem] h-[40rem] bg-primary-fixed opacity-20 blur-[120px] rounded-full -z-10"></div>
+<div class="absolute bottom-[-10%] right-[-5%] w-[35rem] h-[35rem] bg-secondary-fixed opacity-20 blur-[100px] rounded-full -z-10"></div>
+<main class="w-full max-w-md z-10">
+<!-- Auth Card -->
+<div class="bg-surface-container-lowest/80 backdrop-blur-xl rounded-xl p-8 md:p-12 shadow-[0px_20px_40px_rgba(77,68,227,0.06)] flex flex-col items-center text-center">
+<!-- Lock Icon Component -->
+<div class="w-24 h-24 bg-primary-fixed/30 rounded-full flex items-center justify-center mb-8 ring-8 ring-primary-fixed/10">
+<span class="material-symbols-outlined text-primary text-5xl" data-icon="lock_reset" style="font-variation-settings: 'FILL' 1;">
+                    lock_reset
+                </span>
+</div>
+<!-- Header Content -->
+<h1 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface mb-3">
+                Lupa Kata Sandi?
+            </h1>
+<p class="font-body text-on-surface-variant text-md leading-relaxed mb-10">
+                Jangan khawatir! Masukkan alamat email Anda di bawah ini dan kami akan mengirimkan tautan untuk mengatur ulang kata sandi Anda.
+            </p>
+<!-- Form -->
+<form class="w-full space-y-6">
+<div class="relative text-left">
+<label class="font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-4 mb-2 block" for="email">
+                        Alamat Email
+                    </label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-5 top-1/2 -translate-y-1/2 text-outline" data-icon="mail">
+                            mail
+                        </span>
+<input class="w-full bg-surface-container-low border-0 ring-1 ring-outline-variant/30 focus:ring-2 focus:ring-primary/40 rounded-full py-4 pl-14 pr-6 font-body text-on-surface placeholder:text-outline transition-all" id="email" placeholder="admin@katalogku.com" type="email"/>
+</div>
+</div>
+<!-- Primary CTA -->
+<button class="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded-full shadow-lg hover:scale-[1.02] active:scale-95 transition-all duration-200" type="submit">
+                    Kirim Tautan Pemulihan
+                </button>
+</form>
+<!-- Footer Link -->
+<div class="mt-10">
+<a class="group flex items-center gap-2 font-label text-sm font-bold text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform" data-icon="arrow_back">
+                        arrow_back
+                    </span>
+                    Kembali ke Halaman Masuk
+                </a>
+</div>
+</div>
+<!-- Brand Footer Anchor -->
+<div class="mt-8 text-center">
+<p class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-outline-variant">
+                © 2024 Katalogku Premium Curator
+            </p>
+</div>
+</main>
+<!-- Decoration Bubble -->
+<div class="fixed top-20 right-20 w-16 h-16 bg-secondary-container opacity-30 blur-2xl rounded-full"></div>
+<div class="fixed bottom-40 left-10 w-32 h-32 bg-primary-fixed opacity-10 blur-3xl rounded-full"></div>
+</body></html>
