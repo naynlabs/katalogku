@@ -1,6 +1,6 @@
 export default function TopBar() {
   return (
-    <header className="flex justify-between items-center w-full px-6 py-4 z-40 md:pl-[280px] bg-surface-container-lowest/80 backdrop-blur-md sticky top-0 border-b border-outline-variant/10 text-sm font-medium">
+    <header className="flex justify-between items-center w-full px-4 lg:px-8 py-4 z-40 bg-surface-container-lowest/80 backdrop-blur-md sticky top-0 border-b border-outline-variant/10 text-sm font-medium">
       <div className="flex items-center gap-4">
         <span className="text-xl font-black text-slate-900 md:hidden">Katalogku</span>
         <div className="hidden md:flex flex-col">

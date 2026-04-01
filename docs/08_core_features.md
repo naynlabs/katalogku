@@ -31,3 +31,15 @@ Sebagai platform *Micro-Storefront* yang mengutamakan kecepatan dan konversi, be
 18. **Dasbor Responsif (Agnostic Admin Panel):** Panel operasional penjual yang mulus digunakan baik ketika sedang bekerja serius di Laptop, maupun sambil bersantai menggunakan *smartphone*.
 19. **Akses Lintas Akun Instan (Google OAuth 2.0):** Singkirkan rutinitas mengetik sandi panjang—daftar dan login instan hanya dengan satu tombol integrasi akun Google yang sangat aman.
 20. **Isolasi Data Terenkripsi (Strict Data Tenancy):** Integritas tinggi dari Drizzle ORM menjamin riwayat kelola dan data kontak Nomor WhatsApp penjual murni terisolasi dari pandangan pengguna aplikasi lainnya.
+
+### F. Ekstensi & Fitur Premium (Advanced & Monetization) *(Planned)*
+*Daftar fitur tambahan yang dapat diimplementasikan untuk paket berlangganan (Pro Tier) berdasarkan riset kompetitor:*
+
+21. **Tema, Latar Belakang & Tata Letak Eksklusif (Custom Themes):** Kendali lebih banyak atas tampilan dan nuansa halaman Katalogku penjual.
+22. **Analitik Premium (Advanced Analytics):** Akses ke statistik negara, perbandingan interaksi, dan grafik kunjungan mendetail.
+23. **Integrasi Perangkat Pelacakan (Tracking Pixels):** Dukungan penuh untuk Meta Pixel, TikTok Pixel, dan Google Analytics untuk analisis audiens dan retargeting iklan.
+24. **Pengaturan SEO & Berbagi Sosial (Custom SEO Meta):** Kemampuan mengubah judul halaman, deskripsi meta, dan gambar bagikan (*share image*) untuk optimasi mesin pencari.
+25. **Lencana Verifikasi (Verified Badge):** Centang biru eksklusif untuk meningkatkan kepercayaan (*trust*) pelanggan terhadap toko.
+26. **Hapus Logo Platform (White-labeling):** Opsi untuk menghilangkan *watermark* atau logo Katalogku di halaman publik.
+27. **Aplikasi Semat Dalam Halaman (Iframe Embeds):** Menampilkan video YouTube, pemutar lagu Spotify, atau media eksternal lainnya langsung di halaman penjual.
+28. **Animasi Tautan Dinamis (Link Animations):** Membuat tautan paling penting bergetar atau berkedip agar lebih menonjol dan menarik perhatian pengunjung.

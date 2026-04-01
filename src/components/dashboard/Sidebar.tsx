@@ -2,25 +2,36 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { memo } from "react";
 
 const navItems = [
   { icon: "dashboard", label: "Overview", href: "/dashboard" },
+  { icon: "receipt_long", label: "Pesanan", href: "/dashboard/pesanan" },
   { icon: "analytics", label: "Analitik", href: "/dashboard/analytics" },
   { icon: "inventory_2", label: "Katalog", href: "/dashboard/katalog" },
+  { icon: "category", label: "Kategori", href: "/dashboard/kategori" },
   { icon: "link", label: "Links", href: "/dashboard/links" },
-  { icon: "settings", label: "Pengaturan", href: "/dashboard/pengaturan" },
+  { icon: "palette", label: "Tampilan", href: "/dashboard/tampilan" },
+  { icon: "text_fields", label: "Teks & Konten", href: "/dashboard/teks-toko" },
+  { icon: "settings", label: "Pengaturan Toko", href: "/dashboard/pengaturan" },
+  { icon: "security", label: "Keamanan Akun", href: "/dashboard/akun" },
+  { icon: "credit_card", label: "Langganan", href: "/dashboard/billing" },
+  { icon: "support_agent", label: "Bantuan", href: "/dashboard/bantuan" },
 ];
 
-export default function Sidebar() {
+const Sidebar = memo(function Sidebar() {
   const pathname = usePathname();
 
   return (
     <aside className="hidden md:flex flex-col fixed left-0 top-0 h-screen py-8 px-4 bg-surface-container-lowest w-64 border-r border-outline-variant/20 z-50">
       <div className="mb-10 px-4">
         <Link href="/">
-          <h1 className="text-2xl font-black tracking-tight text-primary">Katalogku</h1>
+          <div className="flex items-center gap-3 mb-1 group">
+            <img src="/logo-baru.png" alt="Logo Katalogku" className="w-12 h-12 rounded-xl object-cover shadow-sm group-hover:scale-110 transition-transform" />
+            <h1 className="text-2xl font-black tracking-tight text-primary">Katalogku</h1>
+          </div>
         </Link>
-        <p className="text-xs text-on-surface-variant font-bold uppercase tracking-widest mt-1">Digital Curator</p>
+        <p className="text-xs text-on-surface-variant font-bold uppercase tracking-widest pl-[60px]">Digital Curator</p>
       </div>
       <nav className="flex-1 space-y-2">
         {navItems.map((item) => {
@@ -58,4 +69,6 @@ export default function Sidebar() {
       </div>
     </aside>
   );
-}
+});
+
+export default Sidebar;

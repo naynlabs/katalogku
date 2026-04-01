@@ -28,10 +28,11 @@ function formatRupiah(n: number) {
   return "Rp " + n.toLocaleString("id-ID");
 }
 
-export default function StorefrontPage() {
+export default function StorefrontPage({ params }: { params: { username: string } }) {
   const [activeCategory, setActiveCategory] = useState("Semua");
   const [cart, setCart] = useState<{ id: number; qty: number }[]>([]);
   const [showCheckout, setShowCheckout] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
 
   const filtered = activeCategory === "Semua"
     ? storeData.products
@@ -114,15 +115,22 @@ export default function StorefrontPage() {
           {filtered.map((p) => {
             const inCart = cart.find((c) => c.id === p.id);
             return (
-              <div key={p.id} className="bg-surface-container-lowest rounded-2xl ghost-border overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <div className="aspect-square bg-surface-container-low flex items-center justify-center">
-                  <span className="material-symbols-outlined text-outline/30 text-5xl">image</span>
+              <div key={p.id} className="bg-surface-container-lowest rounded-2xl ghost-border overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col group cursor-pointer" onClick={() => setSelectedProduct(p)}>
+                <div className="relative focus:outline-none focus:ring-2 focus:ring-primary rounded-t-2xl">
+                  <div className="aspect-square bg-surface-container-low flex items-center justify-center overflow-hidden">
+                    <span className="material-symbols-outlined text-outline/30 text-5xl group-hover:scale-110 transition-transform duration-500">image</span>
+                  </div>
+                  <div className="p-3 pb-1">
+                    <h3 className="font-bold text-sm text-on-surface leading-tight mb-1 line-clamp-2 group-hover:text-primary transition-colors">{p.name}</h3>
+                    <p className="text-primary font-extrabold text-sm mb-2">{formatRupiah(p.price)}</p>
+                  </div>
                 </div>
-                <div className="p-3">
-                  <h3 className="font-bold text-sm text-on-surface leading-tight mb-1 line-clamp-2">{p.name}</h3>
-                  <p className="text-primary font-extrabold text-sm mb-3">{formatRupiah(p.price)}</p>
+                <div className="px-3 pb-3 mt-auto">
                   <button
-                    onClick={() => addToCart(p.id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      addToCart(p.id);
+                    }}
                     className={`w-full py-2 rounded-full text-xs font-bold transition-all ${
                       inCart
                         ? "bg-secondary-container text-on-secondary-container"
@@ -196,6 +204,52 @@ export default function StorefrontPage() {
             <p className="text-center text-xs text-on-surface-variant mt-4">
               Pesanan akan dikirim langsung ke WhatsApp penjual
             </p>
+          </div>
+        </div>
+      )}
+
+      {/* Product Detail Quick View Modal */}
+      {selectedProduct && (
+        <div className="fixed inset-0 z-[110] flex items-end sm:items-center justify-center" onClick={() => setSelectedProduct(null)}>
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+          <div
+            className="relative w-full max-w-md bg-white sm:rounded-[2rem] rounded-t-[2rem] p-0 animate-fade-up overflow-hidden max-h-[90vh] flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative w-full aspect-square bg-surface-container-high flex shrink-0 items-center justify-center">
+              <span className="material-symbols-outlined text-outline/30 text-6xl">image</span>
+              <button 
+                onClick={() => setSelectedProduct(null)}
+                className="absolute top-4 right-4 w-10 h-10 bg-black/30 backdrop-blur-md rounded-full text-white flex items-center justify-center hover:bg-black/50 transition-colors"
+              >
+                <span className="material-symbols-outlined text-[20px]">close</span>
+              </button>
+            </div>
+            
+            <div className="p-6 overflow-y-auto flex-1">
+              <div className="mb-4">
+                <h2 className="text-xl font-black text-on-surface leading-tight mb-2">{selectedProduct.name}</h2>
+                <p className="text-2xl font-black text-primary">{formatRupiah(selectedProduct.price)}</p>
+              </div>
+              <div className="w-full h-px bg-outline-variant/20 mb-4"></div>
+              <p className="text-sm text-on-surface-variant leading-relaxed">
+                Detail produk lengkap dan gambar-gambar menarik akan muncul di sini. 
+                Produk ini termasuk dalam kategori <b>{selectedProduct.cat}</b> dan merupakan salah satu produk terbaik kami.
+              </p>
+            </div>
+            
+            <div className="p-4 border-t border-outline-variant/20 bg-surface-container-lowest shrink-0">
+              <button 
+                onClick={() => {
+                  addToCart(selectedProduct.id);
+                  setSelectedProduct(null);
+                }}
+                className="w-full py-4 bg-primary text-white rounded-full font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2"
+              >
+                <span className="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+                Tambah ke Keranjang
+              </button>
+            </div>
           </div>
         </div>
       )}

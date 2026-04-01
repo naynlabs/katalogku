@@ -4,8 +4,11 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-outline-variant/10">
       <nav className="flex justify-between items-center max-w-7xl mx-auto px-6 h-20">
-        <Link href="/" className="text-2xl font-bold tracking-tighter text-on-surface">
-          Katalogku
+        <Link href="/">
+          <div className="flex items-center gap-2 group">
+            <img src="/logo-baru.png" alt="Logo Katalogku" className="w-10 h-10 rounded-xl object-cover shadow-sm group-hover:scale-105 transition-transform" />
+            <span className="text-2xl font-bold tracking-tighter text-on-surface">Katalogku</span>
+          </div>
         </Link>
         <div className="hidden md:flex gap-8 items-center font-medium tracking-tight text-sm">
           <a className="text-primary font-semibold" href="#fitur">Fitur</a>

@@ -6,7 +6,10 @@ export default function Footer() {
     <footer className="bg-surface-container-low pt-24 pb-12 rounded-t-[4rem]">
       <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         <div>
-          <div className="text-2xl font-black mb-6 tracking-tighter">Katalogku</div>
+          <div className="flex items-center gap-3 mb-6">
+            <img src="/logo-baru.png" alt="Logo Katalogku" className="w-12 h-12 rounded-xl object-cover grayscale opacity-80" />
+            <span className="text-2xl font-black tracking-tighter text-on-surface">Katalogku</span>
+          </div>
           <p className="text-on-surface-variant leading-relaxed font-medium">
             Digital Curator for Small Business. Membantu ribuan UMKM Indonesia go digital dengan cara paling simpel dan profesional.
           </p>
