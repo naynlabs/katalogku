@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#777587",
+              "on-secondary-container": "#367000",
+              "on-secondary-fixed-variant": "#265100",
+              "error-container": "#ffdad6",
+              "on-secondary-fixed": "#0b2000",
+              "surface-variant": "#e1e2e4",
+              "on-tertiary-fixed-variant": "#474746",
+              "on-primary-fixed-variant": "#3323cc",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#f3f4f6",
+              "on-primary-container": "#dad7ff",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#191c1e",
+              "tertiary-fixed-dim": "#c8c6c5",
+              "tertiary-fixed": "#e5e2e1",
+              "surface": "#f8f9fb",
+              "on-secondary": "#ffffff",
+              "error": "#ba1a1a",
+              "surface-tint": "#4d44e3",
+              "surface-dim": "#d9dadc",
+              "primary-fixed": "#e2dfff",
+              "on-tertiary-container": "#dedbda",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed": "#1c1b1b",
+              "secondary-fixed": "#a1f95e",
+              "primary": "#3525cd",
+              "outline-variant": "#c7c4d8",
+              "surface-bright": "#f8f9fb",
+              "on-primary-fixed": "#0f0069",
+              "inverse-primary": "#c3c0ff",
+              "tertiary-container": "#616060",
+              "secondary-fixed-dim": "#86dc44",
+              "secondary-container": "#9ef65c",
+              "surface-container-highest": "#e1e2e4",
+              "surface-container-high": "#e7e8ea",
+              "on-background": "#191c1e",
+              "primary-container": "#4f46e5",
+              "surface-container-lowest": "#ffffff",
+              "on-error": "#ffffff",
+              "inverse-surface": "#2e3132",
+              "secondary": "#346b00",
+              "on-surface-variant": "#464555",
+              "inverse-on-surface": "#f0f1f3",
+              "background": "#f8f9fb",
+              "tertiary": "#494848",
+              "surface-container": "#edeef0",
+              "primary-fixed-dim": "#c3c0ff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0px_20px_40px_rgba(77,68,227,0.06)] flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-indigo-600 dark:text-indigo-400">storefront</span>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold text-xl tracking-tight text-indigo-600 dark:text-indigo-400">Katalogku</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform text-slate-500">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform text-slate-500">
+<span class="material-symbols-outlined">shopping_cart</span>
+</button>
+</div>
+</header>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative h-48 md:h-64 w-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="warm inviting bakery kitchen scene with a professional baker dusting flour on fresh dough with soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPDXUeurpWEUqXJgo4d9clRn2JoNqe2BjHD7bOj-skDh4SHeocrMThWPcfApfyR1-yUhCGz2fN0KHedxEAiedwO1wz10nUiNDgb2427We9uMMBm2kAGADzki4o4Eky7ECWdaHBV8fg-7pKTuLhfQbm_Yfg1qpsxfPmjFfBaEgg4OyzNqT2sue4yDLLhtN8Zh9CMk9pRZ3CL7kyqbeZMLHXJkp2kWRdnxYR1KvSN0ZcBnEAO0vO5N4w1d2yNJIiXLxowWGwwMuu_6se"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface"></div>
+</section>
+<!-- Profile Header -->
+<section class="px-6 -mt-16 relative z-10 flex flex-col items-center text-center">
+<div class="p-1 bg-surface rounded-full">
+<div class="w-28 h-28 rounded-full border-4 border-surface-container-lowest overflow-hidden shadow-lg">
+<img class="w-full h-full object-cover" data-alt="friendly middle-aged woman baker portrait with a warm smile wearing a clean white apron in a professional kitchen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcJq2sRYz-1YlunqX6-rRU2k1tQ-dn6u44T0eea9RjOwhyu9I8a4wS356zqZlTOu-yP0mbWc3Okxx8H2847BEguX2ulNEUywsAGsQL6Wbvwso93gFeO-20fU2idKcWY3wp4CcVSfLjM5TchTykn2UqI48jNftk5jgb30hptFteK2F5uQH9ZZcI2iOyiImkv_RIF_fZSmrVgAVS3-7iH_nd5t8m5RbThtCHxDxdLnArdXNvBxqXGh-ibNEVrN7LeQ0i51Rve-yjtLIe"/>
+</div>
+</div>
+<h2 class="mt-4 text-2xl font-extrabold tracking-tight text-on-surface">Kue Bunda</h2>
+<p class="text-on-surface-variant font-medium">Resep Spesial Keluarga</p>
+<!-- WhatsApp FAB Equivalent in Profile -->
+<button class="mt-4 bg-secondary-container text-on-secondary-container px-6 py-3 rounded-full font-bold flex items-center gap-2 shadow-[0px_10px_20px_rgba(54,112,0,0.1)] active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+                Order WhatsApp
+            </button>
+</section>
+<!-- Tab Toggle -->
+<nav class="mt-8 px-6">
+<div class="bg-surface-container-low p-1.5 rounded-full flex gap-1">
+<button class="flex-1 py-2 rounded-full font-bold text-sm text-on-surface-variant transition-colors">
+                    Links
+                </button>
+<button class="flex-1 py-2 rounded-full font-bold text-sm bg-surface-container-lowest text-primary shadow-sm transition-all">
+                    Shop
+                </button>
+</div>
+</nav>
+<!-- Product Grid (Asymmetric Editorial Style) -->
+<section class="px-6 mt-8 grid grid-cols-2 gap-4">
+<!-- Product Card 1 -->
+<div class="col-span-1 flex flex-col gap-3 group active:scale-[0.98] transition-transform">
+<div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-low shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="luxurious dark chocolate cake with glossy ganache drip and fresh berries on top with moody studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVmbwZvBGxgLftpiMFTdkyuNFY5I38vhOye0Btb6dqPps91uwFtWWp2K8-RehVts14PesFlL7vbOEo7VV4mArNGnVCLNOMNRswyePO_zNqmlVeSGdwEUa_BsDwLNbv6IzZRBiMdaxhb1TrSMYaiep0rIi8H8CaBb4ERGBT2a69bMv_UcQDifxHpVm-C6dzWulA0hBY4VM2FucZNWPA2Jy4PtIXdgI6aNwXJ2mh-xbN-iF4n4PLL6ROzYy3RO9PKEtyPx6QAfLfJ6bE"/>
+<span class="absolute top-3 right-3 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Terlaris</span>
+</div>
+<div>
+<h3 class="font-bold text-on-surface leading-tight">Cokelat Klasik Bunda</h3>
+<p class="text-primary font-extrabold mt-1 text-lg">Rp 45.000</p>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="col-span-1 flex flex-col gap-3 group active:scale-[0.98] transition-transform mt-6">
+<div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-low shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="creamy new york cheesecake with strawberry compote topping and mint leaf garnish on a white ceramic plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3E4FDuCXzrfS21Z3O8UCmSIpU9aP6NaZ-CaqfTkJKPPQRejdaKohb76TM4Emq-eoY7IT60kZYSEI9pr7w5NgU66VweBmFGv0nhcuzLKU17gK-BhpuEYuEZNUlZ-lLdNHbY2y6q5nlHsKXNzerIVrgjyQDXS3xJ3Io4b2z4zyVqsr0I4QzIviVZdT6Jz-AJQaBwpE-mhNkWk91ZJYmag1nQCQnOCWkcND5hmRVftYKqxPK6Z5h0eBzAZVtAZnbKZ6-UF4zPLU3kZIm"/>
+</div>
+<div>
+<h3 class="font-bold text-on-surface leading-tight">Strawberry Cheesecake</h3>
+<p class="text-primary font-extrabold mt-1 text-lg">Rp 55.000</p>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="col-span-1 flex flex-col gap-3 group active:scale-[0.98] transition-transform -mt-6">
+<div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-low shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="colorful assorted gourmet cupcakes with swirls of pastel frosting and delicate edible decorations" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6QgwHhHCIkk7nkn6btfm-uHeDolKmQ9DFcaNDnvO-poXu5f_pkJILAocqa60v5miMihGRe7yt8YtWfLkf9OwiYNP7l2eMS-TpbZXcIakqLirpNujpcWE88TKLu98qlp97-VHl3xYzrooGvamlkyK944-GMar9rcqQIAy7Q3hN4bYPk0pnhE56woTwwYrJeb1mGIMcXtBiAyY1G4uE98cti3fMDlaDF5b-XVCOh-gw9o9tXh6ITSS2Wg_iOx5IwVo1hXyS1NZqSJMT"/>
+<span class="absolute top-3 right-3 bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Baru</span>
+</div>
+<div>
+<h3 class="font-bold text-on-surface leading-tight">Set Cupcake Pelangi</h3>
+<p class="text-primary font-extrabold mt-1 text-lg">Rp 85.000</p>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="col-span-1 flex flex-col gap-3 group active:scale-[0.98] transition-transform">
+<div class="relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-low shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="artisanal fruit tart with golden pastry crust and concentric circles of fresh kiwi strawberry and blueberries" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxOEtQgjpT_TJizWDCCUFcx3Mfxfy63tsogHpXBAdRZ_ngl_AJfXKa35KzHo0momunwW_eHu1aAjJLwyXYCtwYE30dbKNRAWQvEfyuBD-DsXPL7uJtTL9fO3OVJ7d7WqAuUbfApGTsPWY7V6erqpK5txufjYKFH8rGzwD_WY5KSdD9XPmTZ4TA9pFRoAKGMnS-s3-8hKeOqaetxC8pEl7h_lVCTOk4Sk0J1p-pZv4pVQD9NSRp_uyDGhebrFMQmeGUYnrj5p0a6--G"/>
+</div>
+<div>
+<h3 class="font-bold text-on-surface leading-tight">Tarte aux Fruits</h3>
+<p class="text-primary font-extrabold mt-1 text-lg">Rp 38.000</p>
+</div>
+</div>
+</section>
+<!-- Categories horizontal scroll -->
+<section class="mt-12 px-6">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-bold">Kategori Populer</h2>
+<button class="text-primary font-bold text-sm">Lihat Semua</button>
+</div>
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-4">
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-bold text-sm">
+                    Semua Kue
+                </button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-surface-container-high text-on-surface-variant font-bold text-sm">
+                    Brownies
+                </button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-surface-container-high text-on-surface-variant font-bold text-sm">
+                    Roti Manis
+                </button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-surface-container-high text-on-surface-variant font-bold text-sm">
+                    Hampers
+                </button>
+</div>
+</section>
+<!-- Promotional Banner -->
+<section class="px-6 mt-8 mb-12">
+<div class="bg-primary p-6 rounded-xl relative overflow-hidden flex flex-col justify-center min-h-[160px]">
+<div class="relative z-10">
+<span class="bg-white/20 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">Promo Akhir Pekan</span>
+<h3 class="text-white text-2xl font-extrabold mt-2 leading-tight">Diskon 15% Untuk<br/>Hampers Keluarga</h3>
+<button class="mt-4 bg-white text-primary px-5 py-2 rounded-full font-bold text-sm w-fit active:scale-95 transition-transform">
+                        Klaim Sekarang
+                    </button>
+</div>
+<!-- Abstract Gradient Decor -->
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-primary-container rounded-full opacity-50 blur-3xl"></div>
+<div class="absolute -top-10 -left-10 w-32 h-32 bg-secondary-container/20 rounded-full blur-2xl"></div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full rounded-t-2xl z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0px_-10px_30px_rgba(0,0,0,0.03)] flex justify-around items-center w-full px-4 pb-safe h-20">
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-2 hover:text-indigo-500 transition-colors active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-indigo-600 dark:text-indigo-400 font-bold bg-indigo-50 dark:bg-indigo-900/30 rounded-2xl px-4 py-2 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">category</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Categories</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-2 hover:text-indigo-500 transition-colors active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-2 hover:text-indigo-500 transition-colors active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-bold uppercase tracking-widest mt-1">Settings</span>
+</div>
+</nav>
+</body></html>

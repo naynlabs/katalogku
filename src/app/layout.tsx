@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "Katalogku — Etalase Digital untuk UMKM Indonesia",
   description:
     "Ubah link bio kamu jadi toko online siap beli. Terima pesanan otomatis via WhatsApp dan mulai closing dalam hitungan menit. Tanpa potongan admin.",
+  icons: {
+    icon: "/logo-katalogku.svg"
+  }
 };
 
 export default function RootLayout({

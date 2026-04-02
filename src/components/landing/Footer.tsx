@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         <div>
           <div className="flex items-center gap-3 mb-6">
-            <img src="/logo-baru.png" alt="Logo Katalogku" className="w-12 h-12 rounded-xl object-cover grayscale opacity-80" />
+            <img src="/logo-katalogku.svg" alt="Logo Katalogku" className="w-12 h-12 object-contain grayscale opacity-80" />
             <span className="text-2xl font-black tracking-tighter text-on-surface">Katalogku</span>
           </div>
           <p className="text-on-surface-variant leading-relaxed font-medium">

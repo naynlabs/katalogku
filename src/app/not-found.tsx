@@ -7,7 +7,7 @@ export default function NotFound() {
       {/* Top Nav (Auth Style) */}
       <nav className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 max-w-7xl mx-auto glass-header">
         <a href="/" className="flex items-center gap-3">
-          <img src="/logo-baru.png" alt="Logo Katalogku" className="w-8 h-8 rounded-lg object-cover shadow-sm" />
+          <img src="/logo-katalogku.svg" alt="Logo Katalogku" className="w-8 h-8 object-contain shadow-sm" />
           <span className="text-xl font-bold tracking-tight text-slate-900">Katalogku</span>
         </a>
         <Link href="/" className="font-medium text-sm text-primary hover:opacity-80 transition-opacity">

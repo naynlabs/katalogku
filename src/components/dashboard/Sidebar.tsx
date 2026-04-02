@@ -27,7 +27,7 @@ const Sidebar = memo(function Sidebar() {
       <div className="mb-10 px-4">
         <Link href="/">
           <div className="flex items-center gap-3 mb-1 group">
-            <img src="/logo-baru.png" alt="Logo Katalogku" className="w-12 h-12 rounded-xl object-cover shadow-sm group-hover:scale-110 transition-transform" />
+            <img src="/logo-katalogku.svg" alt="Logo Katalogku" className="w-12 h-12 object-contain shadow-sm group-hover:scale-110 transition-transform" />
             <h1 className="text-2xl font-black tracking-tight text-primary">Katalogku</h1>
           </div>
         </Link>
