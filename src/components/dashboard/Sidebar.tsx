@@ -11,12 +11,6 @@ const navItems = [
   { icon: "inventory_2", label: "Katalog", href: "/dashboard/katalog" },
   { icon: "category", label: "Kategori", href: "/dashboard/kategori" },
   { icon: "link", label: "Links", href: "/dashboard/links" },
-  { icon: "palette", label: "Tampilan", href: "/dashboard/tampilan" },
-  { icon: "text_fields", label: "Teks & Konten", href: "/dashboard/teks-toko" },
-  { icon: "settings", label: "Pengaturan Toko", href: "/dashboard/pengaturan" },
-  { icon: "security", label: "Keamanan Akun", href: "/dashboard/akun" },
-  { icon: "credit_card", label: "Langganan", href: "/dashboard/billing" },
-  { icon: "support_agent", label: "Bantuan", href: "/dashboard/bantuan" },
 ];
 
 const Sidebar = memo(function Sidebar() {

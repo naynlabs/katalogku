@@ -1,3 +1,7 @@
+"use client";
+
+import Image from "next/image";
+
 export default function SolutionSection() {
   const solutions = [
     "Etalase jualan profesional",
@@ -11,10 +15,24 @@ export default function SolutionSection() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 flex justify-center animate-scale-in">
-            <div className="relative">
-              <div className="absolute -inset-4 bg-primary-gradient opacity-10 rounded-[2rem] blur-xl" />
-              <div className="relative z-10 bg-surface-container-lowest rounded-[2rem] shadow-2xl p-12 flex items-center justify-center aspect-square max-w-sm">
-                <span className="material-symbols-outlined text-primary/20 text-[120px]">smartphone</span>
+            <div className="relative group" style={{ perspective: "1200px" }}>
+              <div className="absolute -inset-8 bg-primary-gradient opacity-15 rounded-[2rem] blur-[50px] group-hover:opacity-25 transition-opacity duration-700" />
+              <div 
+                className="relative z-10 rounded-[1.5rem] shadow-[0_30px_60px_-15px_rgba(79,70,229,0.3)] overflow-hidden transition-all duration-700 ease-out group-hover:shadow-[0_40px_80px_-15px_rgba(79,70,229,0.35)]"
+                style={{ transform: "rotateX(4deg) rotateY(-6deg)" }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = "rotateX(0deg) rotateY(0deg) scale(1.03)"}
+                onMouseLeave={(e) => e.currentTarget.style.transform = "rotateX(4deg) rotateY(-6deg)"}
+              >
+                <Image
+                  src="/images/dashboard-preview.png"
+                  alt="Dashboard analitik Katalogku - pantau performa toko online kamu secara real-time"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto"
+                  priority
+                />
+                {/* Glossy overlay */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10 pointer-events-none" />
               </div>
             </div>
           </div>
