@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProductDetailPage({ params }: { params: { username: string, product_id: string } }) {
   // Dummy data produk (Di dunia nyata ini diambil dari database TiDB berdasarkan product_id)
@@ -40,10 +41,12 @@ export default function ProductDetailPage({ params }: { params: { username: stri
 
         {/* Gambar Produk */}
         <div className="w-full aspect-square bg-surface-container-high relative">
-          <img 
+          <Image 
             src={product.image} 
             alt={product.name}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            unoptimized
           />
           {/* Label Diskon/Stok Menipis ditaruh di atas gambar */}
           <div className="absolute bottom-4 left-4 bg-error text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1 animate-pulse">

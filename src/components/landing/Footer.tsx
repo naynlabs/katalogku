@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { InstagramIcon, TikTokIcon, XIcon } from "@/components/icons";
 
 export default function Footer() {
@@ -7,7 +8,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         <div>
           <div className="flex items-center gap-3 mb-6">
-            <img src="/logo-katalogku.svg" alt="Logo Katalogku" className="w-12 h-12 object-contain grayscale opacity-80" />
+            <Image src="/logo-katalogku.svg" alt="Logo Katalogku" width={48} height={48} className="object-contain grayscale opacity-80" />
             <span className="text-2xl font-black tracking-tighter text-on-surface">Katalogku</span>
           </div>
           <p className="text-on-surface-variant leading-relaxed font-medium">
@@ -40,7 +41,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-on-surface-variant font-bold">
-        <p>© 2025 Katalogku. Kreasi Bangsa.</p>
+        <p>© 2026 Katalogku. Kreasi Bangsa.</p>
         <div className="flex gap-8">
           <a className="hover:text-primary transition-colors flex items-center gap-2" href="#"><InstagramIcon /> Instagram</a>
           <a className="hover:text-primary transition-colors flex items-center gap-2" href="#"><TikTokIcon /> TikTok</a>

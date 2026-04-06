@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 // ── Dummy Data ──────────────────────────────────────────────────────────────
@@ -243,7 +244,7 @@ export default function DashboardOverview() {
               <div key={p.name} className="grid grid-cols-12 items-center py-3.5 px-3 hover:bg-surface-container-low/50 rounded-xl transition-colors group">
                 <div className="col-span-12 sm:col-span-5 flex items-center gap-3 mb-2 sm:mb-0">
                   <span className="text-xs font-black text-on-surface-variant/40 w-5">{i + 1}</span>
-                  <img src={p.img} alt={p.name} className="w-10 h-10 rounded-lg object-cover" />
+                  <Image src={p.img} alt={p.name} width={40} height={40} className="rounded-lg object-cover" unoptimized />
                   <span className="font-bold text-sm text-on-surface line-clamp-1">{p.name}</span>
                 </div>
                 <span className="col-span-4 sm:col-span-2 text-center text-sm font-semibold text-on-surface-variant">{p.views.toLocaleString("id-ID")}</span>

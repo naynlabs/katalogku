@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function AnalyticsPage() {
   return (
@@ -181,8 +182,8 @@ export default function AnalyticsPage() {
             ].map((p, i) => (
               <div key={i} className="flex items-center justify-between group cursor-pointer hover:bg-surface-container/50 p-2 -mx-2 rounded-xl transition-colors">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl overflow-hidden bg-surface-container shadow-sm group-hover:shadow-md transition-shadow">
-                    <img src={p.img} alt={p.title} className="w-full h-full object-cover" />
+                  <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-surface-container shadow-sm group-hover:shadow-md transition-shadow">
+                    <Image src={p.img} alt={p.title} fill className="object-cover" unoptimized />
                   </div>
                   <div>
                     <p className="text-sm font-bold text-on-surface line-clamp-1 mb-0.5">{p.title}</p>

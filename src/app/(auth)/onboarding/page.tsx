@@ -3,6 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { WhatsAppIcon } from "@/components/icons";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { 
+  onboardingStep1Schema, OnboardingStep1Data,
+  onboardingStep2Schema, OnboardingStep2Data,
+  onboardingStep3Schema, OnboardingStep3Data
+} from "@/lib/validations";
 
 const stepMeta = [
   { label: "Profil", icon: "person" },
@@ -40,7 +47,11 @@ function StepIndicator({ current }: { current: number }) {
   );
 }
 
-function StepProfile({ onNext }: { onNext: () => void }) {
+function StepProfile({ onNext }: { onNext: (data: OnboardingStep1Data) => void }) {
+  const { register, handleSubmit, formState: { errors } } = useForm<OnboardingStep1Data>({
+    resolver: zodResolver(onboardingStep1Schema),
+  });
+
   return (
     <div className="bg-surface-container-lowest rounded-xl p-8 md:p-12 shadow-[0px_20px_40px_rgba(77,68,227,0.06)] ghost-border">
       {/* Profile Upload */}
@@ -56,14 +67,15 @@ function StepProfile({ onNext }: { onNext: () => void }) {
         <span className="mt-4 text-sm font-semibold text-primary">Unggah Foto Profil</span>
       </div>
       {/* Form */}
-      <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); onNext(); }}>
+      <form className="space-y-6" onSubmit={handleSubmit(onNext)}>
         <div className="relative">
           <label className="absolute -top-2.5 left-4 bg-white px-1 text-[11px] font-bold uppercase tracking-widest text-primary z-10">Nama Lengkap</label>
-          <input className="w-full px-5 py-4 bg-white border border-outline-variant/30 rounded-lg text-on-surface placeholder:text-on-surface-variant/40 focus:ring-4 focus:ring-primary/5 focus:border-primary outline-none transition-all" placeholder="Masukkan nama anda" type="text" />
+          <input {...register("fullName")} className={`w-full px-5 py-4 bg-white border ${errors.fullName ? 'border-error' : 'border-outline-variant/30'} rounded-lg text-on-surface placeholder:text-on-surface-variant/40 focus:ring-4 focus:ring-primary/5 focus:border-primary outline-none transition-all`} placeholder="Masukkan nama anda" type="text" />
+          {errors.fullName && <p className="text-error text-xs font-bold mt-1 ml-1">{errors.fullName.message}</p>}
         </div>
         <div className="relative">
           <label className="absolute -top-2.5 left-4 bg-white px-1 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/60 z-10">Peran Bisnis (Opsional)</label>
-          <input className="w-full px-5 py-4 bg-white border border-outline-variant/30 rounded-lg text-on-surface placeholder:text-on-surface-variant/40 focus:ring-4 focus:ring-primary/5 focus:border-primary outline-none transition-all" placeholder="Contoh: Pemilik Usaha" type="text" />
+          <input {...register("businessRole")} className="w-full px-5 py-4 bg-white border border-outline-variant/30 rounded-lg text-on-surface placeholder:text-on-surface-variant/40 focus:ring-4 focus:ring-primary/5 focus:border-primary outline-none transition-all" placeholder="Contoh: Pemilik Usaha" type="text" />
         </div>
         <div className="pt-4 flex flex-col gap-4">
           <button type="submit" className="w-full py-4 px-6 bg-primary-gradient text-on-primary rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
@@ -75,7 +87,11 @@ function StepProfile({ onNext }: { onNext: () => void }) {
   );
 }
 
-function StepStore({ onNext }: { onNext: () => void }) {
+function StepStore({ onNext }: { onNext: (data: OnboardingStep2Data) => void }) {
+  const { register, handleSubmit, formState: { errors } } = useForm<OnboardingStep2Data>({
+    resolver: zodResolver(onboardingStep2Schema),
+  });
+
   return (
     <div className="bg-surface-container-lowest rounded-xl p-8 md:p-12 shadow-[0px_20px_40px_rgba(77,68,227,0.06)] ghost-border">
       <div className="flex flex-col items-center mb-10">
@@ -83,26 +99,29 @@ function StepStore({ onNext }: { onNext: () => void }) {
           <span className="material-symbols-outlined text-primary text-4xl">storefront</span>
         </div>
       </div>
-      <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); onNext(); }}>
+      <form className="space-y-6" onSubmit={handleSubmit(onNext)}>
         <div className="relative">
           <label className="absolute -top-2.5 left-4 bg-white px-1 text-[11px] font-bold uppercase tracking-widest text-primary z-10">Nama Toko</label>
-          <input className="w-full px-5 py-4 bg-white border border-outline-variant/30 rounded-lg text-on-surface placeholder:text-on-surface-variant/40 focus:ring-4 focus:ring-primary/5 focus:border-primary outline-none transition-all" placeholder="Contoh: Butik Clarissa" type="text" />
+          <input {...register("storeName")} className={`w-full px-5 py-4 bg-white border ${errors.storeName ? 'border-error' : 'border-outline-variant/30'} rounded-lg text-on-surface placeholder:text-on-surface-variant/40 focus:ring-4 focus:ring-primary/5 focus:border-primary outline-none transition-all`} placeholder="Contoh: Butik Clarissa" type="text" />
+          {errors.storeName && <p className="text-error text-xs font-bold mt-1 ml-1">{errors.storeName.message}</p>}
         </div>
         <div className="relative">
           <label className="absolute -top-2.5 left-4 bg-white px-1 text-[11px] font-bold uppercase tracking-widest text-primary z-10">URL Toko</label>
-          <div className="flex items-center bg-white border border-outline-variant/30 rounded-lg overflow-hidden focus-within:ring-4 focus-within:ring-primary/5 focus-within:border-primary transition-all">
-            <span className="pl-5 text-on-surface-variant text-sm font-medium whitespace-nowrap">katalogku.id/</span>
-            <input className="flex-1 px-1 py-4 bg-transparent border-none text-on-surface placeholder:text-on-surface-variant/40 outline-none focus:ring-0" placeholder="butik-clarissa" type="text" />
+          <div className={`flex items-center bg-white border ${errors.storeSlug ? 'border-error' : 'border-outline-variant/30'} rounded-lg overflow-hidden focus-within:ring-4 focus-within:ring-primary/5 focus-within:border-primary transition-all`}>
+            <span className="pl-5 text-on-surface-variant text-sm font-medium whitespace-nowrap">katalogku.com/</span>
+            <input {...register("storeSlug")} className="flex-1 px-1 py-4 bg-transparent border-none text-on-surface placeholder:text-on-surface-variant/40 outline-none focus:ring-0" placeholder="butik-clarissa" type="text" />
           </div>
+          {errors.storeSlug && <p className="text-error text-xs font-bold mt-1 ml-1">{errors.storeSlug.message}</p>}
         </div>
         <div className="relative">
           <label className="absolute -top-2.5 left-4 bg-white px-1 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/60 z-10">Kategori (Opsional)</label>
-          <select className="w-full px-5 py-4 bg-white border border-outline-variant/30 rounded-lg text-on-surface appearance-none cursor-pointer focus:ring-4 focus:ring-primary/5 focus:border-primary outline-none transition-all">
-            <option>Fashion</option>
-            <option>Elektronik</option>
-            <option>Kecantikan</option>
-            <option>Makanan</option>
-            <option>Lainnya</option>
+          <select {...register("category")} className="w-full px-5 py-4 bg-white border border-outline-variant/30 rounded-lg text-on-surface appearance-none cursor-pointer focus:ring-4 focus:ring-primary/5 focus:border-primary outline-none transition-all">
+            <option value="">Pilih Kategori...</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Elektronik">Elektronik</option>
+            <option value="Kecantikan">Kecantikan</option>
+            <option value="Makanan">Makanan</option>
+            <option value="Lainnya">Lainnya</option>
           </select>
         </div>
         <div className="pt-4 flex flex-col gap-4">
@@ -115,7 +134,11 @@ function StepStore({ onNext }: { onNext: () => void }) {
   );
 }
 
-function StepWhatsapp({ onFinish }: { onFinish: () => void }) {
+function StepWhatsapp({ onFinish }: { onFinish: (data: OnboardingStep3Data) => void }) {
+  const { register, handleSubmit, formState: { errors } } = useForm<OnboardingStep3Data>({
+    resolver: zodResolver(onboardingStep3Schema),
+  });
+
   return (
     <div className="bg-surface-container-lowest rounded-xl p-8 md:p-12 shadow-[0px_20px_40px_rgba(77,68,227,0.06)] ghost-border">
       <div className="flex flex-col items-center mb-10">
@@ -125,13 +148,14 @@ function StepWhatsapp({ onFinish }: { onFinish: () => void }) {
         <h3 className="mt-4 text-xl font-bold text-on-surface">Nomor WhatsApp</h3>
         <p className="text-sm text-on-surface-variant text-center mt-1">Pesanan customer akan dikirim langsung ke nomor ini.</p>
       </div>
-      <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); onFinish(); }}>
+      <form className="space-y-6" onSubmit={handleSubmit(onFinish)}>
         <div className="relative">
           <label className="absolute -top-2.5 left-4 bg-white px-1 text-[11px] font-bold uppercase tracking-widest text-primary z-10">Nomor WhatsApp</label>
-          <div className="flex items-center bg-white border border-outline-variant/30 rounded-lg overflow-hidden focus-within:ring-4 focus-within:ring-primary/5 focus-within:border-primary transition-all">
-            <span className="pl-5 text-on-surface-variant text-sm font-medium">+62</span>
-            <input className="flex-1 px-2 py-4 bg-transparent border-none text-on-surface placeholder:text-on-surface-variant/40 outline-none focus:ring-0" placeholder="812 3456 7890" type="tel" />
+          <div className={`flex items-center bg-white border ${errors.whatsapp ? 'border-error' : 'border-outline-variant/30'} rounded-lg overflow-hidden focus-within:ring-4 focus-within:ring-primary/5 focus-within:border-primary transition-all`}>
+            <span className="pl-5 text-on-surface-variant text-sm font-medium whitespace-nowrap">+62</span>
+            <input {...register("whatsapp")} className="flex-1 px-2 py-4 bg-transparent border-none text-on-surface placeholder:text-on-surface-variant/40 outline-none focus:ring-0" placeholder="81234567890" type="tel" />
           </div>
+          {errors.whatsapp && <p className="text-error text-xs font-bold mt-1 ml-1">{errors.whatsapp.message}</p>}
         </div>
         <div className="pt-4 flex flex-col gap-4">
           <button type="submit" className="w-full py-4 px-6 bg-primary-gradient text-on-primary rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
@@ -165,10 +189,11 @@ export default function OnboardingPage() {
 
         <StepIndicator current={step} />
 
-        {step === 0 && <StepProfile onNext={() => setStep(1)} />}
-        {step === 1 && <StepStore onNext={() => setStep(2)} />}
+        {step === 0 && <StepProfile onNext={(data) => { console.log("Step 1:", data); setStep(1); }} />}
+        {step === 1 && <StepStore onNext={(data) => { console.log("Step 2:", data); setStep(2); }} />}
         {step === 2 && (
-          <StepWhatsapp onFinish={() => {
+          <StepWhatsapp onFinish={(data) => {
+            console.log("Step 3:", data);
             window.location.href = "/dashboard";
           }} />
         )}

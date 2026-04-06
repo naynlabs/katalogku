@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
@@ -6,7 +7,7 @@ export default function Navbar() {
       <nav className="flex justify-between items-center max-w-7xl mx-auto px-6 h-20">
         <Link href="/">
           <div className="flex items-center gap-2 group">
-            <img src="/logo-katalogku.svg" alt="Logo Katalogku" className="w-10 h-10 object-contain shadow-sm group-hover:scale-105 transition-transform" />
+            <Image src="/logo-katalogku.svg" alt="Logo Katalogku" width={40} height={40} className="object-contain shadow-sm group-hover:scale-105 transition-transform" />
             <span className="text-2xl font-bold tracking-tighter text-on-surface">Katalogku</span>
           </div>
         </Link>

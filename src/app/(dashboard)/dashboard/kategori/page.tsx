@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { addCategorySchema, AddCategoryFormData } from "@/lib/validations";
 
 export default function KategoriPage() {
   const [categories, setCategories] = useState([
@@ -10,19 +13,24 @@ export default function KategoriPage() {
     { id: "cat-4", name: "Produk Habis (Out of Stock)", count: 0, enabled: false },
   ]);
 
-  const [newCatName, setNewCatName] = useState("");
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm<AddCategoryFormData>({
+    resolver: zodResolver(addCategorySchema),
+  });
+
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editingName, setEditingName] = useState("");
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [categoryToDelete, setCategoryToDelete] = useState<{id: string, name: string} | null>(null);
 
-  const handleAddCategory = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newCatName.trim()) return;
-    
+  const onAddCategory = (data: AddCategoryFormData) => {
     const newId = `cat-${Date.now()}`;
-    setCategories([...categories, { id: newId, name: newCatName, count: 0, enabled: true }]);
-    setNewCatName("");
+    setCategories([...categories, { id: newId, name: data.name, count: 0, enabled: true }]);
+    reset();
   };
 
   const handleSaveEdit = (id: string) => {
@@ -65,7 +73,7 @@ export default function KategoriPage() {
         
         {/* Form Tambah Kategori */}
         <div className="lg:col-span-4 space-y-6">
-          <form onSubmit={handleAddCategory} className="bg-surface-container-lowest p-6 rounded-3xl border border-outline-variant/20 tonal-depth">
+          <form onSubmit={handleSubmit(onAddCategory)} className="bg-surface-container-lowest p-6 rounded-3xl border border-outline-variant/20 tonal-depth">
             <h3 className="text-lg font-bold text-on-surface mb-4 flex items-center gap-2">
               <span className="material-symbols-outlined text-primary">add_circle</span>
               Kategori Baru
@@ -77,11 +85,10 @@ export default function KategoriPage() {
                 <input 
                   type="text" 
                   placeholder="Misal: Promo Akhir Tahun..."
-                  value={newCatName}
-                  onChange={(e) => setNewCatName(e.target.value)}
-                  className="w-full bg-surface-container-low border-2 border-transparent focus:bg-white focus:border-primary rounded-xl px-4 py-3 text-sm text-on-surface font-medium outline-none transition-colors"
-                  required
+                  {...register("name")}
+                  className={`w-full bg-surface-container-low border-2 ${errors.name ? 'border-error' : 'border-transparent'} focus:bg-white focus:border-primary rounded-xl px-4 py-3 text-sm text-on-surface font-medium outline-none transition-colors`}
                 />
+                {errors.name && <p className="text-error text-xs font-bold mt-1 ml-1">{errors.name.message}</p>}
               </div>
             </div>
 

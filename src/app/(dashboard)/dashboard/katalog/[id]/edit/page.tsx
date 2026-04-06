@@ -2,9 +2,40 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { productSchema, ProductFormData } from "@/lib/validations";
 
 export default function EditProdukPage() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+
+  // Dummy default values
+  const defaultValues: ProductFormData = {
+    name: "Jaket Denim",
+    price: "250000",
+    category: "Fashion",
+    description: "Jaket denim klasik dengan material denim premium 14oz. Potongan slim fit yang modern, memberikan kesan maskulin namun tetap nyaman digunakan untuk kegiatan sehari-hari.",
+    isAvailable: true,
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<ProductFormData>({
+    resolver: zodResolver(productSchema),
+    defaultValues,
+  });
+
+  const onSubmit = (data: ProductFormData) => {
+    setIsSaving(true);
+    console.log("Saved Product Data:", data);
+    setTimeout(() => {
+      setIsSaving(false);
+      alert("Perubahan produk berhasil disimpan! (Simulasi)");
+    }, 1000);
+  };
 
   return (
     <>
@@ -31,7 +62,7 @@ export default function EditProdukPage() {
           </div>
         </div>
 
-        <form className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Media & Stock */}
           <div className="lg:col-span-5 space-y-8">
             <section className="bg-surface-container-lowest p-8 rounded-xl shadow-[0px_20px_40px_rgba(77,68,227,0.06)] ghost-border">
@@ -68,7 +99,7 @@ export default function EditProdukPage() {
                 <p className="text-sm text-on-surface-variant">Aktifkan jika stok tersedia</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" className="sr-only peer" defaultChecked />
+                <input type="checkbox" {...register("isAvailable")} className="sr-only peer" />
                 <div className="w-14 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
               </label>
             </section>
@@ -86,9 +117,10 @@ export default function EditProdukPage() {
                 <input
                   type="text"
                   placeholder="Contoh: Sepatu Lari Pro"
-                  defaultValue="Jaket Denim"
-                  className="w-full bg-surface-container-low border-0 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/40 transition-all font-medium text-on-surface outline-none"
+                  {...register("name")}
+                  className={`w-full bg-surface-container-low border-2 ${errors.name ? 'border-error' : 'border-transparent'} rounded-lg px-4 py-3 focus:bg-white focus:border-primary transition-all font-medium text-on-surface outline-none`}
                 />
+                {errors.name && <p className="text-error text-xs font-bold mt-1 ml-1">{errors.name.message}</p>}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -98,23 +130,26 @@ export default function EditProdukPage() {
                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-primary font-bold text-sm">Rp</span>
                     <input
                       type="text"
-                      defaultValue="250000"
-                      className="w-full bg-surface-container-low border-0 rounded-lg pl-12 pr-4 py-3 focus:ring-2 focus:ring-primary/40 transition-all font-bold text-on-surface outline-none"
+                      {...register("price")}
+                      className={`w-full bg-surface-container-low border-2 ${errors.price ? 'border-error' : 'border-transparent'} rounded-lg pl-12 pr-4 py-3 focus:bg-white focus:border-primary transition-all font-bold text-on-surface outline-none`}
                     />
                   </div>
+                  {errors.price && <p className="text-error text-xs font-bold mt-1 ml-1">{errors.price.message}</p>}
                 </div>
                 <div className="space-y-2">
                   <label className="block text-xs font-bold text-on-surface-variant ml-1">Kategori</label>
                   <div className="relative">
-                    <select className="w-full bg-surface-container-low border-0 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/40 transition-all font-medium text-on-surface appearance-none outline-none">
-                      <option>Fashion</option>
-                      <option>Elektronik</option>
-                      <option>Kuliner</option>
+                    <select {...register("category")} className={`w-full bg-surface-container-low border-2 ${errors.category ? 'border-error' : 'border-transparent'} rounded-lg px-4 py-3 focus:bg-white focus:border-primary transition-all font-medium text-on-surface appearance-none outline-none`}>
+                      <option value="">Pilih Kategori...</option>
+                      <option value="Fashion">Fashion</option>
+                      <option value="Elektronik">Elektronik</option>
+                      <option value="Kuliner">Kuliner</option>
                     </select>
                     <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">
                       expand_more
                     </span>
                   </div>
+                  {errors.category && <p className="text-error text-xs font-bold mt-1 ml-1">{errors.category.message}</p>}
                 </div>
               </div>
 
@@ -122,18 +157,19 @@ export default function EditProdukPage() {
                 <label className="block text-xs font-bold text-on-surface-variant ml-1">Deskripsi Produk</label>
                 <textarea
                   rows={5}
-                  defaultValue="Jaket denim klasik dengan material denim premium 14oz. Potongan slim fit yang modern, memberikan kesan maskulin namun tetap nyaman digunakan untuk kegiatan sehari-hari."
-                  className="w-full bg-surface-container-low border-0 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/40 transition-all text-on-surface leading-relaxed outline-none resize-none"
+                  {...register("description")}
+                  className="w-full bg-surface-container-low border-2 border-transparent rounded-lg px-4 py-3 focus:bg-white focus:border-primary transition-all text-on-surface leading-relaxed outline-none resize-none"
                 ></textarea>
               </div>
             </section>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
-                type="button"
-                className="flex-1 bg-gradient-to-br from-primary to-primary-container text-white py-4 px-8 rounded-full font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform active:scale-95 flex items-center justify-center gap-2"
+                type="submit"
+                disabled={isSaving}
+                className="flex-1 bg-gradient-to-br from-primary to-primary-container text-white py-4 px-8 rounded-full font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform active:scale-95 flex items-center justify-center gap-2 disabled:opacity-70 disabled:hover:scale-100 disabled:active:scale-100"
               >
-                <span className="material-symbols-outlined">save</span>
+                {isSaving ? <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span> : <span className="material-symbols-outlined">save</span>}
                 Simpan Perubahan
               </button>
               <button

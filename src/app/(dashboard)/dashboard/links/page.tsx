@@ -1,11 +1,14 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useBuilderStore, StoreLink } from "@/store/useBuilderStore";
+import { useBuilderStore } from "@/store/useBuilderStore";
+import Image from "next/image";
 import StorefrontUI from "@/components/storefront/StorefrontUI";
 import { GOOGLE_FONTS, CSS_PATTERNS, PRESET_THEMES } from "@/lib/designConstants";
+import SortableLinkItem from "@/components/dashboard/links/SortableLinkItem";
+import { AVAILABLE_SOCIALS } from "@/components/dashboard/links/constants";
+import { IconPickerModal, SocialModal } from "@/components/dashboard/links/Modals";
 
-// Dnd-kit Imports untuk Drag & Drop
 import {
   DndContext,
   closestCenter,
@@ -20,249 +23,13 @@ import {
   SortableContext,
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
-  useSortable
 } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
 
-// Komponen Pembantu Khusus Item yang Bisa di-Drag
-function SortableLinkItem({ link, onPickIcon }: { link: StoreLink, onPickIcon: (id: string) => void }) {
-  const store = useBuilderStore();
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({ id: link.id });
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-    zIndex: isDragging ? 99 : 1,
-  };
-
-  return (
-    <div 
-      ref={setNodeRef} 
-      style={style} 
-      className={`bg-surface-container-lowest p-4 rounded-2xl border transition-all flex flex-col gap-3 group relative cursor-default ${
-        isDragging ? 'border-[#4f46e5]/50 shadow-[0_20px_40px_rgba(79,70,229,0.15)] scale-[1.02]' : 'border-outline-variant/20 shadow-sm hover:border-[#4f46e5]/20'
-      }`}
-    >
-      {/* Tombol Bergerak (Drag Handle) - Diikat ke *listeners* */}
-      <div 
-        {...attributes} 
-        {...listeners} 
-        className="absolute left-[-16px] xl:left-[-24px] top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 p-2 cursor-grab active:cursor-grabbing text-gray-300 hover:text-gray-600 transition-colors"
-      >
-         <span className="material-symbols-outlined text-[20px]">drag_indicator</span>
-      </div>
-
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-surface-container-high rounded-full flex items-center justify-center">
-             {link.type === 'icon' ? (
-                <Icon icon={link.icon || 'lucide:link'} className="w-4 h-4" />
-             ) : (
-                <span className="material-symbols-outlined text-[14px]">image</span>
-             )}
-          </div>
-          <span className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">
-            {link.type === 'icon' ? 'Tautan Standar' : 'Tautan Gambar'}
-          </span>
-        </div>
-        <div className="flex gap-1 touch-none">
-          <button 
-            onPointerDown={(e) => e.stopPropagation()}
-            onClick={() => store.updateLink(link.id, { isVisible: !(link.isVisible ?? true) })}
-            title={link.isVisible !== false ? "Sembunyikan Tautan ini" : "Tampilkan Tautan ini"}
-            className={`w-6 h-6 rounded-full flex items-center justify-center transition-colors ${link.isVisible === false ? 'bg-surface-container-high text-on-surface hover:text-[#4f46e5]' : 'hover:bg-surface-container-high text-on-surface-variant'}`}
-          >
-            <span className="material-symbols-outlined text-[14px]">
-              {link.isVisible === false ? 'visibility_off' : 'visibility'}
-            </span>
-          </button>
-          <button 
-            onPointerDown={(e) => e.stopPropagation()} // Supaya tidak memicu drag
-            onClick={() => store.removeLink(link.id)}
-            className="w-6 h-6 rounded-full hover:bg-error/10 hover:text-error flex items-center justify-center text-on-surface-variant transition-colors"
-          >
-            <span className="material-symbols-outlined text-[14px]">delete</span>
-          </button>
-        </div>
-      </div>
-
-      <div className="space-y-3 relative z-10 mt-1" onPointerDown={(e) => e.stopPropagation()}>
-        {/* Input Judul Tautan */}
-        <div>
-          <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider mb-1 block">Judul Tautan</label>
-          <div className="relative group">
-            <input 
-              type="text" 
-              value={link.label}
-              onChange={(e) => store.updateLink(link.id, { label: e.target.value })}
-              placeholder="Contoh: Katalog Produk"
-              className="w-full px-3 py-2 bg-white border border-outline-variant/30 rounded-xl text-sm font-bold text-on-surface outline-none focus:border-[#4f46e5] focus:ring-2 focus:ring-[#4f46e5]/10 transition-all hover:border-outline-variant/60"
-            />
-            <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-[16px] text-gray-400 pointer-events-none group-focus-within:text-[#4f46e5]">edit</span>
-          </div>
-        </div>
-
-        {/* Input URL Tujuan */}
-        <div>
-           <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider mb-1 block">Tujuan URL</label>
-           <div className="relative group flex items-center bg-white border border-outline-variant/30 rounded-xl overflow-hidden focus-within:border-[#4f46e5] focus-within:ring-2 focus-within:ring-[#4f46e5]/10 transition-all hover:border-outline-variant/60">
-             <div className="pl-3 pr-2 py-2.5 flex items-center justify-center bg-gray-50/50 border-r border-outline-variant/20">
-               <span className="material-symbols-outlined text-[16px] text-on-surface-variant group-focus-within:text-[#4f46e5]">link</span>
-             </div>
-             <input 
-               type="text" 
-               value={link.url}
-               onChange={(e) => store.updateLink(link.id, { url: e.target.value })}
-               placeholder="https://"
-               className="w-full px-3 py-2.5 bg-transparent text-xs font-medium text-primary outline-none"
-             />
-           </div>
-        </div>
-        
-        {/* Toggles Behavior */}
-        <div className="flex flex-col gap-3 mt-3 px-1 pt-1">
-          {/* Toggle Buka Di Tab Baru */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-[14px] text-on-surface-variant">open_in_new</span>
-              <span className="text-[10px] font-bold text-on-surface-variant">Buka di Tab Baru</span>
-            </div>
-            <button 
-              onClick={() => store.updateLink(link.id, { openInNewTab: !(link.openInNewTab ?? true) })}
-              className={`w-8 h-4 rounded-full flex items-center transition-colors px-0.5 ${
-                (link.openInNewTab ?? true) ? "bg-primary" : "bg-outline-variant/50"
-              }`}
-            >
-              <div className={`w-3 h-3 rounded-full bg-white shadow-sm transition-transform ${
-                (link.openInNewTab ?? true) ? "translate-x-4" : "translate-x-0"
-              }`} />
-            </button>
-          </div>
-
-          {/* Toggle Deep Link */}
-          <div className="flex flex-row items-baseline justify-between">
-            <div className="flex flex-col pr-4">
-              <div className="flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-[14px] text-on-surface-variant">electric_bolt</span>
-                <span className="text-[10px] font-bold text-on-surface-variant">Gunakan Deep Link</span>
-              </div>
-              <p className="text-[8px] text-on-surface-variant/80 ml-5 mt-0.5 leading-tight">Membuka tujuan langsung ke dalam Aplikasi (misal: Aplikasi Shopee/WhatsApp) alih-alih Browser bawaan.</p>
-            </div>
-            <button 
-              onClick={() => store.updateLink(link.id, { isDeepLink: !(link.isDeepLink ?? false) })}
-              className={`w-8 h-4 rounded-full flex items-center transition-colors px-0.5 shrink-0 ${
-                (link.isDeepLink ?? false) ? "bg-primary" : "bg-outline-variant/50"
-              }`}
-            >
-              <div className={`w-3 h-3 rounded-full bg-white shadow-sm transition-transform ${
-                (link.isDeepLink ?? false) ? "translate-x-4" : "translate-x-0"
-              }`} />
-            </button>
-          </div>
-        </div>
-
-        {/* Toggle between Icon or Image */}
-        <div className="flex flex-col gap-2 mt-4 pt-3 border-t border-outline-variant/10">
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider w-14">Logo:</span>
-            <div className="bg-surface-container-high rounded-lg p-1 flex w-full">
-               <button 
-                  onClick={() => store.updateLink(link.id, { type: 'icon' })}
-                 className={`flex-1 text-[10px] uppercase font-bold py-1.5 rounded-md transition-colors ${link.type === 'icon' ? 'bg-white shadow-sm text-primary' : 'text-on-surface-variant hover:text-on-surface'}`}
-               >
-                 Ikon Material
-               </button>
-               <button 
-                  onClick={() => store.updateLink(link.id, { type: 'image' })}
-                 className={`flex-1 text-[10px] uppercase font-bold py-1.5 rounded-md transition-colors ${link.type === 'image' ? 'bg-white shadow-sm text-primary' : 'text-on-surface-variant hover:text-on-surface'}`}
-               >
-                 Upload Gambar
-               </button>
-            </div>
-          </div>
-
-          {/* Dependent Input */}
-          {link.type === 'icon' ? (
-             <div className="bg-surface-container-low p-2.5 rounded-xl border border-outline-variant/20 mt-1">
-               <button 
-                 onClick={() => onPickIcon(link.id)}
-                 className="w-full flex items-center gap-3 px-3 py-2 bg-white border border-outline-variant/30 rounded-lg text-xs hover:border-[#4f46e5] text-left transition-colors group"
-               >
-                 <div className="w-6 h-6 flex items-center justify-center shrink-0">
-                    {link.icon ? <Icon icon={link.icon} className="text-primary w-5 h-5 group-hover:scale-110 transition-transform" /> : <Icon icon="lucide:smile" className="text-gray-400 w-5 h-5" />}
-                 </div>
-                 <span className="flex-1 text-on-surface-variant font-medium truncate">
-                   {link.icon ? link.icon.split(':').pop() : 'Pilih Ikon...'}
-                 </span>
-                 <span className="material-symbols-outlined text-[16px] text-gray-400 group-hover:text-primary">chevron_right</span>
-               </button>
-             </div>
-          ) : (
-             <div className="bg-surface-container-low p-3 rounded-xl border border-outline-variant/20 mt-1 flex gap-3 items-center">
-                <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-dashed border-outline-variant/50 flex flex-col items-center justify-center shrink-0 cursor-pointer hover:border-primary transition-colors overflow-hidden relative">
-                  {link.image ? (
-                     <img src={link.image} className="w-full h-full object-cover" />
-                  ) : (
-                     <span className="material-symbols-outlined text-[18px] text-on-surface-variant">add_photo_alternate</span>
-                  )}
-                   <input type="file" className="absolute inset-0 opacity-0 cursor-pointer" title="Upload Icon" onChange={(e)=>{
-                      if (e.target.files && e.target.files[0]) {
-                         const url = URL.createObjectURL(e.target.files[0]);
-                         store.updateLink(link.id, { image: url });
-                      }
-                   }} />
-                </div>
-                <div>
-                  <p className="text-[10px] font-bold text-on-surface-variant">Klik kotak u/ upload gambar custom</p>
-                  <p className="text-[9.5px] text-on-surface-variant/70 mt-0.5">Rasio 1:1, Max 200x200px</p>
-                </div>
-             </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-import { Icon } from '@iconify/react';
-
-export const ECOM_ICONS = [
-  "lucide:shopping-bag", "lucide:shopping-cart", "lucide:store", "lucide:tag", "lucide:tags", "lucide:percent", "lucide:gift", "lucide:credit-card", "lucide:truck", "lucide:package", "lucide:receipt", "lucide:ticket", "lucide:wallet", "lucide:coins", "lucide:banknote",
-  "lucide:home", "lucide:search", "lucide:user", "lucide:users", "lucide:settings", "lucide:cog", "lucide:menu", "lucide:list", "lucide:grid", "lucide:bell", "lucide:calendar", "lucide:clock", "lucide:watch", "lucide:camera", "lucide:video", "lucide:image", "lucide:music", "lucide:mic", "lucide:map", "lucide:map-pin", "lucide:navigation", "lucide:compass", "lucide:globe",
-  "lucide:star", "lucide:heart", "lucide:thumbs-up", "lucide:thumbs-down", "lucide:message-circle", "lucide:message-square", "lucide:mail", "lucide:phone", "lucide:phone-call", "lucide:share", "lucide:share-2", "lucide:link", "lucide:external-link", "lucide:bookmark", "lucide:flag",
-  "lucide:edit", "lucide:edit-2", "lucide:edit-3", "lucide:pen-tool", "lucide:plus", "lucide:plus-circle", "lucide:minus", "lucide:minus-circle", "lucide:check", "lucide:check-circle", "lucide:x", "lucide:x-circle", "lucide:trash", "lucide:trash-2", "lucide:download", "lucide:upload", "lucide:arrow-right", "lucide:arrow-left", "lucide:arrow-up", "lucide:arrow-down", "lucide:chevron-right", "lucide:chevron-left", "lucide:chevron-up", "lucide:chevron-down", "lucide:refresh-cw", "lucide:refresh-ccw", "lucide:power",
-  "lucide:coffee", "lucide:utensils", "lucide:briefcase", "lucide:award", "lucide:medal", "lucide:shield", "lucide:shield-check", "lucide:key", "lucide:lock", "lucide:unlock", "lucide:crown", "lucide:zap", "lucide:flame", "lucide:sun", "lucide:moon", "lucide:cloud", "lucide:umbrella", "lucide:smile", "lucide:frown", "lucide:meh", "lucide:laptop", "lucide:smartphone", "lucide:tablet", "lucide:monitor", "lucide:headphones", "lucide:wifi", "lucide:bluetooth", "lucide:battery", "lucide:battery-charging", "lucide:file", "lucide:file-text", "lucide:folder", "lucide:folder-open", "lucide:archive", "lucide:box"
-];
-
-export const AVAILABLE_SOCIALS = [
-  { platform: 'Instagram', color: '#E1306C', icon: <Icon icon="skill-icons:instagram" width="32" height="32" /> },
-  { platform: 'TikTok', color: '#000000', icon: <Icon icon="logos:tiktok-icon" width="28" height="28" className="m-0.5 shrink-0" /> },
-  { platform: 'WhatsApp', color: '#25D366', icon: <Icon icon="logos:whatsapp-icon" width="32" height="32" /> },
-  { platform: 'X', color: '#000000', icon: <div className="bg-black w-8 h-8 min-w-8 min-h-8 shrink-0 rounded-full flex items-center justify-center p-1.5 text-white"><Icon icon="ri:twitter-x-fill" className="w-full h-full" /></div> },
-  { platform: 'Threads', color: '#000000', icon: <div className="bg-black w-8 h-8 min-w-8 min-h-8 shrink-0 rounded-full flex items-center justify-center p-1.5 text-white"><Icon icon="simple-icons:threads" className="w-full h-full" /></div> },
-  { platform: 'YouTube', color: '#FF0000', icon: <Icon icon="logos:youtube-icon" width="32" height="32" /> },
-  { platform: 'Facebook', color: '#1877F2', icon: <Icon icon="logos:facebook" width="32" height="32" /> },
-  { platform: 'Messenger', color: '#0084FF', icon: <Icon icon="logos:messenger" width="32" height="32" /> },
-  { platform: 'Telegram', color: '#26A5E4', icon: <Icon icon="logos:telegram" width="32" height="32" /> },
-  { platform: 'Discord', color: '#5865F2', icon: <Icon icon="logos:discord-icon" width="32" height="32" /> },
-  { platform: 'Pinterest', color: '#E60023', icon: <Icon icon="logos:pinterest" width="32" height="32" /> },
-  { platform: 'LinkedIn', color: '#0A66C2', icon: <Icon icon="logos:linkedin-icon" width="32" height="32" /> },
-  { platform: 'GitHub', color: '#181717', icon: <Icon icon="logos:github-icon" width="32" height="32" /> },
-  { platform: 'Website', color: '#4F46E5', icon: <div className="bg-gray-100 w-8 h-8 rounded-full flex items-center justify-center"><Icon icon="lucide:globe" className="text-gray-600 w-5 h-5" /></div> }
-];
 
 export default function LinksPage() {
   const [zoom, setZoom] = useState(80);
   const [showSocialModal, setShowSocialModal] = useState(false);
   const [iconPickerTargetId, setIconPickerTargetId] = useState<string | null>(null);
-  const [iconSearch, setIconSearch] = useState("");
   const [fontSearch, setFontSearch] = useState("");
   const [showFontDropdown, setShowFontDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -338,7 +105,7 @@ export default function LinksPage() {
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-4 bg-surface-container-low p-3 rounded-xl border border-outline-variant/30">
                  <div className="relative group w-14 h-14 rounded-full bg-surface-container-high border-2 border-white shadow-sm flex items-center justify-center overflow-hidden shrink-0 cursor-pointer transition-transform hover:scale-105 active:scale-95">
-                    <img src={store.profile.profile} className="w-full h-full object-cover" alt="Profile" />
+                    <Image src={store.profile.profile} fill className="object-cover" alt="Profile" unoptimized />
                     <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                        <span className="material-symbols-outlined text-white text-[18px]">photo_camera</span>
                     </div>
@@ -356,7 +123,7 @@ export default function LinksPage() {
 
               <div className="flex items-center gap-4 bg-surface-container-low p-3 rounded-xl border border-outline-variant/30">
                  <div className="relative group w-20 h-14 rounded-lg bg-surface-container-high border-2 border-white shadow-sm flex items-center justify-center overflow-hidden shrink-0 cursor-pointer transition-transform hover:scale-105 active:scale-95">
-                    <img src={store.profile.banner} className="w-full h-full object-cover" alt="Banner" />
+                    <Image src={store.profile.banner} fill className="object-cover" alt="Banner" unoptimized />
                     <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                        <span className="material-symbols-outlined text-white text-[18px]">wallpaper</span>
                     </div>
@@ -723,7 +490,7 @@ export default function LinksPage() {
                     <div className="relative group w-full h-[46px] rounded-xl bg-surface-container-low border border-dashed border-outline-variant/50 flex flex-col items-center justify-center shrink-0 cursor-pointer hover:border-primary transition-colors overflow-hidden">
                        {store.profile.bgImage ? (
                           <>
-                            <img src={store.profile.bgImage} className="w-full h-full object-cover" />
+                            <Image src={store.profile.bgImage} fill className="object-cover" alt="Background" unoptimized />
                             <button onClick={(e) => { e.preventDefault(); store.setProfileField('bgImage', ''); }} className="absolute z-10 top-1 right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                               <span className="material-symbols-outlined text-[12px]">close</span>
                             </button>
@@ -1064,87 +831,12 @@ export default function LinksPage() {
 
       {/* Social Modal */}
       {showSocialModal && (
-        <div className="fixed inset-0 z-[200] bg-black/40 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setShowSocialModal(false)}>
-          <div className="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm" onClick={e => e.stopPropagation()}>
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="font-bold text-lg">Pilih Sosial Media</h3>
-              <button onClick={() => setShowSocialModal(false)} className="text-gray-400 hover:text-red-500 flex items-center justify-center">
-                <span className="material-symbols-outlined text-[20px]">close</span>
-              </button>
-            </div>
-            
-            <div className="grid grid-cols-4 gap-4">
-              {AVAILABLE_SOCIALS.map(social => {
-                const isSelected = store.socials.some(s => s.platform === social.platform);
-                return (
-                <button
-                  key={social.platform}
-                  disabled={isSelected}
-                  onClick={() => {
-                    store.addSocial({ id: Date.now().toString(), platform: social.platform, handle: "", url: "" });
-                    setShowSocialModal(false);
-                  }}
-                  className={`flex flex-col items-center gap-2 py-3 px-1 rounded-xl transition-all group ${
-                    isSelected 
-                      ? "opacity-30 cursor-not-allowed grayscale" 
-                      : "hover:bg-surface-container border border-transparent hover:border-outline-variant/30 active:scale-95"
-                  }`}
-                >
-                  <div className={`flex items-center justify-center text-on-surface-variant ${!isSelected && "group-hover:text-primary group-hover:scale-110"} transition-transform`}>
-                    {social.icon}
-                  </div>
-                  <span className={`text-[11px] font-bold text-on-surface-variant text-center leading-tight ${!isSelected && "group-hover:text-primary"}`}>
-                    {social.platform}
-                  </span>
-                </button>
-              )})}
-            </div>
-          </div>
-        </div>
+        <SocialModal onClose={() => setShowSocialModal(false)} />
       )}
 
-      {/* ICON PICKER MODAL LITE */}
+      {/* Icon Picker Modal */}
       {iconPickerTargetId && (
-        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-          <div className="bg-surface-container-lowest w-full max-w-sm rounded-[2rem] shadow-2xl overflow-hidden animate-fade-up">
-            <div className="p-5 border-b border-outline-variant/10 flex items-center justify-between">
-              <div>
-                <h2 className="font-bold text-lg text-on-surface">Galeri Ikon</h2>
-                <p className="text-xs text-on-surface-variant">Pilih ikon e-commerce yang sesuai</p>
-              </div>
-              <button onClick={() => setIconPickerTargetId(null)} className="text-gray-400 hover:text-red-500 flex items-center justify-center">
-                <span className="material-symbols-outlined text-[20px]">close</span>
-              </button>
-            </div>
-            <div className="p-4 border-b border-outline-variant/10 bg-surface-container-low/50">
-              <div className="relative">
-                <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-on-surface-variant">search</span>
-                <input 
-                  type="text" 
-                  placeholder="Cari ikon... (contoh: cart, star, bag)"
-                  value={iconSearch}
-                  onChange={(e) => setIconSearch(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2 mb-1 bg-white border border-outline-variant/30 rounded-xl text-xs font-medium text-on-surface outline-none focus:border-[#4f46e5] transition-colors"
-                  autoFocus
-                />
-              </div>
-            </div>
-            <div className="p-5 grid grid-cols-5 gap-3 max-h-[300px] overflow-y-auto hide-scrollbar">
-              {ECOM_ICONS.filter(iName => iName.toLowerCase().includes(iconSearch.toLowerCase())).map(iName => (
-                 <button
-                   key={iName}
-                   onClick={() => {
-                      store.updateLink(iconPickerTargetId, { icon: iName });
-                      setIconPickerTargetId(null);
-                   }}
-                   className="w-12 h-12 flex items-center justify-center bg-surface-container-low hover:bg-white border text-on-surface-variant hover:text-primary border-outline-variant/20 hover:border-primary/50 rounded-xl transition-all active:scale-95"
-                 >
-                   <Icon icon={iName} className="w-6 h-6" />
-                 </button>
-              ))}
-            </div>
-          </div>
-        </div>
+        <IconPickerModal targetId={iconPickerTargetId} onClose={() => setIconPickerTargetId(null)} />
       )}
 
     </div>

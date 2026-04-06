@@ -2,9 +2,27 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema, type LoginFormData } from "@/lib/validations";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+  });
+
+  const onSubmit = async (data: LoginFormData) => {
+    // TODO: integrate with Better Auth
+    console.log("Login:", data);
+    // Simulasi loading
+    await new Promise((r) => setTimeout(r, 1000));
+    window.location.href = "/dashboard";
+  };
 
   return (
     <main className="flex-grow flex items-center justify-center px-4 pt-24 pb-12">
@@ -48,22 +66,34 @@ export default function LoginPage() {
           </div>
 
           {/* Form */}
-          <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+          <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
             <div className="space-y-2">
               <label className="block text-xs font-bold uppercase tracking-wider text-on-surface-variant ml-1">Alamat Email</label>
               <div className="relative">
-                <input className="w-full bg-surface-container-low border-none rounded-lg px-4 py-3.5 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/40 transition-all outline-none" placeholder="nama@toko.id" type="email" />
+                <input
+                  {...register("email")}
+                  className={`w-full bg-surface-container-low border-none rounded-lg px-4 py-3.5 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/40 transition-all outline-none ${errors.email ? 'ring-2 ring-error/50' : ''}`}
+                  placeholder="nama@toko.id"
+                  type="email"
+                />
                 <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline text-xl">mail</span>
               </div>
+              {errors.email && (
+                <p className="text-xs text-error font-medium ml-1 flex items-center gap-1">
+                  <span className="material-symbols-outlined text-[14px]">error</span>
+                  {errors.email.message}
+                </p>
+              )}
             </div>
             <div className="space-y-2">
               <div className="flex justify-between items-center ml-1">
                 <label className="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Kata Sandi</label>
-                <a className="text-xs font-semibold text-primary hover:underline" href="#">Lupa Sandi?</a>
+                <Link className="text-xs font-semibold text-primary hover:underline" href="/lupa-password">Lupa Sandi?</Link>
               </div>
               <div className="relative">
                 <input
-                  className="w-full bg-surface-container-low border-none rounded-lg px-4 py-3.5 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/40 transition-all outline-none"
+                  {...register("password")}
+                  className={`w-full bg-surface-container-low border-none rounded-lg px-4 py-3.5 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/40 transition-all outline-none ${errors.password ? 'ring-2 ring-error/50' : ''}`}
                   placeholder="••••••••"
                   type={showPassword ? "text" : "password"}
                 />
@@ -71,11 +101,21 @@ export default function LoginPage() {
                   <span className="material-symbols-outlined">{showPassword ? "visibility" : "visibility_off"}</span>
                 </button>
               </div>
+              {errors.password && (
+                <p className="text-xs text-error font-medium ml-1 flex items-center gap-1">
+                  <span className="material-symbols-outlined text-[14px]">error</span>
+                  {errors.password.message}
+                </p>
+              )}
             </div>
             <div className="pt-2">
-              <Link href="/dashboard" className="block w-full bg-gradient-to-br from-primary to-primary-container text-white font-bold py-4 rounded-full shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-transform text-center">
-                Masuk Sekarang
-              </Link>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="block w-full bg-gradient-to-br from-primary to-primary-container text-white font-bold py-4 rounded-full shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-transform text-center disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? "Memproses..." : "Masuk Sekarang"}
+              </button>
             </div>
           </form>
         </div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { WhatsAppIcon } from "@/components/icons";
 import { Icon } from "@iconify/react";
 import { CSS_PATTERNS } from "@/lib/designConstants";
+import Image from "next/image";
 
 function formatRupiah(n: number) {
   return "Rp " + n.toLocaleString("id-ID").replace(/,/g, '.');
@@ -138,7 +139,7 @@ export default function StorefrontUI({ data, disableCheckout = false }: { data: 
         <header className="absolute top-6 left-6 right-6 z-40 flex items-center justify-between pointer-events-none sticky-header">
            <div className="flex items-center gap-3 w-full justify-between pointer-events-auto">
             <button className={`${data.buttonStyle === 'neo-brutalism' ? 'border-2 border-black shadow-[3px_3px_0px_rgba(0,0,0,1)]' : 'shadow-lg outline outline-1 outline-white/50'} w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-white active:scale-95 transition-all overflow-hidden`}>
-              <img src="/logo-katalogku.svg" alt="Katalogku" className="w-7 h-7 object-contain" />
+              <Image src="/logo-katalogku.svg" alt="Katalogku" width={28} height={28} className="object-contain" unoptimized />
             </button>
             <div className="flex gap-3 text-black">
               <button onClick={() => setShowSubscribeModal(true)} className={`${data.buttonStyle === 'neo-brutalism' ? 'border-2 border-black shadow-[3px_3px_0px_rgba(0,0,0,1)]' : 'shadow-lg outline outline-1 outline-white/50'} w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-white active:scale-95 transition-all`}>
@@ -154,15 +155,15 @@ export default function StorefrontUI({ data, disableCheckout = false }: { data: 
         <main className="relative z-10">
           {/* Hero Section */}
           <section className="relative h-48 md:h-64 w-full overflow-hidden">
-            <img alt="Hero Banner" className="w-full h-full object-cover" src={data.banner} />
+            <Image alt="Hero Banner" fill className="object-cover" src={data.banner} unoptimized />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30"></div>
           </section>
 
           {/* Profile Header */}
           <section className={`px-6 -mt-16 relative z-10 flex flex-col ${data.headerAlignment === 'left' ? 'items-start text-left' : data.headerAlignment === 'right' ? 'items-end text-right' : 'items-center text-center'}`}>
             <div className="p-1.5 bg-white/20 backdrop-blur-md rounded-full shadow-lg">
-              <div className="w-28 h-28 rounded-full border-4 border-white overflow-hidden bg-white">
-                <img alt="Profile" className="w-full h-full object-cover" src={data.profile} />
+              <div className="relative w-28 h-28 rounded-full border-4 border-white overflow-hidden bg-white">
+                <Image alt="Profile" fill className="object-cover" src={data.profile} unoptimized />
               </div>
             </div>
             <div className={`mt-4 flex items-center gap-1.5 ${data.headerAlignment === 'left' ? 'justify-start' : data.headerAlignment === 'right' ? 'justify-end' : 'justify-center'}`}>
@@ -252,9 +253,9 @@ export default function StorefrontUI({ data, disableCheckout = false }: { data: 
                     target={link.openInNewTab ? "_blank" : "_self"}
                     rel={link.openInNewTab ? "noopener noreferrer" : undefined}
                   >
-                    <div className={`w-11 h-11 ${baseBtnClass} overflow-hidden flex-shrink-0 flex items-center justify-center bg-black/5`}>
+                    <div className={`relative w-11 h-11 ${baseBtnClass} overflow-hidden flex-shrink-0 flex items-center justify-center bg-black/5`}>
                       {link.type === 'image' && link.image ? (
-                        <img alt={link.label} className="w-full h-full object-cover" src={link.image} />
+                        <Image alt={link.label} fill className="object-cover" src={link.image} unoptimized />
                       ) : link.type === 'icon' && link.icon ? (
                         <Icon icon={link.icon} className="text-[20px] w-5 h-5 opacity-80" />
                       ) : (
@@ -323,7 +324,7 @@ export default function StorefrontUI({ data, disableCheckout = false }: { data: 
                     className={`${data.productLayout === 'list' ? `flex flex-row items-center gap-4 p-3 ${imgRadius} ${isNeoBrutImg ? 'border-2 border-black shadow-[4px_4px_0px_#000] bg-white' : data.glassmorphism ? 'bg-white/60 backdrop-blur-md border border-white/40 shadow-sm' : 'bg-black/5 border border-black/5 shadow-sm'}` : `col-span-1 flex flex-col gap-3 ${data.glassmorphism && !isNeoBrutImg ? 'bg-white/60 backdrop-blur-md rounded-2xl p-2.5 border border-white/40' : ''}`} group active:scale-[0.98] transition-transform cursor-pointer`}
                   >
                     <div className={`relative ${data.productLayout === 'list' ? 'w-24 h-24 shrink-0' : 'aspect-[4/5] w-full'} overflow-hidden bg-white/50 ${imgRadius} ${imgBorder}`}>
-                      <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={p.name} src={p.img} />
+                      <Image fill className="object-cover group-hover:scale-105 transition-transform duration-500" alt={p.name} src={p.img} unoptimized />
                       {p.badge && data.productLayout !== 'list' && (
                         <span className={`absolute top-2 right-2 bg-white text-black text-[10px] font-bold px-2 py-1 uppercase tracking-wider shadow-sm ${badgeRadius}`}>
                           {p.badge}

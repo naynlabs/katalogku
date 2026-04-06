@@ -3,6 +3,7 @@
 import { useState, use, useEffect } from "react";
 import Link from "next/link";
 import { WhatsAppIcon } from "@/components/icons";
+import Image from "next/image";
 
 const storeData = {
   name: "Toko Kue Bunda",
@@ -106,7 +107,7 @@ export default function StorefrontPage(props: { params: Promise<{ username: stri
         <header className="absolute top-6 left-6 right-6 z-40 flex items-center justify-between pointer-events-none">
           <div className="flex items-center gap-3 w-full justify-between pointer-events-auto">
             <button onClick={() => setShowPromoModal(true)} className="w-10 h-10 bg-white/70 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg hover:bg-white active:scale-95 transition-all outline outline-1 outline-white/50 overflow-hidden">
-              <img src="/logo-katalogku.svg" alt="Katalogku" className="w-7 h-7 object-contain" />
+              <Image src="/logo-katalogku.svg" alt="Katalogku" width={28} height={28} className="object-contain" unoptimized />
             </button>
             <div className="flex gap-3">
               <button onClick={() => setShowSubscribeModal(true)} className="w-10 h-10 bg-white/70 backdrop-blur-md rounded-full flex items-center justify-center text-[#4f46e5] shadow-lg hover:bg-white active:scale-95 transition-all outline outline-1 outline-white/50">
@@ -122,15 +123,15 @@ export default function StorefrontPage(props: { params: Promise<{ username: stri
         <main>
           {/* Hero Section */}
           <section className="relative h-48 md:h-64 w-full overflow-hidden">
-            <img alt="Hero Banner" className="w-full h-full object-cover" src={storeData.banner} />
+            <Image alt="Hero Banner" fill className="object-cover" src={storeData.banner} unoptimized />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#f8f9fb]"></div>
           </section>
 
           {/* Profile Header */}
           <section className="px-6 -mt-16 relative z-10 flex flex-col items-center text-center">
             <div className="p-1 bg-[#f8f9fb] rounded-full">
-              <div className="w-28 h-28 rounded-full border-4 border-white overflow-hidden shadow-lg">
-                <img alt="Profile" className="w-full h-full object-cover" src={storeData.profile} />
+              <div className="relative w-28 h-28 rounded-full border-4 border-white overflow-hidden shadow-lg">
+                <Image alt="Profile" fill className="object-cover" src={storeData.profile} unoptimized />
               </div>
             </div>
             <h2 className="mt-4 text-2xl font-extrabold tracking-tight text-[#191c1e]">{storeData.name}</h2>
@@ -187,9 +188,9 @@ export default function StorefrontPage(props: { params: Promise<{ username: stri
               <div className="px-6 flex flex-col gap-4 max-w-md mx-auto">
                 {storeData.links.map((link, i) => (
                   <a key={i} className="group flex items-center bg-white p-2 rounded-full shadow-[0px_20px_40px_rgba(77,68,227,0.06)] border border-outline-variant/10 hover:scale-[1.02] transition-transform active:scale-95" href={link.url}>
-                    <div className={`w-12 h-12 rounded-full overflow-hidden flex-shrink-0 flex items-center justify-center ${link.iconBg || ''}`}>
+                    <div className={`relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 flex items-center justify-center ${link.iconBg || ''}`}>
                       {link.type === 'image' ? (
-                        <img alt={link.label} className="w-full h-full object-cover" src={link.image} />
+                        <Image alt={link.label} fill className="object-cover" src={link.image || ''} unoptimized />
                       ) : (
                         <span className={`material-symbols-outlined ${link.iconColor}`}>{link.icon}</span>
                       )}
@@ -244,7 +245,7 @@ export default function StorefrontPage(props: { params: Promise<{ username: stri
                     className="col-span-1 flex flex-col gap-3 group active:scale-[0.98] transition-transform cursor-pointer"
                   >
                     <div className="relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-low shadow-sm ring-1 ring-outline-variant/10">
-                      <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={p.name} src={p.img} />
+                      <Image fill className="object-cover group-hover:scale-105 transition-transform duration-500" alt={p.name} src={p.img} unoptimized />
                       {p.badge && (
                         <span className={`absolute top-3 right-3 ${p.badgeColor} text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm backdrop-blur-sm bg-opacity-90`}>
                           {p.badge}
@@ -287,7 +288,7 @@ export default function StorefrontPage(props: { params: Promise<{ username: stri
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative w-full h-64 bg-surface-container-high flex shrink-0 items-center justify-center overflow-hidden">
-                <img src={selectedProduct.img} alt={selectedProduct.name} className="w-full h-full object-cover" />
+                <Image src={selectedProduct.img} alt={selectedProduct.name} fill className="object-cover" unoptimized />
                 <button 
                   onClick={() => setSelectedProduct(null)}
                   className="absolute top-4 right-4 w-10 h-10 bg-black/30 backdrop-blur-md rounded-full text-white flex items-center justify-center hover:bg-black/50 transition-colors"
@@ -358,7 +359,7 @@ export default function StorefrontPage(props: { params: Promise<{ username: stri
                     {cartItems.map((item) => (
                         <div key={item.id} className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                            <img src={item.img} className="w-12 h-12 rounded-lg object-cover" alt={item.name}/>
+                            <Image src={item.img} width={48} height={48} className="rounded-lg object-cover shrink-0" alt={item.name} unoptimized />
                             <div>
                                 <p className="font-bold text-sm text-[#191c1e] line-clamp-1">{item.name}</p>
                                 <p className="text-xs text-[#464555]">{formatRupiah(item.price)} <span className="font-bold text-primary">× {item.qty}</span></p>
@@ -413,7 +414,7 @@ export default function StorefrontPage(props: { params: Promise<{ username: stri
                 <span className="material-symbols-outlined">close</span>
               </button>
               <div className="w-12 h-12 mb-5 rounded-xl bg-surface-container-low flex items-center justify-center shadow-sm">
-                <img src="/logo-katalogku.svg" alt="Katalogku" className="w-7 h-7 object-contain" />
+                <Image src="/logo-katalogku.svg" alt="Katalogku" width={28} height={28} className="object-contain" unoptimized />
               </div>
               <h2 className="text-[28px] font-black leading-tight mb-3 text-[#191c1e] tracking-tight">
                 Satu Link Bio untuk Katalog UMKM.
@@ -444,7 +445,7 @@ export default function StorefrontPage(props: { params: Promise<{ username: stri
               <button onClick={() => setShowSubscribeModal(false)} className="absolute top-6 right-6 text-gray-400 hover:text-black">
                 <span className="material-symbols-outlined">close</span>
               </button>
-              <img src={storeData.profile} className="w-20 h-20 rounded-full border-4 border-white shadow-xl mb-4 object-cover" alt="Profile" />
+              <Image src={storeData.profile} width={80} height={80} className="rounded-full border-4 border-white shadow-xl mb-4 object-cover" alt="Profile" unoptimized />
               <h2 className="text-2xl font-black mb-2 text-[#191c1e]">Langganan ke {storeData.name}</h2>
               <p className="text-gray-500 text-sm mb-8 px-4 leading-relaxed">Anda akan diberitahu ketika {storeData.name} membagikan produk atau penawaran terbaru.</p>
               
@@ -476,10 +477,10 @@ export default function StorefrontPage(props: { params: Promise<{ username: stri
               <h3 className="font-extrabold mb-8 text-[#191c1e] tracking-tight">Bagikan Katalogku</h3>
               
               <div className="bg-surface-container-low w-full rounded-3xl p-6 flex flex-col justify-center items-center mb-8 shadow-inner ring-1 ring-outline-variant/20 relative overflow-hidden">
-                 <img src={storeData.profile} className="w-24 h-24 rounded-full border-4 border-white shadow-xl mb-4 object-cover relative z-10" alt="Profile" />
+                 <Image src={storeData.profile} width={96} height={96} className="rounded-full border-4 border-white shadow-xl mb-4 object-cover relative z-10" alt="Profile" unoptimized />
                  <h2 className="text-2xl font-black mb-1 text-[#191c1e] relative z-10">@{params.username}</h2>
                  <p className="text-xs font-bold text-gray-500 bg-white px-4 py-2 mt-2 rounded-full ring-1 ring-outline-variant/20 shadow-sm flex items-center gap-1.5 relative z-10">
-                   <img src="/logo-katalogku.svg" alt="Katalogku" className="w-[14px] h-[14px] object-contain" /> katalogku.com/{params.username}
+                   <Image src="/logo-katalogku.svg" alt="Katalogku" width={14} height={14} className="object-contain" unoptimized /> katalogku.com/{params.username}
                  </p>
                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent"></div>
               </div>
