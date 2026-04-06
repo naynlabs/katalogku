@@ -4,13 +4,13 @@ import { useState } from "react";
 import { WhatsAppIcon } from "@/components/icons";
 import { Icon } from "@iconify/react";
 import { CSS_PATTERNS } from "@/lib/designConstants";
+import { formatRupiah } from "@/lib/utils";
 import Image from "next/image";
+import type { Product, CartItem, CheckoutForm, StorefrontData } from "@/types";
+import { LinksTab } from "./ui/LinksTab";
+import { ShopTab } from "./ui/ShopTab";
 
-function formatRupiah(n: number) {
-  return "Rp " + n.toLocaleString("id-ID").replace(/,/g, '.');
-}
-
-export default function StorefrontUI({ data, disableCheckout = false }: { data: any, disableCheckout?: boolean }) {
+export default function StorefrontUI({ data, disableCheckout = false }: { data: StorefrontData, disableCheckout?: boolean }) {
   const [activeTab, setActiveTab] = useState<"Links" | "Shop">("Shop");
   const [activeCategory, setActiveCategory] = useState("Semua Kue"); // This should probably be dynamic based on data later, but okay for static
   
@@ -26,10 +26,10 @@ export default function StorefrontUI({ data, disableCheckout = false }: { data: 
   };
   
   // E-commerce State
-  const [cart, setCart] = useState<{ id: number; qty: number }[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
   const [showCheckout, setShowCheckout] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<any>(null);
-  const [checkoutForm, setCheckoutForm] = useState({ name: "", phone: "", address: "", notes: "" });
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [checkoutForm, setCheckoutForm] = useState<CheckoutForm>({ name: "", phone: "", address: "", notes: "" });
 
   const [showPromoModal, setShowPromoModal] = useState(false);
   const [showSubscribeModal, setShowSubscribeModal] = useState(false);
@@ -42,10 +42,13 @@ export default function StorefrontUI({ data, disableCheckout = false }: { data: 
     ? products
     : products.filter((p: any) => p.cat === activeCategory);
 
-  const cartItems = cart.map((c) => {
-    const product = products.find((p: any) => p.id === c.id)!;
-    return { ...product, qty: c.qty };
-  });
+  const cartItems = cart
+    .map((c) => {
+      const product = products.find((p: Product) => p.id === c.id);
+      if (!product) return null;
+      return { ...product, qty: c.qty };
+    })
+    .filter((item): item is Product & { qty: number } => item !== null);
   const totalItems = cart.reduce((sum, c) => sum + c.qty, 0);
   const totalPrice = cartItems.reduce((sum, c) => sum + c.price * c.qty, 0);
 
@@ -238,155 +241,20 @@ export default function StorefrontUI({ data, disableCheckout = false }: { data: 
 
           {/* --- LINKS TAB CONTENT --- */}
           {activeTab === "Links" && (
-            <div className="animate-fade-up">
-              <div className="px-6 flex flex-col gap-4 max-w-md mx-auto">
-                {data.links?.filter((l: any) => l.isVisible !== false).map((link: any, i: number) => (
-                  <a 
-                    key={i} 
-                    className={`group flex items-center p-2.5 ${baseBtnClass} ${data.glassmorphism && data.buttonStyle !== 'neo-brutalism' ? 'backdrop-blur-md bg-opacity-80' : ''}`} 
-                    style={{ 
-                       backgroundColor: data.linkButtonColor, 
-                       color: data.linkTextColor,
-                       boxShadow: data.buttonStyle === 'neo-brutalism' ? '4px 4px 0px rgba(0,0,0,1)' : '0px 10px 30px rgba(0,0,0,0.05)'
-                    }}
-                    href={link.url}
-                    target={link.openInNewTab ? "_blank" : "_self"}
-                    rel={link.openInNewTab ? "noopener noreferrer" : undefined}
-                  >
-                    <div className={`relative w-11 h-11 ${baseBtnClass} overflow-hidden flex-shrink-0 flex items-center justify-center bg-black/5`}>
-                      {link.type === 'image' && link.image ? (
-                        <Image alt={link.label} fill className="object-cover" src={link.image} unoptimized />
-                      ) : link.type === 'icon' && link.icon ? (
-                        <Icon icon={link.icon} className="text-[20px] w-5 h-5 opacity-80" />
-                      ) : (
-                         <Icon icon="lucide:link" className="text-gray-400 w-5 h-5" />
-                      )}
-                    </div>
-                    <span className="ml-4 flex-grow font-bold truncate" style={{ fontSize: `${data.linksFontSize || 14}px` }}>{link.label}</span>
-                    <div className="mr-2 w-8 h-8 rounded-full bg-black/5 flex items-center justify-center shrink-0 group-hover:bg-black/10 transition-colors">
-                      <span className="material-symbols-outlined text-lg">chevron_right</span>
-                    </div>
-                  </a>
-                ))}
-                {(!data.links || data.links.length === 0) && (
-                   <p className="text-center text-sm text-gray-400 my-4">Belum ada tautan</p>
-                )}
-              </div>
-            </div>
+            <LinksTab data={data} baseBtnClass={baseBtnClass} />
           )}
 
           {/* --- SHOP TAB CONTENT --- */}
           {activeTab === "Shop" && (
-            <div className="animate-fade-up max-w-[620px] mx-auto">
-              
-              {/* Categories horizontal scroll */}
-              <section className="mt-2 mb-6 px-6">
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-lg font-bold" style={{ color: themeTextColor }}>Kategori Populer</h2>
-                  <button className="font-bold text-sm opacity-80 hover:opacity-100" style={{ color: data.shopButtonColor || themeTextColor }}>Lihat Semua</button>
-                </div>
-                <div className="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
-                  {data.categories?.map((cat: string) => {
-                    const isActive = activeCategory === cat;
-                    return (
-                      <button 
-                        key={cat}
-                        onClick={() => setActiveCategory(cat)}
-                        className={`whitespace-nowrap px-5 py-2 font-bold text-xs transition-colors ${catBtnClass}`}
-                        style={isActive ? { 
-                          backgroundColor: data.shopButtonColor, 
-                          color: data.shopTextColor 
-                        } : {
-                          backgroundColor: themeTextColor === '#ffffff' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
-                          color: themeTextColor,
-                          border: data.buttonStyle === 'neo-brutalism' ? '2px solid black' : 'none'
-                        }}
-                      >
-                        {cat}
-                      </button>
-                    )
-                  })}
-                </div>
-              </section>
-
-            <section className={`px-6 pb-8 ${data.productLayout === 'list' ? 'flex flex-col gap-4' : 'grid grid-cols-2 gap-4'}`}>
-                {filteredProducts.map((p: any) => {
-                  // Product image style mapping
-                  const imgRadius = data.productImageStyle === 'pill' ? 'rounded-full' : data.productImageStyle === 'rounded' ? 'rounded-xl' : 'rounded-none';
-                  const isNeoBrutImg = data.productImageStyle === 'neo-brutalism';
-                  const imgBorder = isNeoBrutImg ? 'border-2 border-black shadow-[4px_4px_0px_#000]' : 'border border-black/5';
-                  const badgeRadius = data.productImageStyle === 'pill' ? 'rounded-full' : data.productImageStyle === 'rounded' ? 'rounded-md' : 'rounded-none';
-
-                  return (
-                  <div 
-                    key={p.id} 
-                    onClick={() => setSelectedProduct(p)}
-                    className={`${data.productLayout === 'list' ? `flex flex-row items-center gap-4 p-3 ${imgRadius} ${isNeoBrutImg ? 'border-2 border-black shadow-[4px_4px_0px_#000] bg-white' : data.glassmorphism ? 'bg-white/60 backdrop-blur-md border border-white/40 shadow-sm' : 'bg-black/5 border border-black/5 shadow-sm'}` : `col-span-1 flex flex-col gap-3 ${data.glassmorphism && !isNeoBrutImg ? 'bg-white/60 backdrop-blur-md rounded-2xl p-2.5 border border-white/40' : ''}`} group active:scale-[0.98] transition-transform cursor-pointer`}
-                  >
-                    <div className={`relative ${data.productLayout === 'list' ? 'w-24 h-24 shrink-0' : 'aspect-[4/5] w-full'} overflow-hidden bg-white/50 ${imgRadius} ${imgBorder}`}>
-                      <Image fill className="object-cover group-hover:scale-105 transition-transform duration-500" alt={p.name} src={p.img} unoptimized />
-                      {p.badge && data.productLayout !== 'list' && (
-                        <span className={`absolute top-2 right-2 bg-white text-black text-[10px] font-bold px-2 py-1 uppercase tracking-wider shadow-sm ${badgeRadius}`}>
-                          {p.badge}
-                        </span>
-                      )}
-                    </div>
-                    <div className={data.productLayout === 'list' ? 'flex-1' : ''}>
-                      {p.badge && data.productLayout === 'list' && (
-                        <span className={`inline-block mb-1 border border-black/10 text-[10px] font-bold px-2 py-0.5 uppercase tracking-wider shadow-sm bg-white/50 ${badgeRadius}`} style={{ color: themeTextColor }}>
-                          {p.badge}
-                        </span>
-                      )}
-                      <h3 className="font-bold leading-tight line-clamp-2" style={{ fontSize: `${data.productTitleFontSize || 14}px`, color: themeTextColor }}>{p.name}</h3>
-                      {!data.hidePrice && (
-                        <p className="font-extrabold mt-1.5 text-sm opacity-90" style={{ color: data.shopButtonColor || themeTextColor }}>{formatRupiah(p.price)}</p>
-                      )}
-                      {data.productCtaText && (
-                        <div className={`mt-2 ${data.productLayout === 'list' ? '' : 'w-full'}`}>
-                          <span 
-                            className={`inline-block w-full text-center px-3 py-1.5 text-[11px] font-bold transition-all ${data.buttonStyle === 'pill' ? 'rounded-full' : data.buttonStyle === 'rounded' ? 'rounded-lg' : 'rounded-none'}`}
-                            style={{ 
-                              backgroundColor: data.shopButtonColor || themeTextColor, 
-                              color: data.shopTextColor || '#ffffff',
-                              boxShadow: data.buttonStyle === 'neo-brutalism' ? '2px 2px 0px rgba(0,0,0,1)' : 'none',
-                              border: data.buttonStyle === 'neo-brutalism' ? '1.5px solid black' : 'none'
-                             }}
-                          >
-                            {data.productCtaText}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  );
-                })}
-              </section>
-
-              {data.promoEnabled && (
-                <section className="px-6 mt-8 mb-12">
-                  <div className="p-6 rounded-xl relative overflow-hidden flex flex-col justify-center min-h-[160px] shadow-lg" style={{ backgroundColor: data.promoBgColor }}>
-                    <div className="relative z-10">
-                      <span className="bg-white/20 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm" style={{ color: data.promoTextColor }}>{data.promoLabel}</span>
-                      <h3 className="font-extrabold mt-2 leading-tight whitespace-pre-line" style={{ color: data.promoTextColor, fontSize: `${data.promoTitleFontSize || 24}px` }}>{data.promoTitle}</h3>
-                      <button 
-                        className={`mt-4 px-5 py-2 font-bold text-sm w-fit active:scale-95 transition-transform ${data.buttonStyle === 'pill' ? 'rounded-full' : data.buttonStyle === 'rounded' ? 'rounded-xl' : 'rounded-none'}`} 
-                        style={{ 
-                          backgroundColor: data.promoBtnBgColor, 
-                          color: data.promoBtnTextColor,
-                          boxShadow: data.buttonStyle === 'neo-brutalism' ? '4px 4px 0px rgba(0,0,0,1)' : '0 1px 3px rgba(0,0,0,0.1)',
-                          border: data.buttonStyle === 'neo-brutalism' ? '2px solid black' : 'none'
-                        }}>
-                        {data.promoButtonText}
-                      </button>
-                    </div>
-                    {/* Decorative blobs */}
-                    <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-white rounded-full opacity-20 blur-3xl pointer-events-none"></div>
-                    <div className="absolute -top-10 -left-10 w-32 h-32 bg-white rounded-full opacity-10 blur-2xl pointer-events-none"></div>
-                  </div>
-                </section>
-              )}
-
-            </div>
+            <ShopTab 
+              data={data}
+              activeCategory={activeCategory}
+              setActiveCategory={setActiveCategory}
+              filteredProducts={filteredProducts}
+              setSelectedProduct={setSelectedProduct}
+              themeTextColor={themeTextColor}
+              catBtnClass={catBtnClass}
+            />
           )}
 
         </main>

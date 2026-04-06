@@ -34,7 +34,7 @@ export default function TopBar() {
         <span className="text-xl font-black text-slate-900 md:hidden">Katalogku</span>
         <div className="hidden md:flex flex-col">
           <span className="text-on-surface-variant text-xs">Selamat Datang,</span>
-          <span className="font-bold text-lg text-on-surface">Butik Clarissa</span>
+          <span className="font-bold text-lg text-on-surface">Toko Saya</span>
         </div>
       </div>
       <div className="flex items-center gap-4">
@@ -57,7 +57,7 @@ export default function TopBar() {
             <div className="absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-outline-variant/10 py-2 z-50 animate-fade-in-down origin-top-right">
               <div className="px-4 py-3 border-b border-outline-variant/10 mb-2 md:hidden">
                 <span className="text-on-surface-variant text-xs block">Profil</span>
-                <span className="font-bold text-sm text-on-surface">Butik Clarissa</span>
+                <span className="font-bold text-sm text-on-surface">Toko Saya</span>
               </div>
               
               <div className="px-2 flex flex-col gap-0.5">

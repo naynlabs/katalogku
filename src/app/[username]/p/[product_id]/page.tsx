@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function ProductDetailPage({ params }: { params: { username: string, product_id: string } }) {
+export default async function ProductDetailPage(props: { params: Promise<{ username: string, product_id: string }> }) {
+  const params = await props.params;
   // Dummy data produk (Di dunia nyata ini diambil dari database TiDB berdasarkan product_id)
   const product = {
     name: "Special Box Kue Putu & Roti Gembong Mix",

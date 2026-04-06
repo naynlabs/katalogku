@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-export default function InvoicePage({ params }: { params: { username: string, order_id: string } }) {
+export default async function InvoicePage(props: { params: Promise<{ username: string, order_id: string }> }) {
+  const params = await props.params;
   // Dummy data invoice
   const invoice = {
     id: params.order_id,

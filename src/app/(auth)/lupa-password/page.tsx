@@ -21,7 +21,6 @@ export default function LupaPasswordPage() {
   const onSubmit = async (data: ForgotPasswordFormData) => {
     setIsLoading(true);
     // TODO: Connect to Better Auth
-    console.log("Forgot Password Request:", data);
     
     // Simulate API call
     setTimeout(() => {

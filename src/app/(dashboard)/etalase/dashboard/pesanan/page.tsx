@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from "react";
 export default function PesananPage() {
   const [activeTab, setActiveTab] = useState("Semua");
   const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
-  const [editingOrder, setEditingOrder] = useState<any>(null);
+  const [editingOrder, setEditingOrder] = useState<{ id: string; date: string; user: string; phone: string; product: string; amount: string; status: string; } | null>(null);
   
   const [orders, setOrders] = useState([
     { id: "ORD-001", date: "15 Apr 2025", user: "Budi Santoso", phone: "628123456789", product: "Glow Essentials Set", amount: "Rp 450.000", status: "Menunggu" },

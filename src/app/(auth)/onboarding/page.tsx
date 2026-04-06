@@ -189,11 +189,11 @@ export default function OnboardingPage() {
 
         <StepIndicator current={step} />
 
-        {step === 0 && <StepProfile onNext={(data) => { console.log("Step 1:", data); setStep(1); }} />}
-        {step === 1 && <StepStore onNext={(data) => { console.log("Step 2:", data); setStep(2); }} />}
+        {step === 0 && <StepProfile onNext={(data) => { setStep(1); }} />}
+        {step === 1 && <StepStore onNext={(data) => { setStep(2); }} />}
         {step === 2 && (
           <StepWhatsapp onFinish={(data) => {
-            console.log("Step 3:", data);
+            // TODO: Connect to Better Auth & save onboarding data
             window.location.href = "/etalase/dashboard";
           }} />
         )}

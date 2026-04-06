@@ -69,7 +69,7 @@ const Sidebar = memo(function Sidebar() {
 
       <div className="mt-auto space-y-2 pb-4 pt-4 border-t border-outline-variant/10">
         <Link
-          href="/butikclarissa"
+          href="/toko-saya" // TODO: Replace with dynamic user store slug from auth context
           target="_blank"
           className="flex items-center justify-center gap-2 w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-full font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all text-sm"
         >

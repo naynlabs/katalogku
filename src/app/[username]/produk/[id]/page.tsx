@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Footer from "@/components/landing/Footer"; // Gunakan Footer publik yang sudah ada
 
-export default function PublicProductDetailPage({ params }: { params: { username: string, id: string } }) {
+export default async function PublicProductDetailPage(props: { params: Promise<{ username: string, id: string }> }) {
+  const params = await props.params;
   return (
     <div className="bg-background text-on-surface antialiased min-h-screen pb-32 flex flex-col">
       {/* Top Navigation Bar */}

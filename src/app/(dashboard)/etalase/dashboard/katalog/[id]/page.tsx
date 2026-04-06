@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 
-export default function AdminProductViewPage({ params }: { params: { id: string } }) {
+export default async function AdminProductViewPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   return (
     <div className="space-y-8 pb-12">
       {/* Header & Breadcrumbs */}

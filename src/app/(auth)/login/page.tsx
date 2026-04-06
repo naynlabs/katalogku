@@ -18,7 +18,6 @@ export default function LoginPage() {
 
   const onSubmit = async (data: LoginFormData) => {
     // TODO: integrate with Better Auth
-    console.log("Login:", data);
     // Simulasi loading
     await new Promise((r) => setTimeout(r, 1000));
     window.location.href = "/etalase/dashboard";

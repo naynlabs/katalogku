@@ -30,7 +30,7 @@ export default function EditProdukPage() {
 
   const onSubmit = (data: ProductFormData) => {
     setIsSaving(true);
-    console.log("Saved Product Data:", data);
+    // TODO: Connect to API
     setTimeout(() => {
       setIsSaving(false);
       alert("Perubahan produk berhasil disimpan! (Simulasi)");

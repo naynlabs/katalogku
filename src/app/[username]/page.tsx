@@ -4,6 +4,7 @@ import { useState, use, useEffect } from "react";
 import Link from "next/link";
 import { WhatsAppIcon } from "@/components/icons";
 import Image from "next/image";
+import { formatRupiah } from "@/lib/utils";
 
 const storeData = {
   name: "Toko Kue Bunda",
@@ -27,9 +28,7 @@ const storeData = {
   ]
 };
 
-function formatRupiah(n: number) {
-  return "Rp " + n.toLocaleString("id-ID").replace(/,/g, '.');
-}
+// formatRupiah imported from @/lib/utils
 
 export default function StorefrontPage(props: { params: Promise<{ username: string }> }) {
   const params = use(props.params);
@@ -39,7 +38,7 @@ export default function StorefrontPage(props: { params: Promise<{ username: stri
   // E-commerce State
   const [cart, setCart] = useState<{ id: number; qty: number }[]>([]);
   const [showCheckout, setShowCheckout] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [selectedProduct, setSelectedProduct] = useState<typeof storeData.products[number] | null>(null);
   const [checkoutForm, setCheckoutForm] = useState({ name: "", phone: "", address: "", notes: "" });
 
   // Modal State
@@ -64,10 +63,13 @@ export default function StorefrontPage(props: { params: Promise<{ username: stri
     ? storeData.products
     : storeData.products.filter((p) => p.cat === activeCategory);
 
-  const cartItems = cart.map((c) => {
-    const product = storeData.products.find((p) => p.id === c.id)!;
-    return { ...product, qty: c.qty };
-  });
+  const cartItems = cart
+    .map((c) => {
+      const product = storeData.products.find((p) => p.id === c.id);
+      if (!product) return null;
+      return { ...product, qty: c.qty };
+    })
+    .filter((item): item is typeof storeData.products[number] & { qty: number } => item !== null);
   const totalItems = cart.reduce((sum, c) => sum + c.qty, 0);
   const totalPrice = cartItems.reduce((sum, c) => sum + c.price * c.qty, 0);
 

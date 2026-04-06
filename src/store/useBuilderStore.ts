@@ -82,7 +82,7 @@ interface BuilderState {
   links: StoreLink[];
   socials: SocialLink[];
   // Actions
-  setProfileField: (field: keyof StoreProfile, value: any) => void;
+  setProfileField: <K extends keyof StoreProfile>(field: K, value: StoreProfile[K]) => void;
   applyTheme: (themeConfig: Partial<StoreProfile>) => void;
   updateLink: (id: string, updates: Partial<StoreLink>) => void;
   addLink: (link: StoreLink) => void;

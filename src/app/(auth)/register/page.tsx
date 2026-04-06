@@ -18,7 +18,7 @@ export default function RegisterPage() {
   });
 
   const onSubmit = async (data: RegisterFormData) => {
-    console.log("Register:", data);
+    // TODO: Connect to Better Auth
     await new Promise((r) => setTimeout(r, 1000));
     window.location.href = "/onboarding";
   };

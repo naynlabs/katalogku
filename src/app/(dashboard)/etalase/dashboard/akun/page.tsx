@@ -37,7 +37,6 @@ export default function AkunPage() {
   const onSaveEmail = async (data: ChangeEmailFormData) => {
     setIsUpdatingEmail(true);
     // TODO: Connect to Better Auth
-    console.log("Save Email:", data);
     setTimeout(() => {
       alert("Email berhasil diperbarui (Simulasi)");
       setIsUpdatingEmail(false);
@@ -47,7 +46,6 @@ export default function AkunPage() {
   const onUpdatePassword = async (data: ChangePasswordFormData) => {
     setIsUpdatingPassword(true);
     // TODO: Connect to Better Auth
-    console.log("Update Password:", data);
     setTimeout(() => {
       alert("Kata sandi berhasil diganti (Simulasi)");
       resetPasswordForm();

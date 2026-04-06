@@ -22,7 +22,6 @@ export default function ResetPasswordPage() {
   const onSubmit = async (data: ResetPasswordFormData) => {
     setIsLoading(true);
     // TODO: Connect to Better Auth
-    console.log("Reset Password Data:", data);
     
     // Simulate API call
     setTimeout(() => {
