@@ -230,7 +230,7 @@ export default function DashboardOverview() {
               <h3 className="text-lg font-bold text-on-surface">Produk Terpopuler</h3>
               <p className="text-xs text-on-surface-variant mt-0.5">Berdasarkan kunjungan dan klik tertinggi</p>
             </div>
-            <Link href="/dashboard/katalog" className="text-primary font-bold text-xs hover:underline">Lihat Semua</Link>
+            <Link href="/etalase/dashboard/katalog" className="text-primary font-bold text-xs hover:underline">Lihat Semua</Link>
           </div>
           {/* Table Header */}
           <div className="hidden sm:grid grid-cols-12 text-xs font-bold text-on-surface-variant uppercase tracking-wider px-3 pb-3 border-b border-outline-variant/10">
@@ -264,7 +264,7 @@ export default function DashboardOverview() {
               <h3 className="text-lg font-bold text-on-surface">Pesanan Terbaru</h3>
               <p className="text-xs text-on-surface-variant mt-0.5">Masuk melalui WhatsApp</p>
             </div>
-            <Link href="/dashboard/pesanan" className="text-primary font-bold text-xs hover:underline">Lihat Semua</Link>
+            <Link href="/etalase/dashboard/pesanan" className="text-primary font-bold text-xs hover:underline">Lihat Semua</Link>
           </div>
           <div className="space-y-3">
             {RECENT_ORDERS.map((o) => {
@@ -305,7 +305,7 @@ export default function DashboardOverview() {
               <h3 className="text-lg font-bold text-on-surface">Link Paling Diklik</h3>
               <p className="text-xs text-on-surface-variant mt-0.5">Dari tab Links di etalase</p>
             </div>
-            <Link href="/dashboard/links" className="text-primary font-bold text-xs hover:underline">Kelola</Link>
+            <Link href="/etalase/dashboard/links" className="text-primary font-bold text-xs hover:underline">Kelola</Link>
           </div>
           <div className="space-y-3">
             {TOP_LINKS.map((l, i) => (

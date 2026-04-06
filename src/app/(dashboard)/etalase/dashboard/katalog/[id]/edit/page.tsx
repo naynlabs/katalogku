@@ -43,7 +43,7 @@ export default function EditProdukPage() {
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">
           <Link
-            href="/dashboard/katalog"
+            href="/etalase/dashboard/katalog"
             className="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high transition-colors"
           >
             <span className="material-symbols-outlined text-on-surface">arrow_back</span>
@@ -53,7 +53,7 @@ export default function EditProdukPage() {
               Edit Produk: Jaket Denim
             </h1>
             <nav className="hidden md:flex items-center gap-2 mt-1 text-sm text-on-surface-variant font-medium">
-              <Link href="/dashboard/katalog" className="hover:text-primary transition-colors">
+              <Link href="/etalase/dashboard/katalog" className="hover:text-primary transition-colors">
                 Produk Saya
               </Link>
               <span className="material-symbols-outlined text-xs">chevron_right</span>

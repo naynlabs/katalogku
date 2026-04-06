@@ -6,16 +6,16 @@ import { usePathname } from "next/navigation";
 import { memo } from "react";
 
 const mainNavItems = [
-  { icon: "dashboard", label: "Overview", href: "/dashboard" },
-  { icon: "receipt_long", label: "Pesanan", href: "/dashboard/pesanan" },
-  { icon: "group", label: "Audiens", href: "/dashboard/audiens" },
-  { icon: "analytics", label: "Analitik", href: "/dashboard/analytics" },
+  { icon: "dashboard", label: "Overview", href: "/etalase/dashboard" },
+  { icon: "receipt_long", label: "Pesanan", href: "/etalase/dashboard/pesanan" },
+  { icon: "group", label: "Audiens", href: "/etalase/dashboard/audiens" },
+  { icon: "analytics", label: "Analitik", href: "/etalase/dashboard/analytics" },
 ];
 
 const storeNavItems = [
-  { icon: "inventory_2", label: "Katalog", href: "/dashboard/katalog" },
-  { icon: "category", label: "Kategori", href: "/dashboard/kategori" },
-  { icon: "link", label: "Links", href: "/dashboard/links" },
+  { icon: "inventory_2", label: "Katalog", href: "/etalase/dashboard/katalog" },
+  { icon: "category", label: "Kategori", href: "/etalase/dashboard/kategori" },
+  { icon: "link", label: "Links", href: "/etalase/dashboard/links" },
 ];
 
 function NavSection({ title, items, pathname }: { title: string; items: typeof mainNavItems; pathname: string }) {

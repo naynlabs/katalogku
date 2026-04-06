@@ -194,7 +194,7 @@ export default function OnboardingPage() {
         {step === 2 && (
           <StepWhatsapp onFinish={(data) => {
             console.log("Step 3:", data);
-            window.location.href = "/dashboard";
+            window.location.href = "/etalase/dashboard";
           }} />
         )}
 

@@ -6,7 +6,7 @@ export default function TambahProdukPage() {
       {/* Header */}
       <div className="flex items-center gap-4 mb-8">
         <Link
-          href="/dashboard/katalog"
+          href="/etalase/dashboard/katalog"
           className="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high transition-colors"
         >
           <span className="material-symbols-outlined text-on-surface">arrow_back</span>
@@ -16,7 +16,7 @@ export default function TambahProdukPage() {
             Tambah Produk Baru
           </h2>
           <nav className="hidden md:flex gap-2 text-xs text-on-surface-variant font-medium mt-1">
-            <Link href="/dashboard/katalog" className="hover:underline">
+            <Link href="/etalase/dashboard/katalog" className="hover:underline">
               Produk Saya
             </Link>
             <span>/</span>
@@ -166,7 +166,7 @@ export default function TambahProdukPage() {
       {/* Sticky Bottom Actions */}
       <div className="fixed bottom-0 left-0 md:left-64 right-0 bg-white/90 backdrop-blur-xl border-t border-outline-variant/10 px-6 py-4 flex items-center justify-between z-40">
         <Link
-          href="/dashboard/katalog"
+          href="/etalase/dashboard/katalog"
           className="px-6 py-3 text-sm font-bold text-on-surface-variant hover:text-error transition-colors"
         >
           Batal

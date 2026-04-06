@@ -36,7 +36,7 @@ export default function KatalogPage() {
               <input className="w-full pl-12 pr-4 py-3 bg-surface-container-lowest border-none rounded-full ring-1 ring-outline-variant/15 focus:ring-primary/40 focus:ring-2 shadow-sm transition-all text-sm outline-none" placeholder="Cari nama produk..." type="text" />
             </div>
             <Link 
-              href="/dashboard/katalog/tambah"
+              href="/etalase/dashboard/katalog/tambah"
               className="w-full sm:w-auto px-8 py-3 bg-gradient-to-br from-primary to-primary-container text-white rounded-full font-bold shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2"
             >
               <span className="material-symbols-outlined text-sm">add</span>
@@ -72,7 +72,7 @@ export default function KatalogPage() {
               <p className="text-primary font-bold text-xl mb-4 flex-1">{p.price}</p>
               <div className="flex items-center gap-2 pt-2 border-t border-outline-variant/10">
                 <Link 
-                  href="/dashboard/katalog/1/edit"
+                  href="/etalase/dashboard/katalog/1/edit"
                   className="flex-1 flex items-center justify-center gap-1 py-2 bg-surface-container-low text-on-surface-variant rounded-full text-xs font-bold hover:bg-primary-fixed transition-colors"
                 >
                   <span className="material-symbols-outlined text-sm">edit</span> Edit
@@ -89,7 +89,7 @@ export default function KatalogPage() {
 
           {/* Empty State / Add */}
           <Link 
-            href="/dashboard/katalog/tambah"
+            href="/etalase/dashboard/katalog/tambah"
             className="border-2 border-dashed border-outline-variant rounded-xl flex flex-col items-center justify-center p-8 text-center bg-surface-container-low/30 hover:bg-surface-container-low transition-colors cursor-pointer group min-h-[400px]"
           >
             <div className="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">

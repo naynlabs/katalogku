@@ -21,11 +21,11 @@ export default function TopBar() {
   }, []);
 
   const menuItems = [
-    { icon: "text_fields", label: "Teks & Konten", href: "/dashboard/teks-toko" },
-    { icon: "settings", label: "Pengaturan Toko", href: "/dashboard/pengaturan" },
-    { icon: "security", label: "Keamanan Akun", href: "/dashboard/akun" },
-    { icon: "credit_card", label: "Langganan", href: "/dashboard/billing" },
-    { icon: "support_agent", label: "Bantuan", href: "/dashboard/bantuan" },
+    { icon: "text_fields", label: "Teks & Konten", href: "/etalase/dashboard/teks-toko" },
+    { icon: "settings", label: "Pengaturan Toko", href: "/etalase/dashboard/pengaturan" },
+    { icon: "security", label: "Keamanan Akun", href: "/etalase/dashboard/akun" },
+    { icon: "credit_card", label: "Langganan", href: "/etalase/dashboard/billing" },
+    { icon: "support_agent", label: "Bantuan", href: "/etalase/dashboard/bantuan" },
   ];
 
   return (

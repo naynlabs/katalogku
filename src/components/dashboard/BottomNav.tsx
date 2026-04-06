@@ -5,21 +5,21 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const primaryNavItems = [
-  { icon: "grid_view", label: "Home", href: "/dashboard" },
-  { icon: "inventory_2", label: "Katalog", href: "/dashboard/katalog" },
-  { icon: "link", label: "Links", href: "/dashboard/links" },
-  { icon: "receipt_long", label: "Pesanan", href: "/dashboard/pesanan" },
+  { icon: "grid_view", label: "Home", href: "/etalase/dashboard" },
+  { icon: "inventory_2", label: "Katalog", href: "/etalase/dashboard/katalog" },
+  { icon: "link", label: "Links", href: "/etalase/dashboard/links" },
+  { icon: "receipt_long", label: "Pesanan", href: "/etalase/dashboard/pesanan" },
 ];
 
 const moreMenuItems = [
-  { icon: "analytics", label: "Analitik", href: "/dashboard/analytics" },
-  { icon: "category", label: "Kategori", href: "/dashboard/kategori" },
-  { icon: "palette", label: "Tampilan", href: "/dashboard/tampilan" },
-  { icon: "text_fields", label: "Teks & Konten", href: "/dashboard/teks-toko" },
-  { icon: "settings", label: "Pengaturan", href: "/dashboard/pengaturan" },
-  { icon: "security", label: "Keamanan Akun", href: "/dashboard/akun" },
-  { icon: "credit_card", label: "Langganan", href: "/dashboard/billing" },
-  { icon: "support_agent", label: "Bantuan", href: "/dashboard/bantuan" },
+  { icon: "analytics", label: "Analitik", href: "/etalase/dashboard/analytics" },
+  { icon: "category", label: "Kategori", href: "/etalase/dashboard/kategori" },
+  { icon: "palette", label: "Tampilan", href: "/etalase/dashboard/tampilan" },
+  { icon: "text_fields", label: "Teks & Konten", href: "/etalase/dashboard/teks-toko" },
+  { icon: "settings", label: "Pengaturan", href: "/etalase/dashboard/pengaturan" },
+  { icon: "security", label: "Keamanan Akun", href: "/etalase/dashboard/akun" },
+  { icon: "credit_card", label: "Langganan", href: "/etalase/dashboard/billing" },
+  { icon: "support_agent", label: "Bantuan", href: "/etalase/dashboard/bantuan" },
 ];
 
 export default function BottomNav() {

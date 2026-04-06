@@ -6,7 +6,7 @@ export default function AdminProductViewPage({ params }: { params: { id: string 
     <div className="space-y-8 pb-12">
       {/* Header & Breadcrumbs */}
       <nav className="flex items-center gap-2 text-sm text-on-surface-variant font-medium mb-4">
-        <Link href="/dashboard/katalog" className="hover:text-primary transition-colors">
+        <Link href="/etalase/dashboard/katalog" className="hover:text-primary transition-colors">
           Produk Saya
         </Link>
         <span className="material-symbols-outlined text-sm">chevron_right</span>
@@ -34,7 +34,7 @@ export default function AdminProductViewPage({ params }: { params: { id: string 
             Lihat Sebagai Pembeli
           </button>
           <Link
-            href={`/dashboard/katalog/${params.id}/edit`}
+            href={`/etalase/dashboard/katalog/${params.id}/edit`}
             className="flex-1 md:flex-none px-8 py-3 rounded-full bg-gradient-to-br from-primary to-primary-container text-white font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2"
           >
             <span className="material-symbols-outlined">edit</span>

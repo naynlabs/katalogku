@@ -21,7 +21,7 @@ export default function LoginPage() {
     console.log("Login:", data);
     // Simulasi loading
     await new Promise((r) => setTimeout(r, 1000));
-    window.location.href = "/dashboard";
+    window.location.href = "/etalase/dashboard";
   };
 
   return (
