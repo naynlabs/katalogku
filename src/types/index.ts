@@ -24,7 +24,7 @@ export type CartItemWithProduct = Product & {
 
 /** Link item in storefront */
 export type StorefrontLink = {
-  type: "image" | "icon";
+  type: "image" | "icon" | "divider";
   image?: string;
   icon?: string;
   iconBg?: string;
@@ -33,6 +33,8 @@ export type StorefrontLink = {
   url: string;
   openInNewTab?: boolean;
   isVisible?: boolean;
+  isFeatured?: boolean;
+  animation?: "none" | "pulse" | "bounce" | "glow";
 };
 
 /** Social media link */
@@ -69,6 +71,7 @@ export type StoreProfile = {
   buttonStyle: 'pill' | 'rounded' | 'square' | 'neo-brutalism';
   productImageStyle: 'pill' | 'rounded' | 'square' | 'neo-brutalism';
   productLayout: 'grid' | 'list';
+  storeLayout: 'tabs' | 'continuous';
   
   linkButtonColor: string;
   linkTextColor: string;
@@ -86,6 +89,7 @@ export type StoreProfile = {
   // Product Specific
   hidePrice: boolean;
   productCtaText: string;
+  hideWatermark: boolean;
 
   // Promo Banner
   promoEnabled: boolean;

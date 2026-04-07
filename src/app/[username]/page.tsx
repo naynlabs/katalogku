@@ -90,7 +90,12 @@ export default function StorefrontPage(props: { params: Promise<{ username: stri
     const { name, phone, address, notes } = checkoutForm;
     const lines = cartItems.map((c) => `• ${c.name} x${c.qty} = ${formatRupiah(c.price * c.qty)}`);
     const buyerInfo = `\n👤 *Info Pemesan:*\n- Nama: ${name || '-'}\n- No. HP: ${phone || '-'}\n- Alamat: ${address || '-'}\n- Catatan: ${notes || '-'}`;
-    const msg = `Halo ${storeData.name}! 🛍️\nSaya ingin memesan:\n${lines.join("\n")}\n\n*Total Tagihan: ${formatRupiah(totalPrice)}*\n${buyerInfo}\n\nTerima kasih!`;
+    
+    // Generate unique invoice ID
+    const invoiceId = `INV-${Date.now().toString(36).toUpperCase()}`;
+    const invoiceUrl = `${window.location.origin}/${params.username}/invoice/${invoiceId}`;
+    
+    const msg = `Halo ${storeData.name}! 🛍️\nSaya ingin memesan:\n${lines.join("\n")}\n\n*Total Tagihan: ${formatRupiah(totalPrice)}*\n${buyerInfo}\n\n🧾 *Struk Digital:*\n${invoiceUrl}\n\nTerima kasih!`;
     const url = `https://wa.me/${storeData.wa.replace(/\D/g, "")}?text=${encodeURIComponent(msg)}`;
     window.open(url, "_blank");
   }

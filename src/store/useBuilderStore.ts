@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 export type StoreLink = {
   id: string;
-  type: "image" | "icon";
+  type: "image" | "icon" | "divider";
   image?: string;
   icon?: string;
   iconBg?: string;
@@ -12,6 +12,8 @@ export type StoreLink = {
   openInNewTab?: boolean;
   isDeepLink?: boolean;
   isVisible?: boolean;
+  isFeatured?: boolean;
+  animation?: "none" | "pulse" | "bounce" | "glow";
 };
 
 export type SocialLink = {
@@ -46,6 +48,7 @@ export type StoreProfile = {
   buttonStyle: 'pill' | 'rounded' | 'square' | 'neo-brutalism';
   productImageStyle: 'pill' | 'rounded' | 'square' | 'neo-brutalism';
   productLayout: 'grid' | 'list';
+  storeLayout: 'tabs' | 'continuous';
   
   linkButtonColor: string;
   linkTextColor: string;
@@ -63,6 +66,7 @@ export type StoreProfile = {
   // Product Specific
   hidePrice: boolean;
   productCtaText: string;
+  hideWatermark: boolean;
 
   // Promo Banner
   promoEnabled: boolean;
@@ -87,6 +91,7 @@ interface BuilderState {
   updateLink: (id: string, updates: Partial<StoreLink>) => void;
   addLink: (link: StoreLink) => void;
   removeLink: (id: string) => void;
+  duplicateLink: (id: string) => void;
   reorderLinks: (newLinks: StoreLink[]) => void;
   addSocial: (social: SocialLink) => void;
   removeSocial: (id: string) => void;
@@ -117,6 +122,7 @@ export const useBuilderStore = create<BuilderState>((set) => ({
     buttonStyle: 'rounded',
     productImageStyle: 'rounded',
     productLayout: 'grid',
+    storeLayout: 'tabs',
     linkButtonColor: '#ffffff',
     linkTextColor: '#191c1e',
     shopButtonColor: '#4f46e5',
@@ -133,6 +139,7 @@ export const useBuilderStore = create<BuilderState>((set) => ({
     // Product Specific (New Additions)
     hidePrice: false,
     productCtaText: 'Detail',
+    hideWatermark: false,
     
     // Default Promo
     promoEnabled: true,
@@ -164,8 +171,19 @@ export const useBuilderStore = create<BuilderState>((set) => ({
     links: state.links.map(l => l.id === id ? { ...l, ...updates } : l)
   })),
   addLink: (link) => set((state) => ({ links: [...state.links, link] })),
-  removeLink: (id) => set((state) => ({ links: state.links.filter(l => l.id !== id) })),
-  reorderLinks: (newLinks) => set({ links: newLinks }),
+  removeLink: (id) =>
+    set((state) => ({ links: state.links.filter((l) => l.id !== id) })),
+  duplicateLink: (id) =>
+    set((state) => {
+      const index = state.links.findIndex((l) => l.id === id);
+      if (index === -1) return state;
+      const linkToDuplicate = state.links[index];
+      const newLink = { ...linkToDuplicate, id: Date.now().toString() };
+      const newLinks = [...state.links];
+      newLinks.splice(index + 1, 0, newLink);
+      return { links: newLinks };
+    }),
+  reorderLinks: (newLinks) => set(() => ({ links: newLinks })),
   
   addSocial: (social) => set((state) => ({ socials: [...state.socials, social] })),
   removeSocial: (id) => set((state) => ({ socials: state.socials.filter(s => s.id !== id) })),

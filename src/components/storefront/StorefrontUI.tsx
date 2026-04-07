@@ -70,7 +70,13 @@ export default function StorefrontUI({ data, disableCheckout = false }: { data: 
     const { name, phone, address, notes } = checkoutForm;
     const lines = cartItems.map((c: any) => `• ${c.name} x${c.qty} = ${formatRupiah(c.price * c.qty)}`);
     const buyerInfo = `\n👤 *Info Pemesan:*\n- Nama: ${name || '-'}\n- No. HP: ${phone || '-'}\n- Alamat: ${address || '-'}\n- Catatan: ${notes || '-'}`;
-    const msg = `Halo ${data.name}! 🛍️\nSaya ingin memesan:\n${lines.join("\n")}\n\n*Total Tagihan: ${formatRupiah(totalPrice)}*\n${buyerInfo}\n\nTerima kasih!`;
+    
+    // Generate unique invoice ID & link
+    const invoiceId = `INV-${Date.now().toString(36).toUpperCase()}`;
+    const storeName = (data as any).username || 'toko';
+    const invoiceUrl = `${window.location.origin}/${storeName}/invoice/${invoiceId}`;
+    
+    const msg = `Halo ${data.name}! 🛍️\nSaya ingin memesan:\n${lines.join("\n")}\n\n*Total Tagihan: ${formatRupiah(totalPrice)}*\n${buyerInfo}\n\n🧾 *Struk Digital:*\n${invoiceUrl}\n\nTerima kasih!`;
     const url = `https://wa.me/${data.wa.replace(/\D/g, "")}?text=${encodeURIComponent(msg)}`;
     window.open(url, "_blank");
   }
@@ -212,49 +218,88 @@ export default function StorefrontUI({ data, disableCheckout = false }: { data: 
             </div>
           </section>
 
-          <nav className="mt-8 px-6 mb-8 max-w-sm mx-auto w-full">
-            <div className={`p-1 px-1.5 flex gap-1 w-full ${data.buttonStyle === 'pill' ? 'rounded-full' : data.buttonStyle === 'rounded' ? 'rounded-2xl' : data.buttonStyle === 'neo-brutalism' ? 'rounded-none border-2 border-black bg-white shadow-[4px_4px_0px_#000]' : 'rounded-lg'}`} style={{ backgroundColor: data.buttonStyle === 'neo-brutalism' ? 'white' : 'rgba(0,0,0,0.05)' }}>
-              <button 
-                onClick={() => setActiveTab("Shop")}
-                className={`flex-1 py-1.5 font-bold text-sm transition-all ${data.buttonStyle === 'pill' ? 'rounded-full' : data.buttonStyle === 'rounded' ? 'rounded-xl' : 'rounded-none'}`}
-                style={{ 
-                  backgroundColor: activeTab === "Shop" ? data.shopButtonColor : 'transparent',
-                  color: activeTab === "Shop" ? data.shopTextColor : themeTextMuted,
-                  boxShadow: activeTab === "Shop" && data.buttonStyle !== 'neo-brutalism' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
-                }}
-              >
-                Shop
-              </button>
-              <button 
-                onClick={() => setActiveTab("Links")}
-                className={`flex-1 py-1.5 font-bold text-sm transition-all ${data.buttonStyle === 'pill' ? 'rounded-full' : data.buttonStyle === 'rounded' ? 'rounded-xl' : 'rounded-none'}`}
-                style={{ 
-                  backgroundColor: activeTab === "Links" ? data.shopButtonColor : 'transparent',
-                  color: activeTab === "Links" ? data.shopTextColor : themeTextMuted,
-                  boxShadow: activeTab === "Links" && data.buttonStyle !== 'neo-brutalism' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
-                }}
-              >
-                Links
-              </button>
-            </div>
-          </nav>
-
-          {/* --- LINKS TAB CONTENT --- */}
-          {activeTab === "Links" && (
-            <LinksTab data={data} baseBtnClass={baseBtnClass} />
+          {data.storeLayout !== 'continuous' && (
+            <nav className="mt-8 px-6 mb-8 max-w-sm mx-auto w-full">
+              <div className={`p-1 px-1.5 flex gap-1 w-full ${data.buttonStyle === 'pill' ? 'rounded-full' : data.buttonStyle === 'rounded' ? 'rounded-2xl' : data.buttonStyle === 'neo-brutalism' ? 'rounded-none border-2 border-black bg-white shadow-[4px_4px_0px_#000]' : 'rounded-lg'}`} style={{ backgroundColor: data.buttonStyle === 'neo-brutalism' ? 'white' : 'rgba(0,0,0,0.05)' }}>
+                <button 
+                  onClick={() => setActiveTab("Shop")}
+                  className={`flex-1 py-1.5 font-bold text-sm transition-all ${data.buttonStyle === 'pill' ? 'rounded-full' : data.buttonStyle === 'rounded' ? 'rounded-xl' : 'rounded-none'}`}
+                  style={{ 
+                    backgroundColor: activeTab === "Shop" ? data.shopButtonColor : 'transparent',
+                    color: activeTab === "Shop" ? data.shopTextColor : themeTextMuted,
+                    boxShadow: activeTab === "Shop" && data.buttonStyle !== 'neo-brutalism' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
+                  }}
+                >
+                  Shop
+                </button>
+                <button 
+                  onClick={() => setActiveTab("Links")}
+                  className={`flex-1 py-1.5 font-bold text-sm transition-all ${data.buttonStyle === 'pill' ? 'rounded-full' : data.buttonStyle === 'rounded' ? 'rounded-xl' : 'rounded-none'}`}
+                  style={{ 
+                    backgroundColor: activeTab === "Links" ? data.shopButtonColor : 'transparent',
+                    color: activeTab === "Links" ? data.shopTextColor : themeTextMuted,
+                    boxShadow: activeTab === "Links" && data.buttonStyle !== 'neo-brutalism' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none'
+                  }}
+                >
+                  Links
+                </button>
+              </div>
+            </nav>
           )}
 
-          {/* --- SHOP TAB CONTENT --- */}
-          {activeTab === "Shop" && (
-            <ShopTab 
-              data={data}
-              activeCategory={activeCategory}
-              setActiveCategory={setActiveCategory}
-              filteredProducts={filteredProducts}
-              setSelectedProduct={setSelectedProduct}
-              themeTextColor={themeTextColor}
-              catBtnClass={catBtnClass}
-            />
+          {data.storeLayout === 'continuous' ? (
+            <div className="flex flex-col mt-10">
+              {/* Show Links First */}
+              <div className="mb-10">
+                <LinksTab data={data} baseBtnClass={baseBtnClass} />
+              </div>
+              {/* Show Shop Second (with a title separator if not empty) */}
+              {products.length > 0 && (
+                <div className="relative">
+                  <div className="absolute inset-x-0 top-1/2 h-px bg-black/5"></div>
+                  <div className="relative flex justify-center mb-6">
+                    <span className="bg-[#f8f9fa] px-4 text-[10px] font-bold tracking-widest uppercase" style={{ color: themeTextMuted }}>PRODUK KAMI</span>
+                  </div>
+                  <ShopTab 
+                    data={data}
+                    activeCategory={activeCategory}
+                    setActiveCategory={setActiveCategory}
+                    filteredProducts={filteredProducts}
+                    setSelectedProduct={setSelectedProduct}
+                    themeTextColor={themeTextColor}
+                    catBtnClass={catBtnClass}
+                  />
+                </div>
+              )}
+            </div>
+          ) : (
+            <>
+              {/* --- LINKS TAB CONTENT --- */}
+              {activeTab === "Links" && (
+                <LinksTab data={data} baseBtnClass={baseBtnClass} />
+              )}
+
+              {/* --- SHOP TAB CONTENT --- */}
+              {activeTab === "Shop" && (
+                <ShopTab 
+                  data={data}
+                  activeCategory={activeCategory}
+                  setActiveCategory={setActiveCategory}
+                  filteredProducts={filteredProducts}
+                  setSelectedProduct={setSelectedProduct}
+                  themeTextColor={themeTextColor}
+                  catBtnClass={catBtnClass}
+                />
+              )}
+            </>
+          )}
+
+          {/* Watermark Katalogku */}
+          {data.hideWatermark === false && (
+            <div className="w-full py-8 mt-4 flex flex-col items-center justify-center opacity-60 hover:opacity-100 transition-opacity pb-24">
+              <span className="text-[10px] font-medium mb-1.5" style={{ color: themeTextMuted }}>Powered by</span>
+              <Image src="/logo-baru.png" alt="Katalogku Logo" width={90} height={24} className="grayscale hover:grayscale-0 transition-all object-contain" />
+            </div>
           )}
 
         </main>

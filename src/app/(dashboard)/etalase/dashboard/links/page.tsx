@@ -81,7 +81,7 @@ export default function LinksPage() {
     <div className="w-full h-full min-h-[calc(100vh-8rem)] flex flex-col xl:flex-row gap-6">
       
       {/* 1. LEFT PANEL: Blocks & Links Management */}
-      <div className="w-full xl:w-[340px] shrink-0 flex flex-col gap-6 hide-scrollbar overflow-y-auto max-h-[85vh] xl:pl-4 pl-0 pr-2 pb-10">
+      <div className="w-full xl:w-[460px] shrink-0 flex flex-col gap-6 hide-scrollbar overflow-y-auto max-h-[85vh] xl:pl-6 pl-0 pr-4 pb-12">
         
         {/* Info Toko (Identitas) */}
         <section className="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/20 shadow-sm mt-1">
@@ -210,20 +210,37 @@ export default function LinksPage() {
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-bold text-on-surface">Tambah Komponen</h3>
           </div>
-          <button 
-            onClick={() => {
-              store.addLink({ id: Date.now().toString(), type: 'icon', label: '', url: '', icon: 'link' });
-            }}
-            className="w-full flex items-center gap-3 py-3 px-4 rounded-xl border border-outline-variant/20 bg-surface-container-lowest hover:border-[#4f46e5]/50 hover:bg-[#4f46e5]/5 text-on-surface transition-all active:scale-95 group"
-          >
-            <div className="w-10 h-10 rounded-full bg-surface-container-low group-hover:bg-white flex items-center justify-center transition-colors">
-              <span className="material-symbols-outlined text-[20px] text-on-surface-variant group-hover:text-[#4f46e5]">add_link</span>
-            </div>
-            <div className="text-left">
-              <span className="text-sm font-bold block leading-tight">Tautan Standar Baru</span>
-              <span className="text-[10px] text-on-surface-variant">Tambahkan menu link dengan ikon custom.</span>
-            </div>
-          </button>
+          <div className="flex flex-col gap-2">
+            <button 
+              onClick={() => {
+                store.addLink({ id: Date.now().toString(), type: 'icon', label: '', url: '', icon: 'link' });
+              }}
+              className="w-full flex items-center gap-3 py-3 px-4 rounded-xl border border-outline-variant/20 bg-surface-container-lowest hover:border-[#4f46e5]/50 hover:bg-[#4f46e5]/5 text-on-surface transition-all active:scale-95 group"
+            >
+              <div className="w-10 h-10 rounded-full bg-surface-container-low group-hover:bg-white flex items-center justify-center transition-colors">
+                <span className="material-symbols-outlined text-[20px] text-on-surface-variant group-hover:text-[#4f46e5]">add_link</span>
+              </div>
+              <div className="text-left">
+                <span className="text-sm font-bold block leading-tight">Tautan Standar Baru</span>
+                <span className="text-[10px] text-on-surface-variant">Tambahkan menu link dengan ikon custom.</span>
+              </div>
+            </button>
+
+            <button 
+              onClick={() => {
+                store.addLink({ id: Date.now().toString(), type: 'divider', label: '', url: '' });
+              }}
+              className="w-full flex items-center gap-3 py-3 px-4 rounded-xl border border-outline-variant/20 bg-surface-container-lowest hover:border-[#4f46e5]/50 hover:bg-[#4f46e5]/5 text-on-surface transition-all active:scale-95 group"
+            >
+              <div className="w-10 h-10 rounded-full bg-surface-container-low group-hover:bg-white flex items-center justify-center transition-colors">
+                <span className="material-symbols-outlined text-[20px] text-on-surface-variant group-hover:text-[#4f46e5]">horizontal_rule</span>
+              </div>
+              <div className="text-left">
+                <span className="text-sm font-bold block leading-tight">Pemisah / Judul Baru</span>
+                <span className="text-[10px] text-on-surface-variant">Tambahkan teks pembatas untuk merapikan tautan.</span>
+              </div>
+            </button>
+          </div>
         </section>
 
         {/* Tautan Aktif (Links Management with Dnd-Kit) */}
@@ -782,6 +799,19 @@ export default function LinksPage() {
                 </div>
 
                 <div>
+                  <label className="text-[11px] font-bold text-on-surface-variant mb-1.5 block">Struktur Tampilan Layar</label>
+                  <div className="flex bg-surface-container-low p-1 rounded-xl border border-outline-variant/30">
+                     <button onClick={() => store.setProfileField('storeLayout', 'tabs')} className={`flex-1 flex gap-2 justify-center items-center py-2.5 rounded-lg text-[11px] font-bold transition-all ${store.profile.storeLayout === 'tabs' ? 'bg-white shadow-sm text-primary' : 'text-on-surface-variant hover:text-on-surface'}`}>
+                       <span className="material-symbols-outlined text-[16px]">tab</span> Terpisah (Tab)
+                     </button>
+                     <button onClick={() => store.setProfileField('storeLayout', 'continuous')} className={`flex-1 flex gap-2 justify-center items-center py-2.5 rounded-lg text-[11px] font-bold transition-all ${store.profile.storeLayout === 'continuous' ? 'bg-white shadow-sm text-primary' : 'text-on-surface-variant hover:text-on-surface'}`}>
+                       <span className="material-symbols-outlined text-[16px]">view_agenda</span> Menyatu Kebawah
+                     </button>
+                  </div>
+                  <p className="text-[9px] text-on-surface-variant mt-1.5 px-1 font-medium">Bisa memisahkan tab Shop & Links, atau gabung langsung memanjang kebawah.</p>
+                </div>
+
+                <div>
                   <label className="text-[11px] font-bold text-on-surface-variant mb-1.5 block">Layout Etalase</label>
                   <div className="flex bg-surface-container-low p-1 rounded-xl border border-outline-variant/30">
                      <button onClick={() => store.setProfileField('productLayout', 'grid')} className={`flex-1 flex gap-2 justify-center items-center py-2.5 rounded-lg text-[11px] font-bold transition-all ${store.profile.productLayout === 'grid' ? 'bg-white shadow-sm text-primary' : 'text-on-surface-variant hover:text-on-surface'}`}>
@@ -817,6 +847,31 @@ export default function LinksPage() {
               </div>
             </section>
 
+
+            <hr className="my-6 border-dashed border-outline-variant/40" />
+
+            {/* Branding Settings Section */}
+            <section>
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-bold text-on-surface text-sm">Branding (Pro)</h3>
+              </div>
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center justify-between p-3 bg-surface-container-low border border-outline-variant/30 rounded-xl relative overflow-hidden group">
+                  {/* Efek premium */}
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-[#ffd700]/10 rounded-full blur-xl -mr-8 -mt-8 pointer-events-none group-hover:scale-150 transition-transform duration-500"></div>
+                  
+                  <div className="relative z-10 flex flex-col">
+                    <label className="text-[11px] font-bold text-on-surface flex items-center gap-1.5"><span className="material-symbols-outlined text-[14px] text-[#ffd700]" style={{ fontVariationSettings: "'FILL' 1" }}>stars</span> Hapus Watermark</label>
+                    <span className="text-[9px] text-on-surface-variant mt-0.5">Sembunyikan logo Katalogku.</span>
+                  </div>
+                  
+                  <label className="relative inline-flex items-center cursor-pointer shrink-0 z-10">
+                    <input type="checkbox" className="sr-only peer" checked={store.profile.hideWatermark} onChange={(e) => store.setProfileField('hideWatermark', e.target.checked)} />
+                    <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#4f46e5]" />
+                  </label>
+                </div>
+              </div>
+            </section>
 
             {/* Tombol Simpan */}
             <section className="mt-4 border-t border-outline-variant/20 pt-6 flex flex-col gap-2">
