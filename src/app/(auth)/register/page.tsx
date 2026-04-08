@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema, type RegisterFormData } from "@/lib/validations";
 
 export default function RegisterPage() {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const {
     register: reg,
@@ -20,7 +22,7 @@ export default function RegisterPage() {
   const onSubmit = async (data: RegisterFormData) => {
     // TODO: Connect to Better Auth
     await new Promise((r) => setTimeout(r, 1000));
-    window.location.href = "/onboarding";
+    router.push("/onboarding");
   };
 
   return (

@@ -1,0 +1,250 @@
+
+File: \src\app\(auth)\layout.tsx
+  L13: @next/next/no-html-link-for-pages - Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages
+  L13: @next/next/no-html-link-for-pages - Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages
+  L13: @next/next/no-html-link-for-pages - Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages
+  L13: @next/next/no-html-link-for-pages - Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages
+  L13: @next/next/no-html-link-for-pages - Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages
+
+File: \src\app\(auth)\login\page.tsx
+  L19: @typescript-eslint/no-unused-vars - 'data' is defined but never used.
+  L23: react-hooks/immutability - Error: This value cannot be modified
+
+Modifying a variable defined outside a component or hook is not allowed. Consider using an effect.
+
+C:\Users\Dell\Documents\katalogku\src\app\(auth)\login\page.tsx:23:5
+  21 |     // Simulasi loading
+  22 |     await new Promise((r) => setTimeout(r, 1000));
+> 23 |     window.location.href = "/etalase/dashboard";
+     |     ^^^^^^^^^^^^^^^ value cannot be modified
+  24 |   };
+  25 |
+  26 |   return (
+
+File: \src\app\(auth)\lupa-password\page.tsx
+  L21: @typescript-eslint/no-unused-vars - 'data' is defined but never used.
+
+File: \src\app\(auth)\onboarding\page.tsx
+  L4: @typescript-eslint/no-unused-vars - 'Link' is defined but never used.
+  L192: @typescript-eslint/no-unused-vars - 'data' is defined but never used.
+  L193: @typescript-eslint/no-unused-vars - 'data' is defined but never used.
+  L195: @typescript-eslint/no-unused-vars - 'data' is defined but never used.
+
+File: \src\app\(auth)\register\page.tsx
+  L20: @typescript-eslint/no-unused-vars - 'data' is defined but never used.
+  L23: react-hooks/immutability - Error: This value cannot be modified
+
+Modifying a variable defined outside a component or hook is not allowed. Consider using an effect.
+
+C:\Users\Dell\Documents\katalogku\src\app\(auth)\register\page.tsx:23:5
+  21 |     // TODO: Connect to Better Auth
+  22 |     await new Promise((r) => setTimeout(r, 1000));
+> 23 |     window.location.href = "/onboarding";
+     |     ^^^^^^^^^^^^^^^ value cannot be modified
+  24 |   };
+  25 |
+  26 |   return (
+
+File: \src\app\(auth)\reset-password\page.tsx
+  L22: @typescript-eslint/no-unused-vars - 'data' is defined but never used.
+
+File: \src\app\(console)\x-control\console\page.tsx
+  L52: react-hooks/immutability - Error: Cannot reassign variable after render completes
+
+Reassigning `offset` after render has completed can cause inconsistent behavior on subsequent renders. Consider using state instead.
+
+C:\Users\Dell\Documents\katalogku\src\app\(console)\x-control\console\page.tsx:52:9
+  50 |         const dash = (d.pct / 100) * circumference;
+  51 |         const dashOffset = -offset;
+> 52 |         offset += dash;
+     |         ^^^^^^ Cannot reassign `offset` after render completes
+  53 |         return (
+  54 |           <circle
+  55 |             key={i}
+
+File: \src\app\(console)\x-control\console\promo\page.tsx
+  L21: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L21: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+
+File: \src\app\(dashboard)\etalase\dashboard\akun\page.tsx
+  L37: @typescript-eslint/no-unused-vars - 'data' is defined but never used.
+  L46: @typescript-eslint/no-unused-vars - 'data' is defined but never used.
+
+File: \src\app\(dashboard)\etalase\dashboard\analytics\page.tsx
+  L172: react-hooks/immutability - Error: Cannot reassign variable after render completes
+
+Reassigning `cumulativeOffset` after render has completed can cause inconsistent behavior on subsequent renders. Consider using state instead.
+
+C:\Users\Dell\Documents\katalogku\src\app\(dashboard)\etalase\dashboard\analytics\page.tsx:172:9
+  170 |         const dashLength = (source.pct / 100) * circumference;
+  171 |         const dashOffset = -cumulativeOffset;
+> 172 |         cumulativeOffset += dashLength;
+      |         ^^^^^^^^^^^^^^^^ Cannot reassign `cumulativeOffset` after render completes
+  173 |         return (
+  174 |           <circle
+  175 |             key={i}
+
+File: \src\app\(dashboard)\etalase\dashboard\bantuan\page.tsx
+  L149: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L149: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L149: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L149: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L187: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L187: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L226: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L226: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L226: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L226: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L226: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L226: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L261: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L261: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L261: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L261: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L261: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L261: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L336: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L336: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L336: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L336: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L336: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L336: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+
+File: \src\app\(dashboard)\etalase\dashboard\billing\page.tsx
+  L95: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L95: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L146: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L146: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+
+File: \src\app\(dashboard)\etalase\dashboard\katalog\[id]\edit\page.tsx
+  L31: @typescript-eslint/no-unused-vars - 'data' is defined but never used.
+  L73: @next/next/no-img-element - Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element
+
+File: \src\app\(dashboard)\etalase\dashboard\katalog\[id]\page.tsx
+  L53: @next/next/no-img-element - Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element
+  L146: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L146: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+
+File: \src\app\(dashboard)\etalase\dashboard\kategori\page.tsx
+  L31: react-hooks/purity - Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Dell\Documents\katalogku\src\app\(dashboard)\etalase\dashboard\kategori\page.tsx:31:26
+  29 |
+  30 |   const onAddCategory = (data: AddCategoryFormData) => {
+> 31 |     const newId = `cat-${Date.now()}`;
+     |                          ^^^^^^^^^^ Cannot call impure function
+  32 |     setCategories([...categories, { id: newId, name: data.name, count: 0, enabled: true }]);
+  33 |     reset();
+  34 |   };
+  L109: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L109: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L109: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L109: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+
+File: \src\app\(dashboard)\etalase\dashboard\links\page.tsx
+  L50: react-hooks/set-state-in-effect - Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Dell\Documents\katalogku\src\app\(dashboard)\etalase\dashboard\links\page.tsx:50:5
+  48 |   const [isMounted, setIsMounted] = useState(false);
+  49 |   useEffect(() => {
+> 50 |     setIsMounted(true);
+     |     ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  51 |   }, []);
+  52 |
+  53 |   const previewData = {
+  L554: @typescript-eslint/no-explicit-any - Unexpected any. Specify a different type.
+  L569: @typescript-eslint/no-explicit-any - Unexpected any. Specify a different type.
+
+File: \src\app\(dashboard)\etalase\dashboard\page.tsx
+  L73: @typescript-eslint/no-unused-vars - 'period' is defined but never used.
+  L76: @typescript-eslint/no-unused-vars - 'barW' is assigned a value but never used.
+
+File: \src\app\(dashboard)\etalase\dashboard\pesanan\page.tsx
+  L3: @typescript-eslint/no-unused-vars - 'useRef' is defined but never used.
+
+File: \src\app\(dashboard)\etalase\dashboard\teks-toko\page.tsx
+  L78: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L78: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L86: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L86: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+
+File: \src\app\(marketing)\privacy\page.tsx
+  L70: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L70: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+
+File: \src\app\(marketing)\terms\page.tsx
+  L60: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L60: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L67: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+  L67: react/no-unescaped-entities - `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.
+
+File: \src\app\[username]\page.tsx
+  L4: @typescript-eslint/no-unused-vars - 'Link' is defined but never used.
+  L95: react-hooks/purity - Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+C:\Users\Dell\Documents\katalogku\src\app\[username]\page.tsx:95:30
+  93 |     
+  94 |     // Generate unique invoice ID
+> 95 |     const invoiceId = `INV-${Date.now().toString(36).toUpperCase()}`;
+     |                              ^^^^^^^^^^ Cannot call impure function
+  96 |     const invoiceUrl = `${window.location.origin}/${params.username}/invoice/${invoiceId}`;
+  97 |     
+  98 |     const msg = `Halo ${storeData.name}! ≡ƒ¢ì∩╕Å\nSaya ingin memesan:\n${lines.join("\n")}\n\n*Total Tagihan: ${formatRupiah(totalPrice)}*\n${buyerInfo}\n\n≡ƒº╛ *Struk Digital:*\n${invoiceUrl}\n\nTerima kasih!`;
+  L248: @typescript-eslint/no-unused-vars - 'i' is defined but never used.
+
+File: \src\app\[username]\produk\[id]\page.tsx
+  L59: @next/next/no-img-element - Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element
+  L69: @next/next/no-img-element - Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element
+  L76: @next/next/no-img-element - Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element
+  L83: @next/next/no-img-element - Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element
+  L154: @next/next/no-img-element - Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element
+
+File: \src\app\layout.tsx
+  L28: @next/next/no-page-custom-font - Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font
+
+File: \src\app\not-found.tsx
+  L10: @next/next/no-html-link-for-pages - Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages
+  L10: @next/next/no-html-link-for-pages - Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages
+  L10: @next/next/no-html-link-for-pages - Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages
+  L10: @next/next/no-html-link-for-pages - Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages
+  L10: @next/next/no-html-link-for-pages - Do not use an `<a>` element to navigate to `/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages
+
+File: \src\components\dashboard\links\SortableLinkItem.tsx
+  L184: @typescript-eslint/no-explicit-any - Unexpected any. Specify a different type.
+
+File: \src\components\storefront\StorefrontUI.tsx
+  L4: @typescript-eslint/no-unused-vars - 'WhatsAppIcon' is defined but never used.
+  L30: @typescript-eslint/no-unused-vars - 'showCheckout' is assigned a value but never used.
+  L31: @typescript-eslint/no-unused-vars - 'selectedProduct' is assigned a value but never used.
+  L32: @typescript-eslint/no-unused-vars - 'setCheckoutForm' is assigned a value but never used.
+  L34: @typescript-eslint/no-unused-vars - 'showPromoModal' is assigned a value but never used.
+  L34: @typescript-eslint/no-unused-vars - 'setShowPromoModal' is assigned a value but never used.
+  L35: @typescript-eslint/no-unused-vars - 'showSubscribeModal' is assigned a value but never used.
+  L36: @typescript-eslint/no-unused-vars - 'showShareModal' is assigned a value but never used.
+  L43: @typescript-eslint/no-explicit-any - Unexpected any. Specify a different type.
+  L55: @typescript-eslint/no-unused-vars - 'addToCart' is defined but never used.
+  L63: @typescript-eslint/no-unused-vars - 'removeFromCart' is defined but never used.
+  L67: @typescript-eslint/no-unused-vars - 'checkoutToWA' is defined but never used.
+  L71: @typescript-eslint/no-explicit-any - Unexpected any. Specify a different type.
+  L76: @typescript-eslint/no-explicit-any - Unexpected any. Specify a different type.
+  L188: @typescript-eslint/no-explicit-any - Unexpected any. Specify a different type.
+
+File: \src\components\storefront\ui\LinksTab.tsx
+  L16: @typescript-eslint/no-explicit-any - Unexpected any. Specify a different type.
+  L16: @typescript-eslint/no-explicit-any - Unexpected any. Specify a different type.
+
+File: \src\components\storefront\ui\ShopTab.tsx
+  L56: @typescript-eslint/no-explicit-any - Unexpected any. Specify a different type.
+
+File: \src\lib\designConstants.ts
+  L30: @typescript-eslint/no-explicit-any - Unexpected any. Specify a different type.

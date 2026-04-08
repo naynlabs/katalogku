@@ -42,26 +42,27 @@ function PlanRing({ data }: { data: typeof planBreakdown }) {
   const strokeWidth = 16;
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
-  let offset = 0;
+  const ringData = data.reduce<{ dash: number; dashOffset: number; color: string }[]>((acc, d) => {
+    const dash = (d.pct / 100) * circumference;
+    const prev = acc[acc.length - 1];
+    const offset = prev ? prev.dashOffset - prev.dash : 0;
+    acc.push({ dash, dashOffset: offset, color: d.color });
+    return acc;
+  }, []);
 
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-      {data.map((d, i) => {
-        const dash = (d.pct / 100) * circumference;
-        const dashOffset = -offset;
-        offset += dash;
-        return (
-          <circle
-            key={i}
-            cx={size / 2} cy={size / 2} r={radius}
-            fill="none" stroke={d.color} strokeWidth={strokeWidth}
-            strokeDasharray={`${dash} ${circumference - dash}`}
-            strokeDashoffset={dashOffset}
-            strokeLinecap="round"
-            transform={`rotate(-90 ${size / 2} ${size / 2})`}
-          />
-        );
-      })}
+      {ringData.map((d, i) => (
+        <circle
+          key={i}
+          cx={size / 2} cy={size / 2} r={radius}
+          fill="none" stroke={d.color} strokeWidth={strokeWidth}
+          strokeDasharray={`${d.dash} ${circumference - d.dash}`}
+          strokeDashoffset={d.dashOffset}
+          strokeLinecap="round"
+          transform={`rotate(-90 ${size / 2} ${size / 2})`}
+        />
+      ))}
       <text x={size / 2} y={size / 2 - 4} textAnchor="middle" className="fill-on-surface text-sm font-black">2,408</text>
       <text x={size / 2} y={size / 2 + 10} textAnchor="middle" className="fill-on-surface-variant text-[8px] font-bold uppercase" style={{ letterSpacing: '0.1em' }}>Users</text>
     </svg>

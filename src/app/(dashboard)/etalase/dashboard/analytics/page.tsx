@@ -162,32 +162,33 @@ function DonutChart({ data }: { data: typeof TRAFFIC_SOURCES }) {
   const strokeWidth = 22;
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
-  let cumulativeOffset = 0;
+  const ringData = data.reduce<{ dashLength: number; dashOffset: number; color: string }[]>((acc, source) => {
+    const dashLength = (source.pct / 100) * circumference;
+    const prev = acc[acc.length - 1];
+    const offset = prev ? prev.dashOffset - prev.dashLength : 0;
+    acc.push({ dashLength, dashOffset: offset, color: source.color });
+    return acc;
+  }, []);
 
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="shrink-0">
-      {data.map((source, i) => {
-        const dashLength = (source.pct / 100) * circumference;
-        const dashOffset = -cumulativeOffset;
-        cumulativeOffset += dashLength;
-        return (
-          <circle
-            key={i}
-            cx={size / 2}
-            cy={size / 2}
-            r={radius}
-            fill="none"
-            stroke={source.color}
-            strokeWidth={strokeWidth}
-            strokeDasharray={`${dashLength} ${circumference - dashLength}`}
-            strokeDashoffset={dashOffset}
-            strokeLinecap="round"
-            transform={`rotate(-90 ${size / 2} ${size / 2})`}
-            className="transition-all duration-500"
-            style={{ opacity: 0.85 }}
-          />
-        );
-      })}
+      {ringData.map((d, i) => (
+        <circle
+          key={i}
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke={d.color}
+          strokeWidth={strokeWidth}
+          strokeDasharray={`${d.dashLength} ${circumference - d.dashLength}`}
+          strokeDashoffset={d.dashOffset}
+          strokeLinecap="round"
+          transform={`rotate(-90 ${size / 2} ${size / 2})`}
+          className="transition-all duration-500"
+          style={{ opacity: 0.85 }}
+        />
+      ))}
       {/* Center text */}
       <text x={size / 2} y={size / 2 - 6} textAnchor="middle" className="fill-on-surface text-lg font-black">1,484</text>
       <text x={size / 2} y={size / 2 + 12} textAnchor="middle" className="fill-gray-400 text-[9px] font-bold uppercase" style={{ letterSpacing: '0.1em' }}>Total Visit</text>
