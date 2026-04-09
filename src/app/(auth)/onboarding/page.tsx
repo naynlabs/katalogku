@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { WhatsAppIcon } from "@/components/icons";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,6 +10,7 @@ import {
   onboardingStep2Schema, OnboardingStep2Data,
   onboardingStep3Schema, OnboardingStep3Data
 } from "@/lib/validations";
+import { createStore } from "./actions";
 
 const stepMeta = [
   { label: "Profil", icon: "person" },
@@ -134,7 +135,11 @@ function StepStore({ onNext }: { onNext: (data: OnboardingStep2Data) => void }) 
   );
 }
 
-function StepWhatsapp({ onFinish }: { onFinish: (data: OnboardingStep3Data) => void }) {
+function StepWhatsapp({ onFinish, isLoading, error }: { 
+  onFinish: (data: OnboardingStep3Data) => void;
+  isLoading: boolean;
+  error: string | null;
+}) {
   const { register, handleSubmit, formState: { errors } } = useForm<OnboardingStep3Data>({
     resolver: zodResolver(onboardingStep3Schema),
   });
@@ -148,6 +153,15 @@ function StepWhatsapp({ onFinish }: { onFinish: (data: OnboardingStep3Data) => v
         <h3 className="mt-4 text-xl font-bold text-on-surface">Nomor WhatsApp</h3>
         <p className="text-sm text-on-surface-variant text-center mt-1">Pesanan customer akan dikirim langsung ke nomor ini.</p>
       </div>
+
+      {/* Error message */}
+      {error && (
+        <div className="mb-6 p-3 bg-error/10 border border-error/20 rounded-lg flex items-center gap-2">
+          <span className="material-symbols-outlined text-error text-lg">error</span>
+          <p className="text-sm text-error font-medium">{error}</p>
+        </div>
+      )}
+
       <form className="space-y-6" onSubmit={handleSubmit(onFinish)}>
         <div className="relative">
           <label className="absolute -top-2.5 left-4 bg-white px-1 text-[11px] font-bold uppercase tracking-widest text-primary z-10">Nomor WhatsApp</label>
@@ -158,8 +172,12 @@ function StepWhatsapp({ onFinish }: { onFinish: (data: OnboardingStep3Data) => v
           {errors.whatsapp && <p className="text-error text-xs font-bold mt-1 ml-1">{errors.whatsapp.message}</p>}
         </div>
         <div className="pt-4 flex flex-col gap-4">
-          <button type="submit" className="w-full py-4 px-6 bg-primary-gradient text-on-primary rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
-            🎉 Selesai! Buka Dashboard
+          <button 
+            type="submit" 
+            disabled={isLoading}
+            className="w-full py-4 px-6 bg-primary-gradient text-on-primary rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isLoading ? "Membuat toko..." : "🎉 Selesai! Buka Dashboard"}
           </button>
         </div>
       </form>
@@ -168,13 +186,44 @@ function StepWhatsapp({ onFinish }: { onFinish: (data: OnboardingStep3Data) => v
 }
 
 export default function OnboardingPage() {
+  const router = useRouter();
   const [step, setStep] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [storeError, setStoreError] = useState<string | null>(null);
+
+  // Collect data from all steps
+  const [step1Data, setStep1Data] = useState<OnboardingStep1Data | null>(null);
+  const [step2Data, setStep2Data] = useState<OnboardingStep2Data | null>(null);
 
   const titles = [
     { h: "Mari mulai membangun etalase digital kamu.", p: "Lengkapi profil anda agar pembeli mengenal brand dan diri anda lebih dekat." },
     { h: "Atur identitas toko kamu.", p: "Nama dan URL toko akan menjadi alamat utama etalase kamu di internet." },
     { h: "Satu langkah lagi!", p: "Hubungkan WhatsApp agar pesanan customer bisa langsung masuk ke HP kamu." },
   ];
+
+  const handleFinish = async (data: OnboardingStep3Data) => {
+    if (!step2Data) return;
+
+    setIsLoading(true);
+    setStoreError(null);
+
+    const result = await createStore({
+      storeName: step2Data.storeName,
+      storeSlug: step2Data.storeSlug,
+      whatsappNumber: data.whatsapp,
+      category: step2Data.category,
+      fullName: step1Data?.fullName,
+    });
+
+    if (result.error) {
+      setStoreError(result.error);
+      setIsLoading(false);
+      return;
+    }
+
+    // Success! Redirect to dashboard
+    router.push("/etalase/dashboard");
+  };
 
   return (
     <main className="flex-grow flex flex-col items-center justify-center px-4 pt-24 pb-12">
@@ -189,13 +238,14 @@ export default function OnboardingPage() {
 
         <StepIndicator current={step} />
 
-        {step === 0 && <StepProfile onNext={(data) => { setStep(1); }} />}
-        {step === 1 && <StepStore onNext={(data) => { setStep(2); }} />}
+        {step === 0 && <StepProfile onNext={(data) => { setStep1Data(data); setStep(1); }} />}
+        {step === 1 && <StepStore onNext={(data) => { setStep2Data(data); setStep(2); }} />}
         {step === 2 && (
-          <StepWhatsapp onFinish={(data) => {
-            // TODO: Connect to Better Auth & save onboarding data
-            window.location.href = "/etalase/dashboard";
-          }} />
+          <StepWhatsapp 
+            onFinish={handleFinish} 
+            isLoading={isLoading} 
+            error={storeError} 
+          />
         )}
 
         <footer className="mt-12 text-center">
