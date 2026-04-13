@@ -106,6 +106,8 @@ export type StoreProfile = {
 
 /** Storefront data passed to StorefrontUI */
 export type StorefrontData = StoreProfile & {
+  storeId: number;
+  username: string; // Add username for waURL mapping
   categories?: string[];
   links?: StorefrontLink[];
   products?: Product[];

@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { forgotPasswordSchema, ForgotPasswordFormData } from "@/lib/validations";
+import { authClient } from "@/lib/auth-client";
 
 export default function LupaPasswordPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,13 +21,23 @@ export default function LupaPasswordPage() {
 
   const onSubmit = async (data: ForgotPasswordFormData) => {
     setIsLoading(true);
-    // TODO: Connect to Better Auth
-    
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const { data: res, error } = await authClient.requestPasswordReset({
+        email: data.email,
+        redirectTo: "/reset-password",
+      });
+
+      if (error) {
+        alert(error.message || "Gagal memproses permintaan");
+        setIsLoading(false);
+      } else {
+        setIsLoading(false);
+        setIsSuccess(true);
+      }
+    } catch (err: any) {
+      alert("Terjadi masalah pada server. Silakan coba lagi.");
       setIsLoading(false);
-      setIsSuccess(true);
-    }, 1500);
+    }
   };
 
   return (

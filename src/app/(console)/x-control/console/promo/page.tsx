@@ -1,25 +1,20 @@
-"use client";
+import { getAdminPromos } from "@/lib/queries";
+import PromoClient from "./PromoClient";
 
-import React from "react";
+export default async function PromoPage() {
+  const promos = await getAdminPromos();
 
-export default function PromoPage() {
-  return (
-    <div className="space-y-8 pb-12 w-full max-w-7xl mx-auto">
-      <div className="flex justify-between items-end">
-        <div>
-          <h1 className="text-3xl font-extrabold text-on-surface tracking-tight">Kupon & Promo</h1>
-          <p className="text-on-surface-variant mt-1">Buat kode diskon untuk meningkatkan konversi berlangganan Pro.</p>
-        </div>
-        <button className="px-5 py-2.5 bg-on-surface text-surface font-bold rounded-xl shadow-lg hover:bg-on-surface/90 transition-all flex gap-2">
-          <span className="material-symbols-outlined">add</span> Buat Kupon
-        </button>
-      </div>
+  const serialized = promos.map((p) => ({
+    id: p.id,
+    code: p.code,
+    discountType: p.discountType,
+    discountAmount: Number(p.discountAmount),
+    maxUses: p.maxUses,
+    usedCount: p.usedCount,
+    validUntil: p.validUntil?.toISOString() ?? null,
+    isActive: p.isActive,
+    createdAt: p.createdAt.toISOString(),
+  }));
 
-      <div className="bg-surface rounded-2xl border border-outline-variant/40 shadow-sm overflow-hidden p-8 text-center text-on-surface-variant">
-        <span className="material-symbols-outlined text-6xl mb-4 text-outline-variant">confirmation_number</span>
-        <h2 className="text-xl font-bold mb-2 text-on-surface">Belum Ada Kupon Aktif</h2>
-        <p className="max-w-md mx-auto mb-6">Buat kupon pertama Anda, seperti "DISKON50", untuk disebarkan ke audiens UMKM.</p>
-      </div>
-    </div>
-  );
+  return <PromoClient promos={serialized} />;
 }

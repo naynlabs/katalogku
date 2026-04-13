@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { resetPasswordSchema, ResetPasswordFormData } from "@/lib/validations";
+import { authClient } from "@/lib/auth-client";
 
 export default function ResetPasswordPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -21,13 +22,23 @@ export default function ResetPasswordPage() {
 
   const onSubmit = async (data: ResetPasswordFormData) => {
     setIsLoading(true);
-    // TODO: Connect to Better Auth
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const { data: res, error } = await authClient.resetPassword({
+        newPassword: data.password,
+      });
+
+      if (error) {
+        alert(error.message || "Gagal mengatur ulang sandi. Tautan mungkin kadaluarsa.");
+        setIsLoading(false);
+      } else {
+        setIsLoading(false);
+        router.push("/login?reset=success");
+      }
+    } catch (err: any) {
+      alert("Terjadi masalah pada server. Silakan coba lagi.");
       setIsLoading(false);
-      router.push("/login?reset=success");
-    }, 1500);
+    }
   };
 
   return (

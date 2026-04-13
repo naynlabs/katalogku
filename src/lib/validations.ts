@@ -148,7 +148,7 @@ export type AddCategoryFormData = z.infer<typeof addCategorySchema>;
 export const productSchema = z.object({
   name: z.string().min(1, "Nama produk wajib diisi").max(100, "Nama produk maksimal 100 karakter"),
   price: z.string().min(1, "Harga wajib diisi").regex(/^[0-9]+$/, "Hanya angka yang diperbolehkan"),
-  category: z.string().min(1, "Kategori wajib dipilih"),
+  category: z.string().optional(),
   description: z.string().optional(),
   isAvailable: z.boolean().optional(),
 });

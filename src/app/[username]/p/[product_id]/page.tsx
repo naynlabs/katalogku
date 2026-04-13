@@ -1,24 +1,31 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getProductById, getStoreBySlug } from "@/lib/queries";
+import { formatRupiah } from "@/lib/utils";
+import { notFound } from "next/navigation";
 
 export default async function ProductDetailPage(props: { params: Promise<{ username: string, product_id: string }> }) {
   const params = await props.params;
-  // Dummy data produk (Di dunia nyata ini diambil dari database TiDB berdasarkan product_id)
+  const store = await getStoreBySlug(params.username);
+  
+  if (!store) return notFound();
+
+  const productData = await getProductById(Number(params.product_id));
+  if (!productData || productData.storeId !== store.id) return notFound();
+
   const product = {
-    name: "Special Box Kue Putu & Roti Gembong Mix",
-    price: "Rp 75.000",
-    originalPrice: "Rp 95.000", // Coretan harga
-    description: "Nikmati perpaduan klasik dari Kue Putu legendaris yang manis gurih dengan Roti Gembong isi cokelat tumpeh-tumpeh. Dibuat fresh setiap hari tanpa bahan pengawet. Sangat cocok untuk hantaran ulang tahun, acara arisan, atau sekadar teman ngopi sore di rumah.",
+    name: productData.name,
+    price: formatRupiah(Number(productData.price)),
+    originalPrice: productData.originalPrice ? formatRupiah(Number(productData.originalPrice)) : null,
+    description: productData.description || "Tidak ada deskripsi tersedia.",
     features: [
-      "Tahan hingga 3 Hari di luar kulkas",
-      "Termasuk kartu ucapan gratis",
-      "100% Gula Asli & Halal"
+      productData.stockStatus === "AVAILABLE" ? "Stok Tersedia" : productData.stockStatus === "PRE_ORDER" ? "Sistem Pre-Order" : "Stok Habis"
     ],
-    image: "https://images.unsplash.com/photo-1542826438-bd32f43d626f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
-    stockLabel: "Sisa 5 Paket Terakhir!",
+    image: productData.imageUrl || "https://placehold.co/800x800/eeeeee/999999?text=No+Image", 
+    stockLabel: productData.stockStatus === "SOLD_OUT" ? "Habis Terjual!" : "Stok Tersedia",
   };
 
-  const sellerPhone = "628123456789"; 
+  const sellerPhone = store.whatsappNumber || ""; 
   const waMessage = encodeURIComponent(`Halo kak, saya tertarik untuk membeli produk *${product.name}* seharga ${product.price}. Apakah masih tersedia?`);
   const waUrl = `https://wa.me/${sellerPhone}?text=${waMessage}`;
 

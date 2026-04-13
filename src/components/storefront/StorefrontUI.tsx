@@ -9,6 +9,9 @@ import Image from "next/image";
 import type { Product, CartItem, CheckoutForm, StorefrontData } from "@/types";
 import { LinksTab } from "./ui/LinksTab";
 import { ShopTab } from "./ui/ShopTab";
+import { CartDrawer } from "./ui/CartDrawer";
+import { createCartOrder, logPageView, logProductClick } from "@/lib/actions";
+import { useEffect } from "react";
 
 export default function StorefrontUI({ data, disableCheckout = false }: { data: StorefrontData, disableCheckout?: boolean }) {
   const [activeTab, setActiveTab] = useState<"Links" | "Shop">("Shop");
@@ -30,10 +33,26 @@ export default function StorefrontUI({ data, disableCheckout = false }: { data: 
   const [showCheckout, setShowCheckout] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [checkoutForm, setCheckoutForm] = useState<CheckoutForm>({ name: "", phone: "", address: "", notes: "" });
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
 
   const [showPromoModal, setShowPromoModal] = useState(false);
   const [showSubscribeModal, setShowSubscribeModal] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
+
+  // Analytics Tracker
+  useEffect(() => {
+    // Hanya tracking jika bukan di dalam iframe (mode builder)
+    if (window.self === window.top && data.storeId) {
+      logPageView(data.storeId, navigator.userAgent, document.referrer);
+    }
+  }, [data.storeId]);
+
+  const handleProductClick = (product: Product) => {
+    setSelectedProduct(product);
+    if (window.self === window.top && data.storeId) {
+      logProductClick(data.storeId, product.id);
+    }
+  };
 
   // Fallback products if none exist
   const products = data.products || [];
@@ -64,21 +83,45 @@ export default function StorefrontUI({ data, disableCheckout = false }: { data: 
     setCart((prev) => prev.filter((c) => c.id !== id));
   }
 
-  function checkoutToWA() {
+  async function checkoutToWA() {
     if (disableCheckout) return alert("Checkout dinonaktifkan di mode Preview Builder.");
     if (totalItems === 0) return;
-    const { name, phone, address, notes } = checkoutForm;
-    const lines = cartItems.map((c: any) => `• ${c.name} x${c.qty} = ${formatRupiah(c.price * c.qty)}`);
-    const buyerInfo = `\n👤 *Info Pemesan:*\n- Nama: ${name || '-'}\n- No. HP: ${phone || '-'}\n- Alamat: ${address || '-'}\n- Catatan: ${notes || '-'}`;
+    if (!checkoutForm.name || !checkoutForm.phone) return alert("Mohon lengkapi Nama dan No. HP.");
     
-    // Generate unique invoice ID & link
-    const invoiceId = `INV-${Date.now().toString(36).toUpperCase()}`;
-    const storeName = (data as any).username || 'toko';
-    const invoiceUrl = `${window.location.origin}/${storeName}/invoice/${invoiceId}`;
-    
-    const msg = `Halo ${data.name}! 🛍️\nSaya ingin memesan:\n${lines.join("\n")}\n\n*Total Tagihan: ${formatRupiah(totalPrice)}*\n${buyerInfo}\n\n🧾 *Struk Digital:*\n${invoiceUrl}\n\nTerima kasih!`;
-    const url = `https://wa.me/${data.wa.replace(/\D/g, "")}?text=${encodeURIComponent(msg)}`;
-    window.open(url, "_blank");
+    setCheckoutLoading(true);
+    try {
+      const res = await createCartOrder({
+        storeId: data.storeId,
+        customerName: checkoutForm.name,
+        customerPhone: checkoutForm.phone,
+        customerAddress: checkoutForm.address,
+        notes: checkoutForm.notes,
+        cartItems: cart.map(c => ({ id: c.id, qty: c.qty })),
+      });
+
+      if (res.error) {
+        alert("Gagal membuat pesanan: " + res.error);
+        return;
+      }
+
+      const { name, phone, address, notes } = checkoutForm;
+      const lines = cartItems.map((c: any) => `• ${c.name} x${c.qty} = ${formatRupiah(c.price * c.qty)}`);
+      const buyerInfo = `\n👤 *Info Pemesan:*\n- Nama: ${name || '-'}\n- No. HP: ${phone || '-'}\n- Alamat: ${address || '-'}\n- Catatan: ${notes || '-'}`;
+      
+      const invoiceUrl = `${window.location.origin}/${data.username}/invoice/${res.invoiceId}`;
+      const msg = `Halo ${data.name}! 🛍️\nSaya ingin memesan:\n${lines.join("\n")}\n\n*Total Tagihan: ${formatRupiah(totalPrice)}*\n${buyerInfo}\n\n🧾 *Struk Digital:*\n${invoiceUrl}\n\nTerima kasih!`;
+      
+      const url = `https://wa.me/${data.wa.replace(/\D/g, "")}?text=${encodeURIComponent(msg)}`;
+      window.open(url, "_blank");
+
+      // Clear cart
+      setCart([]);
+      setShowCheckout(false);
+    } catch (err) {
+      alert("Terjadi kesalahan. Silakan coba lagi.");
+    } finally {
+      setCheckoutLoading(false);
+    }
   }
 
   // --- Theme Mapping Logic ---
@@ -265,7 +308,7 @@ export default function StorefrontUI({ data, disableCheckout = false }: { data: 
                     activeCategory={activeCategory}
                     setActiveCategory={setActiveCategory}
                     filteredProducts={filteredProducts}
-                    setSelectedProduct={setSelectedProduct}
+                    setSelectedProduct={handleProductClick}
                     themeTextColor={themeTextColor}
                     catBtnClass={catBtnClass}
                   />
@@ -286,7 +329,7 @@ export default function StorefrontUI({ data, disableCheckout = false }: { data: 
                   activeCategory={activeCategory}
                   setActiveCategory={setActiveCategory}
                   filteredProducts={filteredProducts}
-                  setSelectedProduct={setSelectedProduct}
+                  setSelectedProduct={handleProductClick}
                   themeTextColor={themeTextColor}
                   catBtnClass={catBtnClass}
                 />
@@ -320,6 +363,21 @@ export default function StorefrontUI({ data, disableCheckout = false }: { data: 
         )}
 
       </div> 
+
+      {/* --- CHECKOUT DRAWER --- */}
+      <CartDrawer 
+        showCheckout={showCheckout}
+        setShowCheckout={setShowCheckout}
+        cartItems={cartItems}
+        removeFromCart={removeFromCart}
+        addToCart={addToCart}
+        checkoutForm={checkoutForm}
+        setCheckoutForm={setCheckoutForm}
+        totalItems={totalItems}
+        totalPrice={totalPrice}
+        checkoutToWA={checkoutToWA}
+        checkoutLoading={checkoutLoading}
+      />
     </div>
   );
 }

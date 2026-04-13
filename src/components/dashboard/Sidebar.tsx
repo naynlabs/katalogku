@@ -10,6 +10,7 @@ const mainNavItems = [
   { icon: "receipt_long", label: "Pesanan", href: "/etalase/dashboard/pesanan" },
   { icon: "group", label: "Audiens", href: "/etalase/dashboard/audiens" },
   { icon: "analytics", label: "Analitik", href: "/etalase/dashboard/analytics" },
+  { icon: "verified", label: "Langganan PRO", href: "/etalase/dashboard/billing" },
 ];
 
 const storeNavItems = [

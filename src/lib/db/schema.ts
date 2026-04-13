@@ -92,6 +92,7 @@ export const stores = mysqlTable("stores", {
   isActive: boolean("is_active").notNull().default(true),
   // Theme & Customization stored as JSON for flexibility
   themeConfig: json("theme_config"),
+  teksConfig: json("teks_config"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow().onUpdateNow(),
 });
@@ -252,6 +253,31 @@ export const subscriptionPlans = mysqlTable("subscription_plans", {
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
+/** Platform Banks (for manual transfer payments) */
+export const platformBanks = mysqlTable("platform_banks", {
+  id: int("id").autoincrement().primaryKey(),
+  bankName: varchar("bank_name", { length: 50 }).notNull(),
+  accountNumber: varchar("account_number", { length: 50 }).notNull(),
+  accountName: varchar("account_name", { length: 100 }).notNull(),
+  logoUrl: text("logo_url"),
+  isActive: boolean("is_active").notNull().default(true),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+/** Subscription Invoices (Billing for merchants upgrading to Pro) */
+export const subscriptionInvoices = mysqlTable("subscription_invoices", {
+  id: int("id").autoincrement().primaryKey(),
+  invoiceId: varchar("invoice_id", { length: 30 }).notNull().unique(),
+  storeId: int("store_id").notNull().references(() => stores.id, { onDelete: "cascade" }),
+  planId: int("plan_id").notNull().references(() => subscriptionPlans.id),
+  amount: decimal("amount", { precision: 12, scale: 0 }).notNull(),
+  promoCodeId: int("promo_code_id").references(() => promocodes.id, { onDelete: "set null" }),
+  paymentProofUrl: text("payment_proof_url"),
+  status: mysqlEnum("status", ["PENDING", "WAITING_CONFIRMATION", "PAID", "CANCELLED"]).notNull().default("PENDING"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow().onUpdateNow(),
+});
+
 /** Subscriptions (per store) */
 export const subscriptions = mysqlTable("subscriptions", {
   id: int("id").autoincrement().primaryKey(),
@@ -378,4 +404,10 @@ export const subscriptionPlansRelations = relations(subscriptionPlans, ({ many }
 export const subscriptionsRelations = relations(subscriptions, ({ one }) => ({
   store: one(stores, { fields: [subscriptions.storeId], references: [stores.id] }),
   plan: one(subscriptionPlans, { fields: [subscriptions.planId], references: [subscriptionPlans.id] }),
+}));
+
+export const subscriptionInvoicesRelations = relations(subscriptionInvoices, ({ one }) => ({
+  store: one(stores, { fields: [subscriptionInvoices.storeId], references: [stores.id] }),
+  plan: one(subscriptionPlans, { fields: [subscriptionInvoices.planId], references: [subscriptionPlans.id] }),
+  promoCode: one(promocodes, { fields: [subscriptionInvoices.promoCodeId], references: [promocodes.id] }),
 }));
